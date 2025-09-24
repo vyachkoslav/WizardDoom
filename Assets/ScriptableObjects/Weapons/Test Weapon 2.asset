@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa8fb9d5755f45a982531b2a826d8cd6, type: 3}
+  m_Name: Test Weapon 2
+  m_EditorClassIdentifier: Assembly-CSharp::Player.Weapons.TestWeapon
+  weaponPrefab: {fileID: 7750404293600654010, guid: 6d6b66969aea5ad4f92bc9a756a85f4b, type: 3}
+  shotSound: {fileID: 8300000, guid: da590b4de0b41214086cd3d809dd4afe, type: 3}
+  emptySound: {fileID: 8300000, guid: b64bb1f1b20649f4fabbf848ea74e014, type: 3}
+  reloadSound: {fileID: 8300000, guid: 54f7891663923ab429b7800622e3be26, type: 3}
+  maxLoadedAmmo: 10
+  maxAmmo: 50
+  fireRateSeconds: 0.1
+  reloadTimeSeconds: 0.4
+  damage: 15
