@@ -16,9 +16,41 @@ MonoBehaviour:
   shotSound: {fileID: 8300000, guid: da590b4de0b41214086cd3d809dd4afe, type: 3}
   emptySound: {fileID: 8300000, guid: b64bb1f1b20649f4fabbf848ea74e014, type: 3}
   reloadSound: {fileID: 8300000, guid: 54f7891663923ab429b7800622e3be26, type: 3}
-  maxLoadedAmmo: 10
-  maxAmmo: 50
-  fireRateSeconds: 0.1
+  maxLoadedAmmo: 30
+  maxAmmo: 5000
+  fireRateSeconds: 0.05
   reloadTimeSeconds: 0.4
   damage: 15
   isAutomatic: 1
+  recoilSmoothTime: 0.1
+  recoilPattern:
+  - {x: -0.5, y: 0.5}
+  - {x: -0.5, y: 0.5}
+  - {x: -0.5, y: 0.75}
+  - {x: -0.5, y: 0.75}
+  - {x: -0.5, y: 1}
+  - {x: -0.5, y: 1.25}
+  - {x: -0.5, y: 1.5}
+  - {x: 0, y: 2}
+  - {x: 0.25, y: 2}
+  - {x: 0.5, y: 2}
+  - {x: 0.5, y: 2}
+  - {x: 0.5, y: 2}
+  - {x: 0.5, y: 2}
+  - {x: 0.5, y: 2}
+  - {x: 0, y: 2}
+  - {x: -0.25, y: 2}
+  - {x: -0.5, y: 2}
+  - {x: -0.5, y: 2}
+  - {x: -0.5, y: 2}
+  - {x: -0.5, y: 2}
+  - {x: -0.5, y: 2}
+  - {x: -0.5, y: 2}
+  - {x: -0.5, y: 2}
+  - {x: -0.5, y: 2.5}
+  - {x: -0.5, y: 2.5}
+  - {x: -0.5, y: 2.5}
+  - {x: -0.5, y: 2.5}
+  - {x: -0.5, y: 2.5}
+  - {x: -0.5, y: 2.5}
+  - {x: -0.5, y: 2.5}

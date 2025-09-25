@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -10,9 +12,12 @@ namespace Player.Weapons
         private readonly RaycastHit[] hits = new RaycastHit[2];
 
         [SerializeField] private bool isAutomatic;
+        [SerializeField] private float recoilSmoothTime = 0.05f;
+        [SerializeField] private List<Vector2> recoilPattern = new();
         
         private CancellationTokenSource cancelSource;
 
+        private int continuosShotCount = 0;
         private bool isShooting = false;
         private bool isReloading = false;
         
@@ -28,7 +33,7 @@ namespace Player.Weapons
         public override void Hide()
         {
             base.Hide();
-            isShooting = false;
+            StopShooting();
             isReloading = false;
         }
 
@@ -40,10 +45,12 @@ namespace Player.Weapons
         public override void StopShooting()
         {
             isShooting = false;
+            continuosShotCount = 0;
         }
 
         public override void Reload()
         {
+            StopShooting();
             isReloading = true;
         }
 
@@ -98,7 +105,7 @@ namespace Player.Weapons
                     WeaponAudioSource.PlayOneShot(emptySound);
                 if (CurrentLoadedAmmo == 0 || isReloading)
                 {
-                    isShooting = false;
+                    StopShooting();
                     continue;
                 }
                 while (isShooting)
@@ -106,7 +113,7 @@ namespace Player.Weapons
                     if (Time.time - lastShot >= fireRateSeconds) break;
                     if (!isAutomatic)
                     {
-                        isShooting = false;
+                        StopShooting();
                         break;
                     }
                     await Awaitable.NextFrameAsync(cancelToken);
@@ -115,8 +122,10 @@ namespace Player.Weapons
                 
                 lastShot = Time.time;
                 Shoot();
+                if (continuosShotCount < recoilPattern.Count)
+                    RecoilController.AddRecoil(recoilPattern[continuosShotCount++], recoilSmoothTime);
                 if (!isAutomatic)
-                    isShooting = false;
+                    StopShooting();
             }
         }
 

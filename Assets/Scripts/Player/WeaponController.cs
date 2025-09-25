@@ -7,6 +7,7 @@ namespace Player
 {
     public class WeaponController : MonoBehaviour
     {
+        [SerializeField] private RecoilController recoilController;
         [SerializeField] private Transform weaponParent;
         [SerializeField] private new Transform camera;
         [SerializeField] private AudioSource weaponAudioSource;
@@ -25,8 +26,8 @@ namespace Player
 
         private void Awake()
         {
-            availableWeapons.ForEach(
-                x => x.Spawn(weaponParent, camera, weaponAudioSource));
+            availableWeapons.ForEach(x => x.Spawn(weaponParent, camera, 
+                    weaponAudioSource, recoilController));
             SelectWeapon(0);
         }
         private void OnEnable()

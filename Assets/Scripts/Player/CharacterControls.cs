@@ -20,6 +20,18 @@ namespace Player
         private Vector3 direction;
         private float verticalLook;
 
+        public void AddCameraDelta(Vector2 delta)
+        {
+            characterController.transform.Rotate(new Vector3() { y = delta.x });
+
+            verticalLook = verticalLook + -delta.y;
+            verticalLook = Mathf.Clamp(verticalLook, -maxVerticalLookAngle, maxVerticalLookAngle);
+
+            var camEulers = cameraTransform.localEulerAngles;
+            camEulers.x = verticalLook;
+            cameraTransform.localEulerAngles = camEulers;
+        }
+
         private void Awake()
         {
             Cursor.lockState = CursorLockMode.Locked;
@@ -48,14 +60,7 @@ namespace Player
         {
             var delta = ctx.ReadValue<Vector2>();
             delta *= lookSensitivity;
-            characterController.transform.Rotate(new Vector3() { y = delta.x });
-
-            verticalLook = verticalLook + -delta.y;
-            verticalLook = Mathf.Clamp(verticalLook, -maxVerticalLookAngle, maxVerticalLookAngle);
-
-            var camEulers = cameraTransform.localEulerAngles;
-            camEulers.x = verticalLook;
-            cameraTransform.localEulerAngles = camEulers;
+            AddCameraDelta(delta);
         }
 
         private void Update()

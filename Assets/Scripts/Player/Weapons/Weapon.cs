@@ -25,18 +25,21 @@ namespace Player.Weapons
         
         protected GameObject WeaponObject;
         protected AudioSource WeaponAudioSource;
+        protected RecoilController RecoilController;
         
-        private Transform shootOrigin;
+        protected Transform ShootOrigin;
         
-        protected Ray ShootRay => new Ray(shootOrigin.position, shootOrigin.forward);
+        protected Ray ShootRay => new Ray(ShootOrigin.position, ShootOrigin.forward);
 
-        public void Spawn(Transform parent, Transform shootOrigin, AudioSource audioSource)
+        public void Spawn(Transform parent, Transform shootOrigin, 
+            AudioSource audioSource, RecoilController recoilController)
         {
             Assert.IsNull(WeaponObject);
             WeaponObject = Instantiate(weaponPrefab, parent);
             WeaponObject.SetActive(false);
-            this.shootOrigin = shootOrigin;
+            ShootOrigin = shootOrigin;
             WeaponAudioSource = audioSource;
+            RecoilController = recoilController;
             OnSpawn();
         }
         

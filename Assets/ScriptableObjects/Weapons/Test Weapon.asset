@@ -21,3 +21,7 @@ MonoBehaviour:
   fireRateSeconds: 0.3
   reloadTimeSeconds: 0.4
   damage: 10
+  isAutomatic: 0
+  recoilSmoothTime: 0.1
+  recoilPattern:
+  - {x: 1, y: 5}
