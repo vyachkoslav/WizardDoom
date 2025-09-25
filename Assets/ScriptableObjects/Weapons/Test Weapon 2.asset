@@ -21,3 +21,4 @@ MonoBehaviour:
   fireRateSeconds: 0.1
   reloadTimeSeconds: 0.4
   damage: 15
+  isAutomatic: 1
