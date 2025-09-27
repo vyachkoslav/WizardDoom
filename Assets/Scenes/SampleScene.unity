@@ -1413,11 +1413,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1677838774}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 380141dee89415b469e35bc97ee2a81e, type: 3}
+  m_Script: {fileID: 11500000, guid: 3b67ffa4a02761e41adc4a888027c2f6, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LineOfSight
+  m_EditorClassIdentifier: Assembly-CSharp::DetectPlayer
   sightRange: 10
   fieldOfViewAngle: 180
+  proximityRange: 4
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 256
