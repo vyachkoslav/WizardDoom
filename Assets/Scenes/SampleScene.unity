@@ -1289,6 +1289,7 @@ GameObject:
   - component: {fileID: 1677838776}
   - component: {fileID: 1677838775}
   - component: {fileID: 1677838779}
+  - component: {fileID: 1677838780}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -1383,13 +1384,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1677838774}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: 0.28379, y: 0.87, z: 2.387}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!114 &1677838779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1403,6 +1404,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyEntity
   maxHealth: 100
+--- !u!114 &1677838780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677838774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 380141dee89415b469e35bc97ee2a81e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LineOfSight
+  sightRange: 10
+  playerLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &1722538281
 GameObject:
   m_ObjectHideFlags: 0
@@ -1526,9 +1543,9 @@ GameObject:
   - component: {fileID: 1839609596}
   - component: {fileID: 1839609595}
   - component: {fileID: 1839609594}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Mesh
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
