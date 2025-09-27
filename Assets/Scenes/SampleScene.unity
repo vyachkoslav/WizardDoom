@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 120898408}
   - component: {fileID: 120898407}
   - component: {fileID: 120898406}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -904,7 +904,7 @@ GameObject:
   - component: {fileID: 920417696}
   - component: {fileID: 920417695}
   - component: {fileID: 920417694}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1417,9 +1417,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LineOfSight
   sightRange: 10
+  fieldOfViewAngle: 180
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 256
+  obstacleLayerMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &1722538281
 GameObject:
   m_ObjectHideFlags: 0
@@ -1432,7 +1436,7 @@ GameObject:
   - component: {fileID: 1722538285}
   - component: {fileID: 1722538284}
   - component: {fileID: 1722538283}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Glass wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1789,7 +1793,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2002073400}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Environment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
