@@ -45,14 +45,17 @@ public class FollowPlayer : MonoBehaviour
 
     void RangedBehaviour()
     {
+        float fleeDistance = 2f;
+
         if (GetComponent<DetectPlayer>().playerIsDetected)
         {
             target = player.transform;
             lastKnownPlayerPosition = target.position;
 
-            // Makes enemy flee half the distance to the player, in the opposite direction
-            Vector3 directionAwayFromPlayer = -(target.position / 2 - transform.position);
-            agent.SetDestination(directionAwayFromPlayer);
+            // Makes enemy flee directly away from player by a fixed distance
+            Vector3 directionAwayFromPlayer = -(target.position - transform.position).normalized;
+            Vector3 fleePosition = transform.position + directionAwayFromPlayer * fleeDistance;
+            agent.SetDestination(fleePosition);
         }
         else if (CheckIfDestinationReached())
         {
