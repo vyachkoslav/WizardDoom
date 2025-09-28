@@ -4,7 +4,7 @@ using UnityEngine;
 public class DetectPlayer : MonoBehaviour
 {
     private GameObject target;
-    bool playerIsDetected = false;
+    public bool playerIsDetected = false;
     public float sightRange = 10f;
     public float fieldOfViewAngle = 180f;
     public float proximityRange = 4f;
