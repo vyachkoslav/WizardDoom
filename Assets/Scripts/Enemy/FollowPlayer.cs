@@ -1,12 +1,19 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class FollowTarget : MonoBehaviour
+
+//To be added later: 
+//-fleeing behaviour only happens when player is very close to enemy
+//- ranged enemy moving to attack range to be added later
+
+public class FollowPlayer : MonoBehaviour
 {
     NavMeshAgent agent;
     GameObject player;
     private Transform target;
     private string selfType;
+    private Vector3 lastKnownPlayerPosition;
+    private float rotationSpeed = 240f;
 
     void Start()
     {
@@ -18,17 +25,62 @@ public class FollowTarget : MonoBehaviour
 
     void Update()
     {
-        // Fetches whether player is detecteed from DetectPlayer script
-        if (GetComponent<DetectPlayer>().playerIsDetected)
+        if (selfType == "EnemyMelee")
         {
-            if (selfType == "EnemyMelee")
+            // Fetches whether player is detecteed from DetectPlayer script
+            if (GetComponent<DetectPlayer>().playerIsDetected)
             {
-                // Sets nav mesh destination to player's position
                 target = player.transform;
+                lastKnownPlayerPosition = target.position;
+
+                // Sets nav mesh destination to player's position
                 agent.SetDestination(target.position);
             }
-            
         }
-        
+        else if (selfType == "EnemyRanged")
+        {
+            RangedBehaviour();
+        }
+    }
+
+    void RangedBehaviour()
+    {
+        if (GetComponent<DetectPlayer>().playerIsDetected)
+        {
+            target = player.transform;
+            lastKnownPlayerPosition = target.position;
+
+            // Makes enemy flee half the distance to the player, in the opposite direction
+            Vector3 directionAwayFromPlayer = -(target.position / 2 - transform.position);
+            agent.SetDestination(directionAwayFromPlayer);
+        }
+        else if (CheckIfDestinationReached())
+        {
+            // Rotates enemy to look at the last known player location
+            Vector3 directionToLook = lastKnownPlayerPosition - transform.position;
+            Debug.DrawLine(transform.position, directionToLook, Color.yellow);
+            Quaternion targetRotation = Quaternion.LookRotation(directionToLook);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        }
+    }
+
+    bool CheckIfDestinationReached()
+    {
+        bool destinationReached = false;
+
+        if (!agent.pathPending)
+        {
+            //Debug.Log(agent.remainingDistance);
+            if (agent.remainingDistance <= agent.stoppingDistance)
+            {
+                if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
+                {
+                    //Debug.Log("Destination reached");
+                    destinationReached = true;
+                }
+            }
+        }
+
+        return destinationReached;
     }
 }
