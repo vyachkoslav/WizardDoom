@@ -8,7 +8,8 @@ public class DetectPlayer : MonoBehaviour
     public float sightRange = 10f;
     public float fieldOfViewAngle = 180f;
     public float proximityRange = 4f;
-    private float distanceToPlayer;
+    public float distanceToPlayer;
+    public Vector3 directionToPlayer;
     public LayerMask playerLayerMask; // set this to PlayerMesh in the inspector
     public LayerMask obstacleLayerMask; // set this to the layer of environmental objects
 
@@ -51,7 +52,7 @@ public class DetectPlayer : MonoBehaviour
     {
         bool playerIsSeen = false;
 
-        Vector3 directionToPlayer = target.transform.position - transform.position;
+        directionToPlayer = target.transform.position - transform.position;
         distanceToPlayer = directionToPlayer.magnitude;
 
         // Checks to see if player is in enemy sight range
