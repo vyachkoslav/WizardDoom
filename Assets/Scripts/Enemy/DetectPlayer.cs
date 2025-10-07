@@ -5,9 +5,9 @@ public class DetectPlayer : MonoBehaviour
 {
     private GameObject target;
     public bool playerIsDetected = false;
-    public float sightRange = 10f;
-    public float fieldOfViewAngle = 180f;
-    public float proximityRange = 4f;
+    [SerializeField] private float sightRange = 10f;
+    [SerializeField] private float fieldOfViewAngle = 180f;
+    [SerializeField] private float proximityRange = 4f;
     public float distanceToPlayer;
     public Vector3 directionToPlayer;
     public LayerMask playerLayerMask; // set this to PlayerMesh in the inspector

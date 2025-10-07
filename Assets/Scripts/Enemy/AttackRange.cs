@@ -12,11 +12,6 @@ public class AttackRange : MonoBehaviour
         rangeSize = attackRangeCollider.radius * transform.localScale.x;
     }
 
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
