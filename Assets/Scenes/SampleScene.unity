@@ -2014,6 +2014,7 @@ GameObject:
   - component: {fileID: 1160555486}
   - component: {fileID: 1160555487}
   - component: {fileID: 1160555488}
+  - component: {fileID: 1160555489}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -2150,6 +2151,24 @@ MonoBehaviour:
   Player: {fileID: 1160555483}
   Weapon: {fileID: 1160555485}
   pauseAction: {fileID: 4538983446438033168, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+--- !u!114 &1160555489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160555481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff3e0fc96ecf142808c0f7f8d27dc73d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player.SpellController
+  castSpellAction: {fileID: -4957478515478436546, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  nextSpellAction: {fileID: -6646960622630018294, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  _spellList:
+  - {fileID: 11400000, guid: a796fce9a6a2a4cdbabb2ea221d85c1c, type: 2}
+  - {fileID: 11400000, guid: aac7c05a51e0d46c397be3fee0d2821e, type: 2}
+  - {fileID: 11400000, guid: 838d757771fe045e59708519cf5261d6, type: 2}
 --- !u!1 &1308249656
 GameObject:
   m_ObjectHideFlags: 0
