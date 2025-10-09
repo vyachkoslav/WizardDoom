@@ -11,12 +11,20 @@ namespace Player
         [SerializeField] private InputActionReference castSpellAction;
         [SerializeField] private InputActionReference nextSpellAction;
 
+        [Header("Audio")]
+        [SerializeField] private AudioSource spellAudioSource;
+
         [Header("Spells")]
         [SerializeField] private List<Spell> _spellList;
 
-        private int _currentSpellIndex;
+        [Header("Mana")]
+        [SerializeField] private int _playerMana;
 
-        //Set current spell to first in list
+        private int _currentSpellIndex;
+        private Spell _currentSelectedSpell;
+        private int _manaCost;
+
+        // Set current spell to first in list
         private void Awake()
         {
             _currentSpellIndex = 0;
@@ -29,13 +37,23 @@ namespace Player
             nextSpellAction.action.performed += NextSpell;
         }
 
-        //Call Cast()-function of current spell
+        // Check and subtract mana cost from player mana, call Cast()-function from 
+        // current spell, play audio
         private void CastSpell(InputAction.CallbackContext context)
         {
-            _spellList[_currentSpellIndex].Cast();
+            _currentSelectedSpell = _spellList[_currentSpellIndex];
+            _manaCost = _currentSelectedSpell.Cost;
+
+            if (_playerMana >= _manaCost)
+            {
+                _playerMana -= _manaCost;
+                _currentSelectedSpell.Cast();
+                spellAudioSource.PlayOneShot(_currentSelectedSpell.SpellAudioClip, 0.5f);
+                Debug.Log("Current mana: " + _playerMana);
+            }
         }
 
-        //Check if out of bounds, then append spell list index accordingly
+        // Check if out of bounds, then append spell list index accordingly
         private void NextSpell(InputAction.CallbackContext context)
         {
             if (_currentSpellIndex < _spellList.Count - 1)

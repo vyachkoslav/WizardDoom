@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9fb5fa15b788444269c1579f59045b49, type: 3}
-  m_Name: TestSpell 1
+  m_Name: TestSpell
   m_EditorClassIdentifier: Assembly-CSharp::Player.Spells.TestSpell
-  _cost: 0
+  _cost: 10
   _distance: 0
   _durationInSeconds: 0
   _damage: 0
-  _spellObject: {fileID: 0}
+  spellObject: {fileID: 0}
+  _spellAudioClip: {fileID: 8300000, guid: f097c87559f954bbb96cbb5ed2398f98, type: 3}
