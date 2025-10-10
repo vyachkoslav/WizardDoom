@@ -4,6 +4,9 @@ using static UnityEngine.GraphicsBuffer;
 
 // Note for later: doing rotation in Update instead of FixedUpdate can be smoother
 
+// TODO:
+// - make enemy only attack when facing player and only rotate towards player when not attacking
+// - maybe: move entire body of PerformAttack() to BaseEnemyAI, set attack range for melee to agent.stoppingDistance and make attack range checking shared
 public class MeleeEnemyAI : BaseEnemyAI
 {
     protected override void Start()
@@ -13,21 +16,47 @@ public class MeleeEnemyAI : BaseEnemyAI
         agent.stoppingDistance = 2f;
     }
 
+    protected override void PerformAttack()
+    {
+        if (playerIsDetected && distanceToPlayer <= agent.stoppingDistance)
+        {
+            if (!attackInProgress)
+            {
+                attackInProgress = true;
+                agent.isStopped = true;
+                //Debug.Log("Melee attack");
+
+                // insert attack method from other script here
+
+                StartCoroutine("StopAttacking");
+            }
+        }
+    }
+
     protected override void FixedUpdate()
     {
-        if (GetComponent<DetectPlayer>().playerIsDetected)
+        base.FixedUpdate();
+
+        if (playerIsDetected)
         {
             target = player.transform;
             lastKnownPlayerPosition = target.position;
 
-            // Sets nav mesh destination to player's position
-            agent.SetDestination(target.position);
+            distanceToPlayer = (target.position - transform.position).magnitude;
 
-            // Makes the enemy rotate towards player even when stopping distance reached
+            if (!attackInProgress)
+            {
+                // Sets nav mesh destination to player's position
+                agent.SetDestination(target.position);
+            }
+
+            // This check is made regardless of whether attack is in progress
             if (agent.remainingDistance <= agent.stoppingDistance)
             {
                 agent.isStopped = true;
-                LookAtPlayer();
+                // Makes the enemy rotate towards player even when stopping distance reached
+                LookForPlayer();
+                PerformAttack();
             }
             else
             {
@@ -36,7 +65,7 @@ public class MeleeEnemyAI : BaseEnemyAI
         }
         else
         {
-            LookAtPlayer();
+            LookForPlayer();
         }
     }
 }

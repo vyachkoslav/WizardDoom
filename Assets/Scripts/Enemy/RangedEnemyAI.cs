@@ -3,14 +3,39 @@ using UnityEngine;
 public class RangedEnemyAI : BaseEnemyAI
 {
     [SerializeField] private float fleeTriggerRange = 3f;
+    float fleeDistance;
+    bool IsInAttackRange;
     private bool isFleeing = false;
+
+
+    protected override void PerformAttack()
+    {
+        isFleeing = false;
+
+        if (playerIsDetected && IsInAttackRange)
+        {
+            if (!attackInProgress)
+            {
+                attackInProgress = true;
+                agent.isStopped = true;
+                //Debug.Log("Ranged attack");
+
+                // insert attack method from other script here
+
+                StartCoroutine("StopAttacking");
+            }
+        } 
+    }
+
 
     protected override void FixedUpdate()
     {
-        float fleeDistance = GetComponentInChildren<AttackRange>().rangeSize - fleeTriggerRange;
-        bool IsInAttackRange = GetComponentInChildren<AttackRange>().IsInAttackRange;
+        base.FixedUpdate();
 
-        if (GetComponent<DetectPlayer>().playerIsDetected)
+        fleeDistance = GetComponentInChildren<AttackRange>().rangeSize - fleeTriggerRange;
+        IsInAttackRange = GetComponentInChildren<AttackRange>().IsInAttackRange;
+
+        if (playerIsDetected)
         {
             target = player.transform;
             lastKnownPlayerPosition = target.position;
@@ -20,28 +45,25 @@ public class RangedEnemyAI : BaseEnemyAI
 
             if (IsInAttackRange)
             {
-                if (distanceToPlayer < fleeTriggerRange)
+                if (distanceToPlayer < fleeTriggerRange && !attackInProgress)
                 {
                     // Makes enemy flee directly away from player by a fixed distance
                     Vector3 directionAwayFromPlayer = -(target.position - transform.position).normalized;
                     Vector3 fleePosition = transform.position + directionAwayFromPlayer * fleeDistance;
-                    agent.isStopped = false; // remove when attack implemented
                     isFleeing = true;
                     agent.SetDestination(fleePosition);
                     //Debug.Log("fleeing");
                 }
                 else if (!isFleeing)
                 {
-                    LookAtPlayer();
-                    // Insert attack here
-                    agent.isStopped = true; // placeholder
-                    //Debug.Log("Attack");
+                    agent.ResetPath();
+                    LookForPlayer();
+                    PerformAttack();
                 }
 
             }
-            else if (!IsInAttackRange && !isFleeing)
+            else if (!IsInAttackRange && !isFleeing && !attackInProgress)
             {
-                agent.isStopped = false; // remove when attack implemented
                 agent.SetDestination(target.position);
                 //Debug.Log("Moving to attack range");
             }
@@ -54,7 +76,7 @@ public class RangedEnemyAI : BaseEnemyAI
                 isFleeing = false;
             }
 
-            LookAtPlayer();
+            LookForPlayer();
         }
     }
 }

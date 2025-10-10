@@ -1,5 +1,7 @@
 using UnityEngine;
 
+// For now, only the ranged enemy is using this script to check attack range
+
 public class AttackRange : MonoBehaviour
 {
     public bool IsInAttackRange = false;
