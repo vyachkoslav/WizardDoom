@@ -56,76 +56,93 @@ namespace Player.Weapons
 
         private async Awaitable ReloadRoutine(CancellationToken cancelToken)
         {
-            while (WeaponObject != null)
+            try
             {
-                await Awaitable.NextFrameAsync(cancelToken);
-                if (!isReloading) continue;
-                
-                if (maxLoadedAmmo == CurrentLoadedAmmo || CurrentAmmo == 0)
+                while (WeaponObject != null)
                 {
-                    isReloading = false;
-                    continue;
-                }
-
-                CurrentAmmo += CurrentLoadedAmmo;
-                CurrentLoadedAmmo = 0;
-                WeaponAudioSource.PlayOneShot(reloadSound);
-                var startTime = Time.time;
-                while (isReloading)
-                {
-                    if (Time.time - startTime >= reloadTimeSeconds) break;
                     await Awaitable.NextFrameAsync(cancelToken);
+                    if (!isReloading) continue;
+
+                    if (maxLoadedAmmo == CurrentLoadedAmmo || CurrentAmmo == 0)
+                    {
+                        isReloading = false;
+                        continue;
+                    }
+
+                    CurrentAmmo += CurrentLoadedAmmo;
+                    CurrentLoadedAmmo = 0;
+                    WeaponAudioSource.PlayOneShot(reloadSound);
+                    var startTime = Time.time;
+                    while (isReloading)
+                    {
+                        if (Time.time - startTime >= reloadTimeSeconds) break;
+                        await Awaitable.NextFrameAsync(cancelToken);
+                    }
+
+                    if (!isReloading)
+                    {
+                        WeaponAudioSource.Stop();
+                        continue;
+                    }
+
+                    var loadedAmmo = Mathf.Min(maxLoadedAmmo, CurrentAmmo);
+                    CurrentAmmo -= loadedAmmo;
+                    Assert.IsFalse(CurrentAmmo < 0);
+
+                    CurrentLoadedAmmo += loadedAmmo;
+                    Assert.IsTrue(CurrentLoadedAmmo <= maxLoadedAmmo);
+                    isReloading = false;
                 }
-
-                if (!isReloading)
-                {
-                    WeaponAudioSource.Stop();
-                    continue;
-                }
-
-                var loadedAmmo = Mathf.Min(maxLoadedAmmo, CurrentAmmo);
-                CurrentAmmo -= loadedAmmo;
-                Assert.IsFalse(CurrentAmmo < 0);
-
-                CurrentLoadedAmmo += loadedAmmo;
-                Assert.IsTrue(CurrentLoadedAmmo <= maxLoadedAmmo);
-                isReloading = false;
+            }
+            catch (Exception ex)
+            {
+                Debug.LogException(ex);
             }
         }
 
         private async Awaitable ShootRoutine(CancellationToken cancelToken)
         {
-            var lastShot = float.MinValue;
-            while (WeaponObject != null)
+            try
             {
-                await Awaitable.NextFrameAsync(cancelToken);
-                if (!isShooting) continue;
+                var lastShot = float.MinValue;
+                while (WeaponObject != null)
+                {
+                    await Awaitable.NextFrameAsync(cancelToken);
+                    if (!isShooting) continue;
 
-                if (CurrentLoadedAmmo == 0)
-                    WeaponAudioSource.PlayOneShot(emptySound);
-                if (CurrentLoadedAmmo == 0 || isReloading)
-                {
-                    StopShooting();
-                    continue;
-                }
-                while (isShooting)
-                {
-                    if (Time.time - lastShot >= fireRateSeconds) break;
-                    if (!isAutomatic)
+                    if (CurrentLoadedAmmo == 0)
+                        WeaponAudioSource.PlayOneShot(emptySound);
+                    if (CurrentLoadedAmmo == 0 || isReloading)
                     {
                         StopShooting();
-                        break;
+                        continue;
                     }
-                    await Awaitable.NextFrameAsync(cancelToken);
+
+                    while (isShooting)
+                    {
+                        if (Time.time - lastShot >= fireRateSeconds) break;
+                        if (!isAutomatic)
+                        {
+                            StopShooting();
+                            break;
+                        }
+
+                        await Awaitable.NextFrameAsync(cancelToken);
+                    }
+
+                    if (!isShooting) continue;
+
+                    lastShot = Time.time;
+                    Shoot();
+                    if (continuosShotCount < recoilPattern.Count)
+                        RecoilController.AddRecoil(recoilPattern[continuosShotCount++], recoilSmoothTime);
+                    if (!isAutomatic)
+                        StopShooting();
                 }
-                if (!isShooting) continue;
-                
-                lastShot = Time.time;
-                Shoot();
-                if (continuosShotCount < recoilPattern.Count)
-                    RecoilController.AddRecoil(recoilPattern[continuosShotCount++], recoilSmoothTime);
-                if (!isAutomatic)
-                    StopShooting();
+            }
+            catch (Exception ex)
+            {
+                Debug.LogException(ex);
             }
         }
 
