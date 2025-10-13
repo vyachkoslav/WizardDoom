@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: FireBallSpell
   m_EditorClassIdentifier: Assembly-CSharp::Player.Spells.FireBallSpell
   _cost: 10
-  _distance: 0
-  _durationInSeconds: 0
   _damage: 0
-  spellObject: {fileID: 0}
+  _moveSpeed: 500
+  _durationInSeconds: 5
+  spellObject: {fileID: 2613836050053531179, guid: 0276fb296aacc48f4833763e966e7be5, type: 3}
   _spellAudioClip: {fileID: 8300000, guid: 216dbc1fce6594c9fb1ad1a08cb53cd0, type: 3}
+  _explosionDamage: 0

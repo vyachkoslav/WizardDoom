@@ -5,7 +5,7 @@ namespace Player.Spells
     [CreateAssetMenu(fileName = "TestSpell", menuName = "Spells/TestSpell")]
     public class TestSpell : Spell
     {
-        public override void Cast()
+        public override void Cast(Camera camera, Transform projectileSpawn)
         {
             Debug.Log(this.name + " cast spell!");
         }
