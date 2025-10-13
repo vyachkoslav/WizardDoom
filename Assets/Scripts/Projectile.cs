@@ -7,7 +7,7 @@ public abstract class Projectile : MonoBehaviour
     protected float _moveSpeed;
     protected float _durationInSeconds;
 
-    [SerializeField] protected LayerMask _entityLayer;
+    // [SerializeField] protected LayerMask _entityLayer;
 
     protected Rigidbody _myRigidBody;
     protected float _currentLifeInSeconds;
@@ -15,12 +15,14 @@ public abstract class Projectile : MonoBehaviour
     protected virtual void Awake()
     {
         _myRigidBody = GetComponent<Rigidbody>();
-        _currentLifeInSeconds = 0f;
     }
 
-    protected virtual void Move()
+    // Implement how projectile should move by overriding this in extending classes
+    protected abstract void Move();
+
+    // If nothing is hit, destroy projectile after duration
+    protected virtual void KillProjectile()
     {
-        // Implement how projectile should move by overriding this in extending classes
-        _currentLifeInSeconds += Time.deltaTime;
+        Destroy(this.gameObject, _durationInSeconds);
     }
 }
