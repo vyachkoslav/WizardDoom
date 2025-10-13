@@ -378,7 +378,7 @@ GameObject:
   - component: {fileID: 213867442}
   - component: {fileID: 213867444}
   - component: {fileID: 213867443}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Sight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -533,7 +533,7 @@ GameObject:
   - component: {fileID: 330585545}
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -798,7 +798,7 @@ GameObject:
   - component: {fileID: 532562735}
   - component: {fileID: 532562737}
   - component: {fileID: 532562736}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Current
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1076,7 +1076,7 @@ GameObject:
   m_Component:
   - component: {fileID: 697707538}
   - component: {fileID: 697707539}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: SpellCastSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1206,7 +1206,7 @@ GameObject:
   - component: {fileID: 756998850}
   - component: {fileID: 756998852}
   - component: {fileID: 756998851}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Separator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1879,7 +1879,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1014744073}
   - component: {fileID: 1014744074}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Ammo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1934,7 +1934,7 @@ GameObject:
   - component: {fileID: 1017697253}
   - component: {fileID: 1017697254}
   - component: {fileID: 1017697255}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2145,7 +2145,7 @@ GameObject:
   - component: {fileID: 1160555487}
   - component: {fileID: 1160555488}
   - component: {fileID: 1160555489}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2911,7 +2911,7 @@ GameObject:
   - component: {fileID: 1935785433}
   - component: {fileID: 1935785435}
   - component: {fileID: 1935785434}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Reserve
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3080,7 +3080,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2076247933}
   - component: {fileID: 2076247934}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: WeaponPlace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3207,9 +3207,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3201280548754721754, guid: f57ab4b8c0ffece4f971c5eefb09c713, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5750608459987162048, guid: f57ab4b8c0ffece4f971c5eefb09c713, type: 3}
       propertyPath: m_Name
       value: Ranged Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5750608459987162048, guid: f57ab4b8c0ffece4f971c5eefb09c713, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8542904834152430648, guid: f57ab4b8c0ffece4f971c5eefb09c713, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8663360151887524142, guid: f57ab4b8c0ffece4f971c5eefb09c713, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3264,6 +3276,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 435743764070029147, guid: 9d49c30188430ea49b3394e7ccdf4998, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 570413469243419509, guid: 9d49c30188430ea49b3394e7ccdf4998, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.28379
