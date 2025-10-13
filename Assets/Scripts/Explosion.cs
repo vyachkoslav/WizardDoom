@@ -4,11 +4,13 @@ using UnityEngine;
 public class Explosion : MonoBehaviour
 {
     private float _damage;
+    private float _durationInSeconds;
     private SphereCollider myCollider;
 
-    public void Spawn(float damage, float radius)
+    public void Spawn(float damage, float durationInSeconds, float radius)
     {
         _damage = damage;
+        _durationInSeconds = durationInSeconds;
         myCollider = GetComponent<SphereCollider>();
         myCollider.radius = radius;
     }
@@ -21,11 +23,15 @@ public class Explosion : MonoBehaviour
 
         if (target.layer == 7)
         {
-            Debug.Log("Explosion");
-            // Entity entity = target.transform.GetComponent<Entity>();
-            // entity.ApplyDamage(_damage);
+            Debug.Log("Exploded " + target);
+            Entity entity = target.transform.GetComponent<Entity>();
+            entity?.ApplyDamage(_damage);
         }
-
-        Destroy(this.gameObject);
     }
+
+    private void Update()
+    {
+        Destroy(this.gameObject, _durationInSeconds);
+    }
+
 }
