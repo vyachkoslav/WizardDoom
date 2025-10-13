@@ -3207,21 +3207,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3201280548754721754, guid: f57ab4b8c0ffece4f971c5eefb09c713, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5750608459987162048, guid: f57ab4b8c0ffece4f971c5eefb09c713, type: 3}
       propertyPath: m_Name
       value: Ranged Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 5750608459987162048, guid: f57ab4b8c0ffece4f971c5eefb09c713, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8542904834152430648, guid: f57ab4b8c0ffece4f971c5eefb09c713, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8663360151887524142, guid: f57ab4b8c0ffece4f971c5eefb09c713, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3276,10 +3264,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 435743764070029147, guid: 9d49c30188430ea49b3394e7ccdf4998, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 570413469243419509, guid: 9d49c30188430ea49b3394e7ccdf4998, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.28379

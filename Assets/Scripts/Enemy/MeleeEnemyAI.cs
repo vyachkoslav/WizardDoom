@@ -16,38 +16,33 @@ public class MeleeEnemyAI : BaseEnemyAI
         agent.stoppingDistance = 2f;
     }
 
-    protected override void PerformAttack()
+    private void PerformAttack()
     {
-        if (playerIsDetected && distanceToPlayer <= agent.stoppingDistance)
+        if (playerIsDetected && distanceToPlayer <= agent.stoppingDistance + 0.01f)
         {
-            if (!attackInProgress)
+            if (!IsAttacking)
             {
-                attackInProgress = true;
+                OnStartAttacking();
                 agent.isStopped = true;
                 //Debug.Log("Melee attack");
 
                 // insert attack method from other script here
 
-                StartCoroutine("StopAttacking");
+                OnEndAttacking();
             }
         }
     }
 
-    protected override void FixedUpdate()
+    private void Update()
     {
-        base.FixedUpdate();
-
         if (playerIsDetected)
         {
-            target = player.transform;
-            lastKnownPlayerPosition = target.position;
+            lastKnownPlayerPosition = player.transform.position;
 
-            distanceToPlayer = (target.position - transform.position).magnitude;
-
-            if (!attackInProgress)
+            if (!IsAttacking)
             {
                 // Sets nav mesh destination to player's position
-                agent.SetDestination(target.position);
+                agent.SetDestination(player.transform.position);
             }
 
             // This check is made regardless of whether attack is in progress
@@ -55,7 +50,7 @@ public class MeleeEnemyAI : BaseEnemyAI
             {
                 agent.isStopped = true;
                 // Makes the enemy rotate towards player even when stopping distance reached
-                LookForPlayer();
+                LookAtPlayer();
                 PerformAttack();
             }
             else
@@ -65,7 +60,7 @@ public class MeleeEnemyAI : BaseEnemyAI
         }
         else
         {
-            LookForPlayer();
+            LookAtPlayer();
         }
     }
 }
