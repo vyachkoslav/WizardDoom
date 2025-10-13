@@ -8,9 +8,9 @@ namespace Player.Spells
         // Expand according to future demand
         [Header("Stats")]
         [SerializeField] protected int _cost;
-        [SerializeField] protected float _distance;
-        [SerializeField] protected float _durationInSeconds;
         [SerializeField] protected float _damage;
+        [SerializeField] protected float _moveSpeed;
+        [SerializeField] protected float _durationInSeconds;
 
         [SerializeField] protected GameObject spellObject;
         [SerializeField] protected AudioClip _spellAudioClip;
@@ -22,6 +22,6 @@ namespace Player.Spells
         public AudioClip SpellAudioClip { get { return _spellAudioClip; } }
 
         // Main functionality, different for each spell
-        public abstract void Cast();
+        public abstract void Cast(Camera mainCamera, Transform projectileSpawn);
     }
 }
