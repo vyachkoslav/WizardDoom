@@ -2,6 +2,9 @@ using System;
 using Enemy;
 using UnityEngine;
 
+/* TODO:
+- make ranged enemy pursue player's last known location if it loses line of sight of player
+*/
 public class RangedEnemyAI : BaseEnemyAI
 {
     [SerializeField] private Attack attack;
