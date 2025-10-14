@@ -1,13 +1,33 @@
+using System;
+using Enemy;
 using UnityEngine;
 
 public class RangedEnemyAI : BaseEnemyAI
 {
+    [SerializeField] private Attack attack;
     [SerializeField] private float fleeTriggerRange = 3f;
     [SerializeField] private float attackRange = 5f;
     
     private float fleeDistance;
     private bool isInAttackRange => distanceToPlayer <= attackRange;
     private bool isFleeing = false;
+    private Func<Attack.AttackData> getAttackData;
+
+    protected override void Start()
+    {
+        base.Start();
+        var selfEntity = GetComponent<IEntity>();
+        getAttackData = () => new Attack.AttackData()
+        {
+            WeaponPosition = transform.position, // todo
+            WeaponForward = transform.forward, // todo
+            SelfEntity = selfEntity,
+            WeaponAudio = Audio,
+            TargetEntity = playerEntity,
+            TargetPosition = player.transform.position,
+        };
+        attack.OnAttacked += OnAttacked.Invoke;
+    }
 
     private void PerformAttack()
     {
@@ -19,11 +39,7 @@ public class RangedEnemyAI : BaseEnemyAI
             {
                 OnStartAttacking();
                 agent.isStopped = true;
-                //Debug.Log("Ranged attack");
-
-                // insert attack method from other script here
-
-                OnEndAttacking();
+                attack.StartAttacking(getAttackData);
             }
         } 
     }
@@ -46,22 +62,25 @@ public class RangedEnemyAI : BaseEnemyAI
                     Vector3 fleePosition = transform.position + directionAwayFromPlayer * fleeDistance;
                     isFleeing = true;
                     agent.SetDestination(fleePosition);
-                    //Debug.Log("fleeing");
                 }
-                else if (!isFleeing)
+                else if (!isFleeing && !IsAttacking)
                 {
                     agent.ResetPath();
                     PerformAttack();
                 }
-
             }
             else if (!isInAttackRange && !isFleeing && !IsAttacking)
             {
                 agent.SetDestination(player.transform.position);
-                //Debug.Log("Moving to attack range");
             }
         }
         
+        // attacking when shouldn't
+        if ((!isInAttackRange || isFleeing) && IsAttacking)
+        {
+            attack.StopAttacking();
+            OnEndAttacking();
+        }
         if (IsDestinationReached())
         {
             isFleeing = false;

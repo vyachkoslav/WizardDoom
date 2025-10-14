@@ -1,14 +1,13 @@
+using Enemy;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
-
-
-// Note for later: doing rotation in Update instead of FixedUpdate can be smoother
 
 // TODO:
 // - make enemy only attack when facing player and only rotate towards player when not attacking
 // - maybe: move entire body of PerformAttack() to BaseEnemyAI, set attack range for melee to agent.stoppingDistance and make attack range checking shared
 public class MeleeEnemyAI : BaseEnemyAI
 {
+    [SerializeField] private Attack attack;
+    
     protected override void Start()
     {
         // Use the base functionality from parent class, with addition of stopping distance
