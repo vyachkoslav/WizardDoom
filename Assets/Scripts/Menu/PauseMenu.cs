@@ -2,6 +2,9 @@ using Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Pool;
+using UnityEngine.SceneManagement;
+
+
 
 public class PauseMenu : MonoBehaviour
 {
@@ -25,6 +28,13 @@ public class PauseMenu : MonoBehaviour
         pauseAction.action.performed += TogglePause;
     }
 
+    void OnDisable()
+    {
+        Time.timeScale = 1f;
+        pauseAction.action.performed -= TogglePause;
+        
+    }
+
     public void TogglePause(InputAction.CallbackContext context)
     {
         if (pauseMenu.activeSelf)
@@ -45,6 +55,9 @@ public class PauseMenu : MonoBehaviour
         Weapon.enabled = false;
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        Debug.Log(pauseMenu.activeSelf);
     }
 
     public void ResumeGame()
@@ -54,13 +67,28 @@ public class PauseMenu : MonoBehaviour
         Weapon.enabled = true;
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
 
 
     public void OnResumeButtonCliked()
     {
-        ResumeGame();//TODO add this to the resume game button
+        Debug.Log("Button Pressed");
+        ResumeGame();
+    }
+
+    public void OnQuitButtonClicked()
+    {
+        Application.Quit();
+    }
+
+    public void OnMainMenuButtonClicked()
+    {
+        SceneManager.LoadScene("MainMenuScene");
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
     }
 }
+
 
