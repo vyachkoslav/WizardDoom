@@ -41,6 +41,12 @@ namespace Player
             nextSpellAction.action.performed += NextSpell;
         }
 
+        private void OnDisable()
+        {
+            castSpellAction.action.performed -= CastSpell;
+            nextSpellAction.action.performed -= NextSpell;
+        }
+
         // Check and subtract mana cost from player mana, call Cast()-function from 
         // current spell, play audio
         private void CastSpell(InputAction.CallbackContext context)
