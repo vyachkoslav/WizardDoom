@@ -34,7 +34,7 @@ public class RangedEnemyAI : BaseEnemyAI
         attack.OnAttacked += OnAttacked.Invoke;
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         attackRoutine?.Dispose();
     }

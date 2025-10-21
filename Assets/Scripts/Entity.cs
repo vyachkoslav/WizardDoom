@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Events;
 
 public class Entity : MonoBehaviour, IEntity
 {
@@ -10,8 +11,11 @@ public class Entity : MonoBehaviour, IEntity
     public float Health => health;
     public event Action OnDeath;
 
+    [SerializeField] private UnityEvent onDeath;
+
     protected virtual void Awake()
     {
+        OnDeath += onDeath.Invoke;
         health = maxHealth;
     }
 

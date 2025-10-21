@@ -12,12 +12,9 @@ public class MeleeEnemyAI : BaseEnemyAI
     
     private IDisposable attackRoutine;
     private Func<Attack.AttackData> getAttackData;
-    
-    protected override void Start()
+
+    private void Awake()
     {
-        base.Start();
-        agent.stoppingDistance = 2f;
-        
         var selfEntity = GetComponent<IEntity>();
         getAttackData = () => new Attack.AttackData()
         {
@@ -29,12 +26,21 @@ public class MeleeEnemyAI : BaseEnemyAI
             TargetPosition = player.transform.position,
         };
         attack.OnAttacked += OnAttacked.Invoke;
-        
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+        agent.stoppingDistance = 2f;
+    }
+
+    private void OnEnable()
+    {
         // Always attack
         attackRoutine = attack.StartAttacking(getAttackData);
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         attackRoutine?.Dispose();
     }
