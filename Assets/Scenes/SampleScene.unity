@@ -17277,7 +17277,7 @@ GameObject:
   - component: {fileID: 1160555483}
   - component: {fileID: 1160555482}
   - component: {fileID: 1160555485}
-  - component: {fileID: 1160555486}
+  - component: {fileID: 1160555491}
   - component: {fileID: 1160555487}
   - component: {fileID: 1160555489}
   - component: {fileID: 1160555490}
@@ -17374,19 +17374,6 @@ MonoBehaviour:
   selectFirstWeapon: {fileID: 8030093139626772097, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   selectSecondWeapon: {fileID: 6287883477951451107, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   selectThirdWeapon: {fileID: 4208525999403126707, guid: 052faaac586de48259a63d0c4782560b, type: 3}
---- !u!114 &1160555486
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1160555481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d05e4e5c5db64707b748117bbb40fc14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Entity
-  maxHealth: 100
 --- !u!114 &1160555487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17438,6 +17425,19 @@ MonoBehaviour:
   Player: {fileID: 1160555483}
   Weapon: {fileID: 1160555485}
   pauseAction: {fileID: 4538983446438033168, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+--- !u!114 &1160555491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160555481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9de921c807af4c7ba406d565273bdf12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player.PlayerEntity
+  maxHealth: 100
 --- !u!4 &1180200466 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8663360151887524142, guid: f57ab4b8c0ffece4f971c5eefb09c713, type: 3}

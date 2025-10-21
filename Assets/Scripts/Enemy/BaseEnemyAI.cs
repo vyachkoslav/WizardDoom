@@ -1,4 +1,5 @@
 using System.Collections;
+using Player;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Assertions;
@@ -32,8 +33,8 @@ public abstract class BaseEnemyAI : MonoBehaviour
     protected virtual void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerEntity = player.GetComponent<Entity>();
+        playerEntity = PlayerEntity.Instance;
+        player = playerEntity.gameObject;
         detectPlayer = GetComponent<DetectPlayer>();
     }
 

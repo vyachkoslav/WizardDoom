@@ -10,7 +10,7 @@ public class Entity : MonoBehaviour, IEntity
     public float Health => health;
     public event Action OnDeath;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         health = maxHealth;
     }

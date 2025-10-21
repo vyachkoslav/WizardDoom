@@ -1,3 +1,4 @@
+using System;
 using Enemy;
 using UnityEngine;
 
@@ -9,28 +10,33 @@ public class MeleeEnemyAI : BaseEnemyAI
 {
     [SerializeField] private Attack attack;
     
+    private IDisposable attackRoutine;
+    private Func<Attack.AttackData> getAttackData;
+    
     protected override void Start()
     {
-        // Use the base functionality from parent class, with addition of stopping distance
         base.Start();
         agent.stoppingDistance = 2f;
+        
+        var selfEntity = GetComponent<IEntity>();
+        getAttackData = () => new Attack.AttackData()
+        {
+            WeaponPosition = transform.position,
+            WeaponForward = transform.forward,
+            SelfEntity = selfEntity,
+            WeaponAudio = Audio,
+            TargetEntity = playerEntity,
+            TargetPosition = player.transform.position,
+        };
+        attack.OnAttacked += OnAttacked.Invoke;
+        
+        // Always attack
+        attackRoutine = attack.StartAttacking(getAttackData);
     }
 
-    private void PerformAttack()
+    private void OnDestroy()
     {
-        if (playerIsDetected && distanceToPlayer <= agent.stoppingDistance + 0.01f)
-        {
-            if (!IsAttacking)
-            {
-                OnStartAttacking();
-                agent.isStopped = true;
-                //Debug.Log("Melee attack");
-
-                // insert attack method from other script here
-
-                OnEndAttacking();
-            }
-        }
+        attackRoutine?.Dispose();
     }
 
     private void Update()
@@ -38,25 +44,7 @@ public class MeleeEnemyAI : BaseEnemyAI
         if (playerIsDetected)
         {
             lastKnownPlayerPosition = player.transform.position;
-
-            if (!IsAttacking)
-            {
-                // Sets nav mesh destination to player's position
-                agent.SetDestination(player.transform.position);
-            }
-
-            // This check is made regardless of whether attack is in progress
-            if (agent.remainingDistance <= agent.stoppingDistance)
-            {
-                agent.isStopped = true;
-                // Makes the enemy rotate towards player even when stopping distance reached
-                LookAtPlayer();
-                PerformAttack();
-            }
-            else
-            {
-                agent.isStopped = false;
-            }
+            agent.SetDestination(player.transform.position);
         }
         else
         {
