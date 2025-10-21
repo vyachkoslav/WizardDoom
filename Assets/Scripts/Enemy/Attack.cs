@@ -1,10 +1,27 @@
 using System;
+using System.Threading;
 using UnityEngine;
 
 namespace Enemy
 {
     public abstract class Attack : ScriptableObject
     {
+        protected class CancelableAttack : IDisposable
+        {
+            private readonly CancellationTokenSource cts = new();
+            public CancellationToken Token => cts.Token;
+
+            public void Dispose()
+            {
+                cts.Cancel();
+            }
+
+            ~CancelableAttack()
+            {
+                Dispose();
+            }
+        }
+        
         public struct AttackData
         {
             public Vector3 WeaponPosition;
@@ -26,8 +43,7 @@ namespace Enemy
 
         public event Action OnAttacked;
 
-        public abstract void StartAttacking(Func<AttackData> attackData);
-        public abstract void StopAttacking();
+        public abstract IDisposable StartAttacking(Func<AttackData> attackData);
 
         protected void InvokeAttacked()
         {

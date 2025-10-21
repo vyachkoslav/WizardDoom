@@ -1,7 +1,6 @@
 using System;
 using System.Threading;
 using UnityEngine;
-using UnityEngine.Assertions;
 
 namespace Enemy
 {
@@ -11,35 +10,34 @@ namespace Enemy
         [SerializeField] private GameObject projectilePrefab;
         [SerializeField] private float projectileSpeed;
         [SerializeField] private float projectileRange;
-        
-        private Func<AttackData> getAttackData;
-        private CancellationTokenSource cancelSource;
-        private Func<Collider, bool> onProjectileCollided;
 
-        private bool OnProjectileCollided(Collider other)
+        private Func<Collider, bool> CreateCollisionHandler(Func<AttackData> getAttackData)
         {
-            if (!other.isTrigger)
+            return other =>
             {
-                var entity = other.GetComponentInParent<IEntity>();
-                if (entity != getAttackData().SelfEntity)
-                    entity?.ApplyDamage(Damage);
-                else
-                    return false;
-            }
-            return !other.isTrigger;
+                if (!other.isTrigger)
+                {
+                    var entity = other.GetComponentInParent<IEntity>();
+                    if (entity != getAttackData().SelfEntity)
+                        entity?.ApplyDamage(Damage);
+                    else
+                        return false;
+                }
+
+                return !other.isTrigger;
+            };
         }
         
-        public override void StartAttacking(Func<AttackData> attackData)
+        public override IDisposable StartAttacking(Func<AttackData> attackData)
         {
-            Assert.IsTrue(cancelSource == null || cancelSource.IsCancellationRequested);
-            cancelSource = new();
-            getAttackData = attackData;
-            onProjectileCollided = OnProjectileCollided;
-            _ = AttackRoutine(cancelSource.Token);
+            var cancellableAttack = new CancelableAttack();
+            _ = AttackRoutine(cancellableAttack.Token, attackData);
+            return cancellableAttack;
         }
         
-        private async Awaitable AttackRoutine(CancellationToken cancelToken)
+        private async Awaitable AttackRoutine(CancellationToken cancelToken, Func<AttackData> getAttackData)
         {
+            var collisionHandler = CreateCollisionHandler(getAttackData);
             try
             {
                 var lastShot = float.MinValue;
@@ -50,7 +48,7 @@ namespace Enemy
                     if (Time.time - lastShot < DelayBetweenAttacks) continue;
                     lastShot = Time.time;
 
-                    Attack(getAttackData());
+                    Attack(getAttackData(), collisionHandler);
                 }
             }
             catch (OperationCanceledException)
@@ -63,20 +61,14 @@ namespace Enemy
             }
         }
 
-        private void Attack(AttackData data)
+        private void Attack(AttackData data, Func<Collider, bool> collisionHandler)
         {
             data.WeaponAudio.PlayOneShot(AttackSound);
             var direction = (data.TargetPosition - data.WeaponPosition).normalized;
-            LinearProjectile.Spawn(projectilePrefab, 
+            LinearProjectile.Spawn(projectilePrefab,
                 data.WeaponPosition, direction, Quaternion.LookRotation(direction),
-                projectileSpeed, projectileRange, onProjectileCollided);
+                projectileSpeed, projectileRange, collisionHandler);
             InvokeAttacked();
-        }
-
-        public override void StopAttacking()
-        {
-            Assert.IsFalse(cancelSource == null || cancelSource.IsCancellationRequested);
-            cancelSource.Cancel();
         }
     }
 }

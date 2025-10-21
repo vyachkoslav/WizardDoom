@@ -1,6 +1,7 @@
 using System;
 using Enemy;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 /* TODO:
 - make ranged enemy pursue player's last known location if it loses line of sight of player
@@ -15,6 +16,7 @@ public class RangedEnemyAI : BaseEnemyAI
     private bool isInAttackRange => distanceToPlayer <= attackRange;
     private bool isFleeing = false;
     private Func<Attack.AttackData> getAttackData;
+    private IDisposable attackRoutine;
 
     protected override void Start()
     {
@@ -32,6 +34,11 @@ public class RangedEnemyAI : BaseEnemyAI
         attack.OnAttacked += OnAttacked.Invoke;
     }
 
+    private void OnDestroy()
+    {
+        attackRoutine?.Dispose();
+    }
+
     private void PerformAttack()
     {
         isFleeing = false;
@@ -40,9 +47,10 @@ public class RangedEnemyAI : BaseEnemyAI
         {
             if (!IsAttacking)
             {
+                Assert.IsNull(attackRoutine);
                 OnStartAttacking();
                 agent.isStopped = true;
-                attack.StartAttacking(getAttackData);
+                attackRoutine = attack.StartAttacking(getAttackData);
             }
         } 
     }
@@ -81,7 +89,8 @@ public class RangedEnemyAI : BaseEnemyAI
         // attacking when shouldn't
         if ((!isInAttackRange || isFleeing) && IsAttacking)
         {
-            attack.StopAttacking();
+            attackRoutine.Dispose();
+            attackRoutine = null;
             OnEndAttacking();
         }
         if (IsDestinationReached())
