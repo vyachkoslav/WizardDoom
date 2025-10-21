@@ -1,12 +1,24 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Enemy
 {
     public class LinearProjectile : Projectile
     {
         private static Dictionary<GameObject, List<LinearProjectile>> pools = new();
+
+        static LinearProjectile()
+        {
+            SceneManager.sceneLoaded += (_, _) =>
+            {
+                foreach (var pool in pools.Values)
+                {
+                    pool.ForEach(x => x.Release());
+                }
+            };
+        }
 
         public static void Spawn(GameObject prefab,
             Vector3 position, Vector3 direction, Quaternion rotation,
@@ -23,6 +35,7 @@ namespace Enemy
             if (projectile == null)
             {
                 projectile = Instantiate(prefab).GetComponent<LinearProjectile>();
+                DontDestroyOnLoad(projectile);
                 pool.Add(projectile);
             }
             projectile.Init(position, direction, rotation, speed, range, collisionCheck);
