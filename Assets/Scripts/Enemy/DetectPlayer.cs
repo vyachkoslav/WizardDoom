@@ -24,7 +24,7 @@ public class DetectPlayer : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Player");
     }
 
-    void Update()
+    void FixedUpdate()
     {
         // If either method returns true, player is detected
         if (ProximityDetection() || LineOfSightDetection())
