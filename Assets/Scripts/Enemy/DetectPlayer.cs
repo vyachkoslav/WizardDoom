@@ -4,14 +4,20 @@ using UnityEngine;
 public class DetectPlayer : MonoBehaviour
 {
     private GameObject target;
-    public bool playerIsDetected = false;
+    private bool playerIsDetected = false;
+    private bool hasLineOfSight = false;
+    private bool obstacleBlocksVision = false;
     [SerializeField] private float sightRange = 10f;
     [SerializeField] private float fieldOfViewAngle = 180f;
     [SerializeField] private float proximityRange = 4f;
-    public float distanceToPlayer;
-    public Vector3 directionToPlayer;
-    public LayerMask playerLayerMask; // set this to PlayerMesh in the inspector
-    public LayerMask obstacleLayerMask; // set this to the layer of environmental objects
+    private float distanceToPlayer;
+    private Vector3 directionToPlayer;
+    [SerializeField] private LayerMask playerLayerMask; // set this to PlayerMesh in the inspector
+    [SerializeField] private LayerMask obstacleLayerMask; // set this to the layer of environmental objects
+
+    public bool PlayerIsDetected { get => playerIsDetected; }
+    public bool HasLineOfSight { get => hasLineOfSight; }
+    public bool ObstacleBlocksVision {  get => obstacleBlocksVision; }
 
     void Start()
     {
@@ -24,14 +30,13 @@ public class DetectPlayer : MonoBehaviour
         if (ProximityDetection() || LineOfSightDetection())
         {
             playerIsDetected = true;
+            hasLineOfSight = LineOfSightDetection();
         }
         else
         {
             playerIsDetected = false;
+            hasLineOfSight = false;
         }
-
-        // Pass this on to movement script, just to get rid of no-use-warning for now
-        bool Detection = playerIsDetected;
     }
 
     bool ProximityDetection()
@@ -73,15 +78,22 @@ public class DetectPlayer : MonoBehaviour
                     if (hit.collider.gameObject == target)
                     {
                         playerIsSeen = true;
+                        obstacleBlocksVision = false;
                         Debug.DrawLine(transform.position, hit.collider.transform.position, Color.green);
                         //Debug.Log("Ray hit player");
                     }
                     else
                     {
                         playerIsSeen = false;
+                        obstacleBlocksVision = true;
                         Debug.DrawLine(transform.position, hit.transform.position, Color.red);
                         //Debug.Log("Ray hit an obstacle");
                     }
+                }
+                else
+                {
+                    // Ray didn't collide so there's no obstacle
+                    obstacleBlocksVision = false;
                 }
 
             }

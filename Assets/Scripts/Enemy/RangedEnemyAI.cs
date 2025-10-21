@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 
 /* TODO:
-- make ranged enemy pursue player's last known location if it loses line of sight of player
+- after losing line of sight of player and moving to last known player location, enemy rotates toward direction where player went
 */
 public class RangedEnemyAI : BaseEnemyAI
 {
@@ -64,9 +64,14 @@ public class RangedEnemyAI : BaseEnemyAI
         {
             lastKnownPlayerPosition = player.transform.position;
 
-            if (isInAttackRange)
+            if (hasLineOfSight)
             {
-                if (distanceToPlayer < fleeTriggerRange && !IsAttacking)
+                sawPlayer = true;
+            }
+
+            if (isInAttackRange && !obstacleBlocksVision)
+            {
+                if (distanceToPlayer < fleeTriggerRange)
                 {
                     // Makes enemy flee directly away from player by a fixed distance
                     Vector3 directionAwayFromPlayer = -(player.transform.position - transform.position).normalized;
@@ -80,14 +85,13 @@ public class RangedEnemyAI : BaseEnemyAI
                     PerformAttack();
                 }
             }
-            else if (!isInAttackRange && !isFleeing && !IsAttacking)
+            else if (!isInAttackRange && !isFleeing && !IsAttacking || obstacleBlocksVision)
             {
                 agent.SetDestination(player.transform.position);
             }
         }
         
-        // attacking when shouldn't
-        if ((!isInAttackRange || isFleeing) && IsAttacking)
+        if (IsAttacking && (!isInAttackRange || isFleeing || obstacleBlocksVision))
         {
             attackRoutine.Dispose();
             attackRoutine = null;
@@ -97,6 +101,12 @@ public class RangedEnemyAI : BaseEnemyAI
         {
             isFleeing = false;
             LookAtPlayer();
+
+            if (sawPlayer && !hasLineOfSight)
+            {
+                agent.SetDestination(lastKnownPlayerPosition);
+                sawPlayer = false;
+            }
         }
     }
 

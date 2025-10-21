@@ -12,7 +12,10 @@ public abstract class BaseEnemyAI : MonoBehaviour
     protected NavMeshAgent agent { get; private set; }
     protected GameObject player { get; private set; }
     protected Entity playerEntity { get; private set; }
-    protected bool playerIsDetected => detectPlayer.playerIsDetected;
+    protected bool playerIsDetected => detectPlayer.PlayerIsDetected;
+    protected bool hasLineOfSight => detectPlayer.HasLineOfSight;
+    protected bool sawPlayer;
+    protected bool obstacleBlocksVision => detectPlayer.ObstacleBlocksVision;
     protected bool IsAttacking { get; private set; }
     protected float distanceToPlayer => Vector3.Distance(transform.position, player.transform.position);
     protected Vector3 lastKnownPlayerPosition;
