@@ -75,11 +75,10 @@ namespace Player
         {
             var forward = characterController.transform.forward;
             var right = characterController.transform.right;
-            var moveAmount = Time.deltaTime * speed;
-            var movementY = (direction.y * moveAmount) * forward;
-            var movementX = (direction.x * moveAmount) * right;
+            var movementY = (direction.y * speed) * forward;
+            var movementX = (direction.x * speed) * right;
             var movement = movementX + movementY;
-            characterController.Move(movement);
+            characterController.SimpleMove(movement);
         }
 
     }
