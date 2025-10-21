@@ -150,13 +150,12 @@ namespace Player.Weapons
         {
             CurrentLoadedAmmo--;
             WeaponAudioSource.PlayOneShot(shotSound);
-            var hitsAmount = Physics.RaycastNonAlloc(ShootRay, hits, 1000);
-            if (hitsAmount == 0) return;
-            
-            var hit = hits[hitsAmount - 1]; // last hit is the nearest hit
-            if (hit.transform.gameObject.layer != EntityLayer) return;
+            var didHit = Physics.Raycast(ShootRay, out var hit, 1000);
+            if (!didHit || hit.transform.gameObject.layer != EntityLayer) return;
             
             var entity = hit.transform.GetComponent<IEntity>();
+            if (entity == null)
+                Debug.Log(hit.transform);
             entity.ApplyDamage(damage);
         }
     }
