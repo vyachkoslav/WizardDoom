@@ -7,7 +7,6 @@ public class MainMenu : MonoBehaviour
     {
         //Load the first level here for now the SampleScene is used
         SceneManager.LoadScene("SampleScene");
-        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
     }
 
     public void QuitGame()

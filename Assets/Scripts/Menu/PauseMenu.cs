@@ -9,7 +9,6 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
 
-    private bool isPaused;
 
     public GameObject pauseMenu;
     public Player.CharacterControls Player;
@@ -19,7 +18,6 @@ public class PauseMenu : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        isPaused = false;
         pauseMenu.SetActive(false);
     }
 
@@ -50,7 +48,6 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseGame()
     {
-        isPaused = true;
         Player.enabled = false;
         Weapon.enabled = false;
         pauseMenu.SetActive(true);
@@ -62,7 +59,6 @@ public class PauseMenu : MonoBehaviour
 
     public void ResumeGame()
     {
-        isPaused = false;
         Player.enabled = true;
         Weapon.enabled = true;
         pauseMenu.SetActive(false);
@@ -87,7 +83,6 @@ public class PauseMenu : MonoBehaviour
     public void OnMainMenuButtonClicked()
     {
         SceneManager.LoadScene("MainMenuScene");
-        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
     }
 }
 
