@@ -22,6 +22,6 @@ namespace Player.Spells
         public AudioClip SpellAudioClip { get { return _spellAudioClip; } }
 
         // Main functionality, different for each spell
-        public abstract void Cast(Camera mainCamera);
+        public abstract void Cast();
     }
 }
