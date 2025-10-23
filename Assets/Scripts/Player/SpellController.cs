@@ -15,7 +15,7 @@ namespace Player
         [SerializeField] private AudioSource _spellAudioSource;
 
         [Header("Camera and projectile spawn position")]
-        [SerializeField] private Camera _mainCamera;
+        // [SerializeField] private Camera _mainCamera;
         [SerializeField] private Transform _projectileSpawn;
 
         [Header("Spells")]
@@ -27,6 +27,8 @@ namespace Player
         private int _currentSpellIndex;
         private Spell _currentSelectedSpell;
         private int _manaCost;
+
+        public Transform ProjectileSpawn { get { return _projectileSpawn; }}
 
         // Set current spell to first in list
         private void Awake()
@@ -56,10 +58,14 @@ namespace Player
 
             if (_playerMana >= _manaCost)
             {
-                _playerMana -= _manaCost;
-                _currentSelectedSpell.Cast(_mainCamera, _projectileSpawn);
-                _spellAudioSource.PlayOneShot(_currentSelectedSpell.SpellAudioClip, 0.5f);
-                Debug.Log("Current mana: " + _playerMana);
+                // Prevent using spells and duplicating lifesteal spell while it's already active
+                if (!DataManager.Instance.IsLifeStealActive)
+                {
+                    _playerMana -= _manaCost;
+                    _currentSelectedSpell.Cast();
+                    _spellAudioSource.PlayOneShot(_currentSelectedSpell.SpellAudioClip, 0.5f);
+                    Debug.Log("Current mana: " + _playerMana);    
+                }
             }
         }
 

@@ -17403,10 +17403,10 @@ MonoBehaviour:
   castSpellAction: {fileID: -4957478515478436546, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   nextSpellAction: {fileID: -6646960622630018294, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   _spellAudioSource: {fileID: 697707539}
-  _mainCamera: {fileID: 330585545}
   _projectileSpawn: {fileID: 697707538}
   _spellList:
   - {fileID: 11400000, guid: dcf3e69f1094f4706828b7ecae6283ee, type: 2}
+  - {fileID: 11400000, guid: 5909184e8ef4e444e9ea1b4ef489c407, type: 2}
   - {fileID: 11400000, guid: a796fce9a6a2a4cdbabb2ea221d85c1c, type: 2}
   _playerMana: 100
 --- !u!114 &1160555490
@@ -17438,6 +17438,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player.PlayerEntity
   maxHealth: 100
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1180200466 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8663360151887524142, guid: f57ab4b8c0ffece4f971c5eefb09c713, type: 3}
@@ -20470,6 +20473,50 @@ MonoBehaviour:
   Player: {fileID: 1160555483}
   Weapon: {fileID: 1160555485}
   pauseAction: {fileID: 4538983446438033168, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+--- !u!1 &1722368984
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1722368986}
+  - component: {fileID: 1722368985}
+  m_Layer: 0
+  m_Name: DataManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1722368985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722368984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27018b7986b04484093a6b96f5ac81cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DataManager
+--- !u!4 &1722368986
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722368984}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1722538281
 GameObject:
   m_ObjectHideFlags: 0
@@ -25664,3 +25711,4 @@ SceneRoots:
   - {fileID: 1680984647}
   - {fileID: 601535463}
   - {fileID: 82137100}
+  - {fileID: 1722368986}
