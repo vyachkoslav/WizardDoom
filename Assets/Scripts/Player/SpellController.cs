@@ -58,10 +58,14 @@ namespace Player
 
             if (_playerMana >= _manaCost)
             {
-                _playerMana -= _manaCost;
-                _currentSelectedSpell.Cast();
-                _spellAudioSource.PlayOneShot(_currentSelectedSpell.SpellAudioClip, 0.5f);
-                Debug.Log("Current mana: " + _playerMana);
+                // Prevent using spells and duplicating lifesteal spell while it's already active
+                if (!DataManager.Instance.IsLifeStealActive)
+                {
+                    _playerMana -= _manaCost;
+                    _currentSelectedSpell.Cast();
+                    _spellAudioSource.PlayOneShot(_currentSelectedSpell.SpellAudioClip, 0.5f);
+                    Debug.Log("Current mana: " + _playerMana);    
+                }
             }
         }
 
