@@ -1,4 +1,5 @@
 using System;
+using Player;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Events;
@@ -27,6 +28,12 @@ public class Entity : MonoBehaviour, IEntity
         health -= damage;
         Debug.Log(name + ": Health: " + health);
         
+        // Heal player if lifesteal spell is active
+        if (DataManager.Instance.IsLifeStealActive)
+        {
+            FindAnyObjectByType<PlayerEntity>().ApplyHealing(damage);
+        }
+
         if (health <= 0)
             OnDeath?.Invoke();
     }
