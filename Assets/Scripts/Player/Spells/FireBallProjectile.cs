@@ -9,6 +9,13 @@ public class FireBallProjectile : Projectile
     private float _explosionDuration;
     private Vector3 _startDirection;
 
+
+    protected override void Awake()
+    {
+        base.Awake();
+        SoundManager.Instance.PlaySound3D("Fireball", transform.position);
+    }
+
     // Initializes stats for the fireball projectile
     public void Spawn(float damage, float explosionDamage, float explosionRadius, float explosionDuration, float moveSpeed, float durationInSeconds, Vector3 startDirection)
     {

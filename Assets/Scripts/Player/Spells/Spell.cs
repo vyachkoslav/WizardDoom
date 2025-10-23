@@ -13,13 +13,12 @@ namespace Player.Spells
         [SerializeField] protected float _durationInSeconds;
 
         [SerializeField] protected GameObject spellObject;
-        [SerializeField] protected AudioClip _spellAudioClip;
+
 
         // Spell mana cost getter
         public int Cost { get { return _cost; } }
 
-        // Spell audio clip getter
-        public AudioClip SpellAudioClip { get { return _spellAudioClip; } }
+
 
         // Main functionality, different for each spell
         public abstract void Cast();

@@ -11,9 +11,6 @@ namespace Player
         [SerializeField] private InputActionReference castSpellAction;
         [SerializeField] private InputActionReference nextSpellAction;
 
-        [Header("Audio")]
-        [SerializeField] private AudioSource _spellAudioSource;
-
         [Header("Camera and projectile spawn position")]
         // [SerializeField] private Camera _mainCamera;
         [SerializeField] private Transform _projectileSpawn;
@@ -63,7 +60,6 @@ namespace Player
                 {
                     _playerMana -= _manaCost;
                     _currentSelectedSpell.Cast();
-                    _spellAudioSource.PlayOneShot(_currentSelectedSpell.SpellAudioClip, 0.5f);
                     Debug.Log("Current mana: " + _playerMana);    
                 }
             }
