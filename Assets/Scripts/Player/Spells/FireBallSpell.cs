@@ -10,9 +10,13 @@ namespace Player.Spells
         [SerializeField] private float _explosionRadius;
         [SerializeField] private float _explosionDurationInSeconds;
 
-        public override void Cast(Camera camera, Transform projectileSpawn)
+        private Transform _projectileSpawn;
+
+        public override void Cast(Camera camera)
         {
-            GameObject fireBall = Instantiate(spellObject, projectileSpawn.position, projectileSpawn.rotation);
+            _projectileSpawn = FindAnyObjectByType<SpellController>().ProjectileSpawn;
+
+            GameObject fireBall = Instantiate(spellObject, _projectileSpawn.position, _projectileSpawn.rotation);
             fireBall.GetComponent<FireBallProjectile>().Spawn(_damage, _explosionDamage, _explosionRadius, _explosionDurationInSeconds, _moveSpeed, _durationInSeconds, camera.transform.forward);
             Debug.Log("Fireball");
         }

@@ -28,6 +28,8 @@ namespace Player
         private Spell _currentSelectedSpell;
         private int _manaCost;
 
+        public Transform ProjectileSpawn { get { return _projectileSpawn; }}
+
         // Set current spell to first in list
         private void Awake()
         {
@@ -57,7 +59,7 @@ namespace Player
             if (_playerMana >= _manaCost)
             {
                 _playerMana -= _manaCost;
-                _currentSelectedSpell.Cast(_mainCamera, _projectileSpawn);
+                _currentSelectedSpell.Cast(_mainCamera);
                 _spellAudioSource.PlayOneShot(_currentSelectedSpell.SpellAudioClip, 0.5f);
                 Debug.Log("Current mana: " + _playerMana);
             }
