@@ -6,13 +6,11 @@ namespace Player.Spells
     [CreateAssetMenu(fileName = "LifeStealSpell", menuName = "Spells/LifeStealSpell")]
     public class LifeStealSpell : Spell
     {
-        // Accessed when dealing dmg to enemies
-        public static bool isLifeStealActive = false;
 
         public override void Cast()
         {
-            isLifeStealActive = true;
-            Debug.Log("Lifesteal: " + isLifeStealActive);
+            DataManager.Instance.IsLifeStealActive = true;
+            Debug.Log("Lifesteal: " + DataManager.Instance.IsLifeStealActive);
 
             // Not really proud of this one... it works though
             FindAnyObjectByType<SpellController>().StartCoroutine(ActivateLifeSteal());
@@ -21,8 +19,8 @@ namespace Player.Spells
         private IEnumerator ActivateLifeSteal()
         {
             yield return new WaitForSeconds(_durationInSeconds);
-            isLifeStealActive = false;
-            Debug.Log("Lifesteal: " + isLifeStealActive);
+            DataManager.Instance.IsLifeStealActive = false;
+            Debug.Log("Lifesteal: " + DataManager.Instance.IsLifeStealActive);
         }
     }
 }
