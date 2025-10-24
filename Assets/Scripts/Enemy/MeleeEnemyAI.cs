@@ -21,7 +21,6 @@ public class MeleeEnemyAI : BaseEnemyAI
             WeaponPosition = transform.position,
             WeaponForward = transform.forward,
             SelfEntity = selfEntity,
-            WeaponAudio = Audio,
             TargetEntity = playerEntity,
             TargetPosition = player.transform.position,
         };

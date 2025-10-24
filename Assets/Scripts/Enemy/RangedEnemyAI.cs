@@ -27,7 +27,6 @@ public class RangedEnemyAI : BaseEnemyAI
             WeaponPosition = transform.position, // todo
             WeaponForward = transform.forward, // todo
             SelfEntity = selfEntity,
-            WeaponAudio = Audio,
             TargetEntity = playerEntity,
             TargetPosition = player.transform.position,
         };

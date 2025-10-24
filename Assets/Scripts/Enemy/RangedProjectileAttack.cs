@@ -63,7 +63,7 @@ namespace Enemy
 
         private void Attack(AttackData data, Func<Collider, bool> collisionHandler)
         {
-            data.WeaponAudio.PlayOneShot(AttackSound);
+            SoundManager.Instance.PlaySound3D("EnemyRangedAttack", data.WeaponPosition);
             var direction = (data.TargetPosition - data.WeaponPosition).normalized;
             LinearProjectile.Spawn(projectilePrefab,
                 data.WeaponPosition, direction, Quaternion.LookRotation(direction),

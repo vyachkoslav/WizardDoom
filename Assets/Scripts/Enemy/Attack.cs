@@ -26,7 +26,6 @@ namespace Enemy
         {
             public Vector3 WeaponPosition;
             public Vector3 WeaponForward;
-            public AudioSource WeaponAudio;
             public Vector3 TargetPosition;
             public IEntity SelfEntity;
             public IEntity TargetEntity;
@@ -35,11 +34,10 @@ namespace Enemy
         [SerializeField] private float delayBetweenAttacks;
         [SerializeField] private float damage;
         
-        [SerializeField] private AudioClip attackSound;
 
         protected float DelayBetweenAttacks => delayBetweenAttacks;
         protected float Damage => damage;
-        protected AudioClip AttackSound => attackSound;
+
 
         public event Action OnAttacked;
 

@@ -49,7 +49,7 @@ namespace Enemy
 
         private void Attack(AttackData data)
         {
-            data.WeaponAudio.PlayOneShot(AttackSound);
+            SoundManager.Instance.PlaySound3D("EnemyMeleeAttack", data.WeaponPosition);
             data.TargetEntity.ApplyDamage(Damage);
             InvokeAttacked();
         }

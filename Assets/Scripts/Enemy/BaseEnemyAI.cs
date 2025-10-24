@@ -21,11 +21,9 @@ public abstract class BaseEnemyAI : MonoBehaviour
     protected float distanceToPlayer => Vector3.Distance(transform.position, player.transform.position);
     protected Vector3 lastKnownPlayerPosition;
 
-    protected AudioSource Audio => audio;
     
     [SerializeField] private float rotationSpeed = 240f;
     [SerializeField] private float stopDuration = 1f;
-    [SerializeField] private new AudioSource audio;
     
     public UnityEvent OnAttacked;
 
