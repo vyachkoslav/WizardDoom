@@ -10,7 +10,6 @@ namespace Player
         [SerializeField] private RecoilController recoilController;
         [SerializeField] private Transform weaponParent;
         [SerializeField] private new Transform camera;
-        [SerializeField] private AudioSource weaponAudioSource;
     
         [SerializeField] private List<Weapon> availableWeapons;
 
@@ -26,8 +25,7 @@ namespace Player
 
         private void Awake()
         {
-            availableWeapons.ForEach(x => x.Spawn(weaponParent, camera, 
-                    weaponAudioSource, recoilController));
+            availableWeapons.ForEach(x => x.Spawn(weaponParent, camera, recoilController));
             SelectWeapon(0);
         }
         private void OnEnable()
@@ -68,7 +66,7 @@ namespace Player
         private void SelectWeapon(int index)
         {
             if (currentWeaponIndex == index) return;
-            if (index >= availableWeapons.Count) return; // TODO: empty soundeffect
+            if (index >= availableWeapons.Count) return;
         
             if (currentWeaponIndex >= 0)
                 CurrentWeapon.Hide();

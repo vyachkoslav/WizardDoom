@@ -9,9 +9,7 @@ namespace Player.Weapons
         
         [SerializeField] private GameObject weaponPrefab;
         
-        [SerializeField] protected AudioClip shotSound;
-        [SerializeField] protected AudioClip emptySound;
-        [SerializeField] protected AudioClip reloadSound;
+
     
         [Header("Stats")]
         [SerializeField] protected int maxLoadedAmmo;
@@ -24,21 +22,19 @@ namespace Player.Weapons
         public int CurrentAmmo { get; protected set; }
         
         protected GameObject WeaponObject;
-        protected AudioSource WeaponAudioSource;
+
         protected RecoilController RecoilController;
         
         protected Transform ShootOrigin;
         
         protected Ray ShootRay => new Ray(ShootOrigin.position, ShootOrigin.forward);
 
-        public void Spawn(Transform parent, Transform shootOrigin, 
-            AudioSource audioSource, RecoilController recoilController)
+        public void Spawn(Transform parent, Transform shootOrigin, RecoilController recoilController)
         {
             Assert.IsNull(WeaponObject);
             WeaponObject = Instantiate(weaponPrefab, parent);
             WeaponObject.SetActive(false);
             ShootOrigin = shootOrigin;
-            WeaponAudioSource = audioSource;
             RecoilController = recoilController;
             OnSpawn();
         }

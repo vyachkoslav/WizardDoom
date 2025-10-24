@@ -71,7 +71,7 @@ namespace Player.Weapons
 
                     CurrentAmmo += CurrentLoadedAmmo;
                     CurrentLoadedAmmo = 0;
-                    WeaponAudioSource.PlayOneShot(reloadSound);
+                    SoundManager.Instance.PlaySound2D("WeaponReload");
                     var startTime = Time.time;
                     while (isReloading)
                     {
@@ -81,7 +81,7 @@ namespace Player.Weapons
 
                     if (!isReloading)
                     {
-                        WeaponAudioSource.Stop();
+                        //WeaponAudioSource.Stop();
                         continue;
                     }
 
@@ -111,7 +111,7 @@ namespace Player.Weapons
                     if (!isShooting) continue;
 
                     if (CurrentLoadedAmmo == 0)
-                        WeaponAudioSource.PlayOneShot(emptySound);
+                        SoundManager.Instance.PlaySound2D("WeaponEmpty");
                     if (CurrentLoadedAmmo == 0 || isReloading)
                     {
                         StopShooting();
@@ -149,7 +149,12 @@ namespace Player.Weapons
         private void Shoot()
         {
             CurrentLoadedAmmo--;
-            WeaponAudioSource.PlayOneShot(shotSound);
+            //Soundmanagment for different guns
+            if (!isAutomatic)
+            {
+                SoundManager.Instance.PlaySound2D("ShotgunFire");
+            }
+            else{SoundManager.Instance.PlaySound2D("MachinegunFire");}
             var didHit = Physics.Raycast(ShootRay, out var hit, 1000);
             if (!didHit || hit.transform.gameObject.layer != EntityLayer) return;
             
