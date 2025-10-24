@@ -82,6 +82,8 @@ public class PauseMenu : MonoBehaviour
 
     public void OnMainMenuButtonClicked()
     {
+
+        //Load the menu music list here
         SceneManager.LoadScene("MainMenuScene");
     }
 }

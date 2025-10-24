@@ -7,6 +7,9 @@ public class MainMenu : MonoBehaviour
     {
         //Load the first level here for now the SampleScene is used
         SceneManager.LoadScene("SampleScene");
+
+        //Put the Game Music List Here
+        MusicManager.Instance.PlayMusic("TestSong");
     }
 
     public void QuitGame()
