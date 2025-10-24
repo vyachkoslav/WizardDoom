@@ -10405,6 +10405,26 @@ MonoBehaviour:
   - groupID: Fireball
     clips:
     - {fileID: 8300000, guid: a64822dbcb63e9c4f87ad5f6a4d80a57, type: 3}
+  - groupID: MachinegunFire
+    clips:
+    - {fileID: 8300000, guid: b822d61d3d00ee649bc30d1e81dfc107, type: 3}
+  - groupID: ShotgunFire
+    clips:
+    - {fileID: 8300000, guid: d4df48eb79a071e47bf85cdcd7c57d4f, type: 3}
+  - groupID: MachinegunFire
+    clips: []
+  - groupID: WeaponEmpty
+    clips:
+    - {fileID: 8300000, guid: 6aca184c6e18c894d845a9e737c17875, type: 3}
+  - groupID: WeaponReload
+    clips:
+    - {fileID: 8300000, guid: ffa3446c2f7921149af8887ac3dc0a18, type: 3}
+  - groupID: EnemyMeleeAttack
+    clips:
+    - {fileID: 8300000, guid: a6c4a5c3cc9e3a94e856723fe5dbfa36, type: 3}
+  - groupID: EnemyRangedAttack
+    clips:
+    - {fileID: 8300000, guid: 27035812b68bf4d438326d50baef231e, type: 3}
 --- !u!4 &703315314
 Transform:
   m_ObjectHideFlags: 0
@@ -17460,7 +17480,6 @@ MonoBehaviour:
   recoilController: {fileID: 1160555487}
   weaponParent: {fileID: 2076247933}
   camera: {fileID: 330585546}
-  weaponAudioSource: {fileID: 2076247934}
   availableWeapons:
   - {fileID: 11400000, guid: 6524792b9e2b84747a5d84a57d14d3f2, type: 2}
   - {fileID: 11400000, guid: 60872891d073c91488591d664b1cd4f9, type: 2}
