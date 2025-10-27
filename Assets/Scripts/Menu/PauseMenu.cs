@@ -8,8 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-
-
+    public Entity playerEntity;
     public GameObject pauseMenu;
     public Player.CharacterControls Player;
     public Player.WeaponController Weapon;
@@ -35,6 +34,11 @@ public class PauseMenu : MonoBehaviour
 
     public void TogglePause(InputAction.CallbackContext context)
     {
+        //Pause wont work if the player is dead.
+        if (playerEntity = null)
+            return;
+        
+
         if (pauseMenu.activeSelf)
         {
             ResumeGame();
