@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-
     public Entity playerEntity;
     public GameObject pauseMenu;
     public Player.CharacterControls Player;

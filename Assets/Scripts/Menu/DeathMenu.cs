@@ -27,12 +27,16 @@ public class DeathMenu : MonoBehaviour
     }
     
         public void ShowDeathMenu()
-    {   //Disaples the player
+    { 
+        Debug.Log("You died!");
+        //Shows the menu
+        deathMenu.SetActive(true);
+        Debug.Log($"DeathMenu active: {deathMenu.activeSelf}");
+        
+         //Disaples the player
         Player.enabled = false;
         Weapon.enabled = false;
 
-        //Shows the menu
-        deathMenu.SetActive(true);
 
         Time.timeScale = 0f;
         Cursor.visible = true;
