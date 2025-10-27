@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f223fbb7462d9468f9c6fb3df14082c9, type: 3}
-  m_Name: LifeStealSpell
+  m_Name: LifestealSpell
   m_EditorClassIdentifier: Assembly-CSharp::Player.Spells.LifeStealSpell
   _cost: 10
   _damage: 0

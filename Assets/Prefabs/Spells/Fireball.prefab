@@ -69,7 +69,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c7d321c1f8fdbb040bf908eb76592b83, type: 2}
+  - {fileID: 2100000, guid: f1d6a5de6ed9d43069909d19b0e88729, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -152,4 +152,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 650612ca113fb4b14b84178be5f3b931, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FireBallProjectile
-  _fireBallExplosionObject: {fileID: 9152720263842790671, guid: 0d7c5b3aac345438db018dc174384a34, type: 3}
+  _explosionObject: {fileID: 9152720263842790671, guid: 0d7c5b3aac345438db018dc174384a34, type: 3}

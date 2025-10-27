@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace Player.Spells
 {
-    [CreateAssetMenu(fileName = "LifeStealSpell", menuName = "Spells/LifeStealSpell")]
-    public class LifeStealSpell : Spell
+    [CreateAssetMenu(fileName = "LifestealSpell", menuName = "Spells/LifestealSpell")]
+    public class LifestealSpell : Spell
     {
-
+        // Sets global bool IsLifeStealActive to true
         public override void Cast()
         {
             DataManager.Instance.IsLifeStealActive = true;
@@ -16,6 +16,7 @@ namespace Player.Spells
             FindAnyObjectByType<SpellController>().StartCoroutine(ActivateLifeSteal());
         }
         
+        // Wait and then set global bool IsLifeStealActive to false
         private IEnumerator ActivateLifeSteal()
         {
             yield return new WaitForSeconds(_durationInSeconds);

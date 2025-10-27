@@ -1,14 +1,13 @@
 using UnityEngine;
 
-public class FireBallProjectile : Projectile
+public class FireballProjectile : Projectile
 {
-    [SerializeField] GameObject _fireBallExplosionObject;
+    [SerializeField] GameObject _explosionObject;
 
     private float _explosionDamage;
     private float _explosionRadius;
     private float _explosionDuration;
     private Vector3 _startDirection;
-
 
     protected override void Awake()
     {
@@ -31,19 +30,17 @@ public class FireBallProjectile : Projectile
     }
 
     // Projectile hits something
-    // TODO: apply damage to enemies
     private void OnTriggerEnter(Collider _)
     {
         _moveSpeed = 0;
         GameObject target = _.gameObject;
 
-        if (target.layer == 7)
+        if (target.layer == 7) //TODO fix magic number later
         {
-            Debug.Log("Target hit: " + target);
             Entity entity = target.GetComponent<Entity>();
             entity?.ApplyDamage(_damage);
-            GameObject fireballExplosion = Instantiate(_fireBallExplosionObject, transform.position, transform.rotation);
-            fireballExplosion.GetComponent<Explosion>().Spawn(_explosionDamage, _explosionDuration, _explosionRadius);
+            GameObject fireballExplosion = Instantiate(_explosionObject, transform.position, transform.rotation);
+            fireballExplosion.GetComponent<FireballExplosion>().Spawn(_explosionDamage, _explosionDuration, _explosionRadius);
         }
         Destroy(this.gameObject);
     }
@@ -57,8 +54,8 @@ public class FireBallProjectile : Projectile
     // Called just before destroying this object
     private void OnDestroy()
     {
-        GameObject fireballExplosion = Instantiate(_fireBallExplosionObject, transform.position, transform.rotation);
-        fireballExplosion.GetComponent<Explosion>().Spawn(_explosionDamage, _explosionDuration, _explosionRadius);
+        GameObject fireballExplosion = Instantiate(_explosionObject, transform.position, transform.rotation);
+        fireballExplosion.GetComponent<FireballExplosion>().Spawn(_explosionDamage, _explosionDuration, _explosionRadius);
     }
 
     private void FixedUpdate()

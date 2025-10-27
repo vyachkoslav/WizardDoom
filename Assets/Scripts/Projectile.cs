@@ -6,11 +6,8 @@ public abstract class Projectile : MonoBehaviour
     protected float _damage;
     protected float _moveSpeed;
     protected float _durationInSeconds;
-
-    // [SerializeField] protected LayerMask _entityLayer;
-
+    
     protected Rigidbody _myRigidBody;
-    protected float _currentLifeInSeconds;
 
     protected virtual void Awake()
     {
