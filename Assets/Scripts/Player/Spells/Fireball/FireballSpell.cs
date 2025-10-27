@@ -19,7 +19,10 @@ namespace Player.Spells
             _mainCamera = FindAnyObjectByType<Camera>();
 
             GameObject fireBall = Instantiate(spellObject, _projectileSpawn.position, _projectileSpawn.rotation);
-            fireBall.GetComponent<FireballProjectile>().Spawn(_damage, _explosionDamage, _explosionRadius, _explosionDurationInSeconds, _moveSpeed, _durationInSeconds, _mainCamera.transform.forward);
+            fireBall.GetComponent<FireballProjectile>().Spawn(
+                _damage, _explosionDamage, _explosionRadius,
+                _explosionDurationInSeconds, _moveSpeed, _mainCamera.transform.forward
+            );
         }
     }
 }

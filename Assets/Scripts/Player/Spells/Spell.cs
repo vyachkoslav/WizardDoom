@@ -10,15 +10,11 @@ namespace Player.Spells
         [SerializeField] protected int _cost;
         [SerializeField] protected float _damage;
         [SerializeField] protected float _moveSpeed;
-        [SerializeField] protected float _durationInSeconds;
 
         [SerializeField] protected GameObject spellObject;
 
-
         // Spell mana cost getter
         public int Cost { get { return _cost; } }
-
-
 
         // Main functionality, different for each spell
         public abstract void Cast();

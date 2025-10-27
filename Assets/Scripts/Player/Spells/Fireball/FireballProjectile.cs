@@ -16,28 +16,35 @@ public class FireballProjectile : Projectile
     }
 
     // Initializes stats for the fireball projectile
-    public void Spawn(float damage, float explosionDamage, float explosionRadius, float explosionDuration, float moveSpeed, float durationInSeconds, Vector3 startDirection)
+    public void Spawn(float damage, float explosionDamage, float explosionRadius, float explosionDuration, float moveSpeed, Vector3 startDirection)
     {
         _damage = damage;
         _explosionDamage = explosionDamage;
         _explosionRadius = explosionRadius;
         _explosionDuration = explosionDuration;
         _moveSpeed = moveSpeed;
-        _durationInSeconds = durationInSeconds;
         _startDirection = startDirection;
 
         this.transform.position += _startDirection;
     }
 
-    // Projectile hits something
+    // Apply damage and create explosion when target is hit
     private void OnTriggerEnter(Collider _)
     {
-        _moveSpeed = 0;
         GameObject target = _.gameObject;
 
         if (target.layer == 7) //TODO fix magic number later
         {
             Entity entity = target.GetComponent<Entity>();
+
+            // Ignore targets that are not enemy, such as projectiles
+            if (!target.GetComponent<BaseEnemyAI>())
+            {
+                return;
+            }
+
+            _moveSpeed = 0;
+
             entity?.ApplyDamage(_damage);
             GameObject fireballExplosion = Instantiate(_explosionObject, transform.position, transform.rotation);
             fireballExplosion.GetComponent<FireballExplosion>().Spawn(_explosionDamage, _explosionDuration, _explosionRadius);
@@ -45,22 +52,9 @@ public class FireballProjectile : Projectile
         Destroy(this.gameObject);
     }
 
-    // Expands Move() from abstract, projectile moves forwards from player camera
+    // Projectile moves forwards from player camera
     protected override void Move()
     {
         _myRigidBody.linearVelocity = _startDirection * _moveSpeed * Time.deltaTime;
-    }
-
-    // Called just before destroying this object
-    private void OnDestroy()
-    {
-        GameObject fireballExplosion = Instantiate(_explosionObject, transform.position, transform.rotation);
-        fireballExplosion.GetComponent<FireballExplosion>().Spawn(_explosionDamage, _explosionDuration, _explosionRadius);
-    }
-
-    private void FixedUpdate()
-    {
-        Move();
-        KillProjectile();
     }
 }

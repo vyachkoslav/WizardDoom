@@ -6,6 +6,9 @@ namespace Player.Spells
     [CreateAssetMenu(fileName = "LifestealSpell", menuName = "Spells/LifestealSpell")]
     public class LifestealSpell : Spell
     {
+        [Header("Stats")]
+        [SerializeField] private float _durationInSeconds;
+
         // Sets global bool IsLifeStealActive to true
         public override void Cast()
         {

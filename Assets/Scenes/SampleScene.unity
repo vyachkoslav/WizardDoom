@@ -17628,7 +17628,7 @@ MonoBehaviour:
   _spellList:
   - {fileID: 11400000, guid: dcf3e69f1094f4706828b7ecae6283ee, type: 2}
   - {fileID: 11400000, guid: 5909184e8ef4e444e9ea1b4ef489c407, type: 2}
-  - {fileID: 11400000, guid: a796fce9a6a2a4cdbabb2ea221d85c1c, type: 2}
+  - {fileID: 11400000, guid: 00d0c5542329a48bfaaf885cee60208d, type: 2}
   _playerMana: 100
 --- !u!114 &1160555490
 MonoBehaviour:
@@ -17661,7 +17661,19 @@ MonoBehaviour:
   maxHealth: 100
   onDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &1180200466 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8663360151887524142, guid: f57ab4b8c0ffece4f971c5eefb09c713, type: 3}

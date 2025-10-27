@@ -17,9 +17,8 @@ public abstract class Projectile : MonoBehaviour
     // Implement how projectile should move by overriding this in extending classes
     protected abstract void Move();
 
-    // If nothing is hit, destroy projectile after duration
-    protected virtual void KillProjectile()
+    protected virtual void FixedUpdate()
     {
-        Destroy(this.gameObject, _durationInSeconds);
+        Move();
     }
 }
