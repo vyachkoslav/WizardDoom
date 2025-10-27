@@ -18181,6 +18181,7 @@ GameObject:
   - component: {fileID: 1160555487}
   - component: {fileID: 1160555489}
   - component: {fileID: 1160555490}
+  - component: {fileID: 1160555492}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -18319,6 +18320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e03cc655efaa2244184a6ebf6acb6146, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PauseMenu
+  playerEntity: {fileID: 1160555491}
   pauseMenu: {fileID: 1680984643}
   Player: {fileID: 1160555483}
   Weapon: {fileID: 1160555485}
@@ -18339,6 +18341,22 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1160555492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160555481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54635b4b45d15824a8c781ab9f73a381, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DeathMenu
+  deathMenu: {fileID: 935835212}
+  playerEntity: {fileID: 1160555491}
+  Player: {fileID: 1160555483}
+  Weapon: {fileID: 1160555485}
 --- !u!4 &1180200466 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8663360151887524142, guid: f57ab4b8c0ffece4f971c5eefb09c713, type: 3}
@@ -21624,6 +21642,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e03cc655efaa2244184a6ebf6acb6146, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PauseMenu
+  playerEntity: {fileID: 0}
   pauseMenu: {fileID: 1680984643}
   Player: {fileID: 1160555483}
   Weapon: {fileID: 1160555485}

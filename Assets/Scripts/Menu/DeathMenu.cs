@@ -7,13 +7,36 @@ public class DeathMenu : MonoBehaviour
 {
 
     public GameObject deathMenu;
-
+    public Entity playerEntity;
     public Player.CharacterControls Player;
     public Player.WeaponController Weapon;
 
     void Start()
     {
         deathMenu.SetActive(false);
+
+
+        if (playerEntity != null)
+        {
+            playerEntity.OnDeath += ShowDeathMenu;
+        }
+        else
+        {
+            Debug.LogError("No player entity");
+        }
+    }
+    
+        public void ShowDeathMenu()
+    {   //Disaples the player
+        Player.enabled = false;
+        Weapon.enabled = false;
+
+        //Shows the menu
+        deathMenu.SetActive(true);
+
+        Time.timeScale = 0f;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
 
@@ -21,12 +44,7 @@ public class DeathMenu : MonoBehaviour
 
     public void RestartLevel()
     {
-        Player.enabled = true;
-        Weapon.enabled = true;
-        deathMenu.SetActive(false);
-        Time.timeScale = 1f; 
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
     }
     
     public void OnRestartButtonClicked()
