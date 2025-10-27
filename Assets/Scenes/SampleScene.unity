@@ -18522,7 +18522,7 @@ MonoBehaviour:
   _spellList:
   - {fileID: 11400000, guid: dcf3e69f1094f4706828b7ecae6283ee, type: 2}
   - {fileID: 11400000, guid: 5909184e8ef4e444e9ea1b4ef489c407, type: 2}
-  - {fileID: 11400000, guid: a796fce9a6a2a4cdbabb2ea221d85c1c, type: 2}
+  - {fileID: 11400000, guid: 00d0c5542329a48bfaaf885cee60208d, type: 2}
   _playerMana: 100
 --- !u!114 &1160555490
 MonoBehaviour:
