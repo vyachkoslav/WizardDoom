@@ -16,14 +16,14 @@ public class DeathMenu : MonoBehaviour
         deathMenu.SetActive(false);
 
 
-        if (playerEntity != null)
+        /*if (playerEntity != null)
         {
             playerEntity.OnDeath += ShowDeathMenu;
         }
         else
         {
             Debug.LogError("No player entity");
-        }
+        }*/
     }
     
         public void ShowDeathMenu()

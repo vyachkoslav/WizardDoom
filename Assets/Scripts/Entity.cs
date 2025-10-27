@@ -10,7 +10,7 @@ public class Entity : MonoBehaviour, IEntity
     
     private float health;
     public float Health => health;
-    public bool IsDead { get; private set; } = false;
+    //public bool IsDead { get; private set; } = false;
     public event Action OnDeath;
 
     [SerializeField] private UnityEvent onDeath;
@@ -36,7 +36,7 @@ public class Entity : MonoBehaviour, IEntity
         }
 
         if (health <= 0)
-            Die();
+            OnDeath?.Invoke();
     }
 
     public void ApplyHealing(float healing)
@@ -46,11 +46,5 @@ public class Entity : MonoBehaviour, IEntity
 
         health += healing;
     }
-    
-        private void Die()
-    {
-        if (IsDead) return;
-        IsDead = true;
-        OnDeath?.Invoke();
-    }
+
 }

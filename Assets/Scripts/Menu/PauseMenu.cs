@@ -35,7 +35,7 @@ public class PauseMenu : MonoBehaviour
     public void TogglePause(InputAction.CallbackContext context)
     {
         //Pause wont work if the player is dead.
-        if (playerEntity != null && playerEntity.IsDead)
+        if (playerEntity = null)
             return;
         
 
