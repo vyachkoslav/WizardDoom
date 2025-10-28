@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 137419833920176318}
   - component: {fileID: -7353183123219111104}
   - component: {fileID: -5496381584905408437}
+  - component: {fileID: 8502164216429636239}
   m_Layer: 7
   m_Name: Melee Enemy
   m_TagString: EnemyMelee
@@ -306,7 +307,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b667d4ed8dffc8041acf7418ad2b7dcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MeleeEnemyAI
-  rotationSpeed: 240
   stopDuration: 0.5
   OnAttacked:
     m_PersistentCalls:
@@ -326,3 +326,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyTimefreeze
   enemyAI: {fileID: -7353183123219111104}
   enemyDetection: {fileID: 5360035351390236665}
+--- !u!114 &8502164216429636239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5944944523572578519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6d94b09c26be1c4b89586e60e7f89f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DamageFlash
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  flashDuration: 0.2

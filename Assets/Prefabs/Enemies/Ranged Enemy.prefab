@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 333618664293178904}
   - component: {fileID: -6913118436647843947}
   - component: {fileID: 8383302885437216473}
+  - component: {fileID: 2522542260668504009}
   m_Layer: 7
   m_Name: Ranged Enemy
   m_TagString: EnemyRanged
@@ -217,7 +218,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd977f6195be8374ab3ca6a60a3d1585, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RangedEnemyAI
-  rotationSpeed: 240
   stopDuration: 0.5
   OnAttacked:
     m_PersistentCalls:
@@ -239,6 +239,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyTimefreeze
   enemyAI: {fileID: -6913118436647843947}
   enemyDetection: {fileID: 2033104562410049381}
+--- !u!114 &2522542260668504009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5750608459987162048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6d94b09c26be1c4b89586e60e7f89f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DamageFlash
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  flashDuration: 0.2
 --- !u!1 &8542904834152430648
 GameObject:
   m_ObjectHideFlags: 0
