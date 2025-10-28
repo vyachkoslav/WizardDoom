@@ -6,21 +6,24 @@ using UnityEngine.Events;
 
 public class Entity : MonoBehaviour, IEntity
 {
-    [SerializeField] private float maxHealth;
+    [SerializeField] protected float maxHealth;
     
     private float health;
     public float Health => health;
 
     public event Action OnHealthDecreased;
+    public event Action OnHealthIncreased;
     public event Action OnDeath;
 
     [SerializeField] private UnityEvent onHealthDecreased;
+    [SerializeField] private UnityEvent onHealthIncreased;
     [SerializeField] private UnityEvent onDeath;
 
     protected virtual void Awake()
     {
         OnDeath += onDeath.Invoke;
         OnHealthDecreased += onHealthDecreased.Invoke;
+        OnHealthIncreased += onHealthIncreased.Invoke;
         health = maxHealth;
     }
 
@@ -48,6 +51,12 @@ public class Entity : MonoBehaviour, IEntity
         if (health <= 0) return;
 
         health += healing;
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
+        OnHealthIncreased.Invoke();
     }
+    
 
 }
