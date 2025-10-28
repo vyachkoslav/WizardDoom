@@ -76,6 +76,7 @@ namespace Player
             else { _currentSpellIndex = 0; }
 
             Debug.Log("Using: " + _spellList[_currentSpellIndex]);
+            SoundManager.Instance.PlaySound2D("NextSpell");
         }
     }
 }
