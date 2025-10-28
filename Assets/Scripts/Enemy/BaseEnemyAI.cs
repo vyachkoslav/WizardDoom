@@ -22,7 +22,7 @@ public abstract class BaseEnemyAI : MonoBehaviour
     protected Vector3 lastKnownPlayerPosition;
 
     
-    [SerializeField] private float rotationSpeed = 240f;
+    private float rotationSpeed;
     [SerializeField] private float stopDuration = 1f;
     
     public UnityEvent OnAttacked;
@@ -34,6 +34,7 @@ public abstract class BaseEnemyAI : MonoBehaviour
         playerEntity = PlayerEntity.Instance;
         player = playerEntity.gameObject;
         detectPlayer = GetComponent<DetectPlayer>();
+        rotationSpeed = agent.angularSpeed;
     }
 
     protected void LookAtPlayer()

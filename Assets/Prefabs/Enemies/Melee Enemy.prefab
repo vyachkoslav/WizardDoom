@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b67ffa4a02761e41adc4a888027c2f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DetectPlayer
-  sightRange: 10
+  sightRange: 30
   fieldOfViewAngle: 180
   proximityRange: 4
   playerLayerMask:
@@ -282,7 +282,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 2
+  m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 240
