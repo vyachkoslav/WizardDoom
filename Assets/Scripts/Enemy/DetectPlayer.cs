@@ -1,5 +1,7 @@
 using System;
+using Player;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class DetectPlayer : MonoBehaviour
 {
@@ -14,14 +16,15 @@ public class DetectPlayer : MonoBehaviour
     private Vector3 directionToPlayer;
     [SerializeField] private LayerMask playerLayerMask; // set this to PlayerMesh in the inspector
     [SerializeField] private LayerMask obstacleLayerMask; // set this to the layer of environmental objects
+    private float detectedTimeLeft;
 
-    public bool PlayerIsDetected { get => playerIsDetected; }
+    public bool PlayerIsDetected { get => playerIsDetected || detectedTimeLeft > 0; }
     public bool HasLineOfSight { get => hasLineOfSight; }
     public bool ObstacleBlocksVision {  get => obstacleBlocksVision; }
 
     void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Player");
+        target = PlayerEntity.Instance.gameObject;
     }
 
     void FixedUpdate()
@@ -36,6 +39,29 @@ public class DetectPlayer : MonoBehaviour
         {
             playerIsDetected = false;
             hasLineOfSight = false;
+        }
+    }
+
+    public void DetectPlayerForSeconds(float timeSeconds)
+    {
+        Assert.IsFalse(timeSeconds <= 0);
+        if (detectedTimeLeft <= 0)
+        {
+            detectedTimeLeft = timeSeconds;
+            _ = DetectPlayerRoutine();
+        }
+        else if (timeSeconds > detectedTimeLeft)
+        {
+            detectedTimeLeft = timeSeconds;
+        }
+    }
+
+    private async Awaitable DetectPlayerRoutine()
+    {
+        while (detectedTimeLeft > 0)
+        {
+            await Awaitable.NextFrameAsync();
+            detectedTimeLeft -= Time.deltaTime;
         }
     }
 
@@ -75,7 +101,7 @@ public class DetectPlayer : MonoBehaviour
 
                 if (rayCollided)
                 {
-                    if (hit.collider.gameObject == target)
+                    if (hit.collider.gameObject.CompareTag("Player"))
                     {
                         playerIsSeen = true;
                         obstacleBlocksVision = false;

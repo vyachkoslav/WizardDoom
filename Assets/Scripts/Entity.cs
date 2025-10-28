@@ -10,14 +10,17 @@ public class Entity : MonoBehaviour, IEntity
     
     private float health;
     public float Health => health;
-    //public bool IsDead { get; private set; } = false;
+
+    public event Action OnHealthDecreased;
     public event Action OnDeath;
 
+    [SerializeField] private UnityEvent onHealthDecreased;
     [SerializeField] private UnityEvent onDeath;
 
     protected virtual void Awake()
     {
         OnDeath += onDeath.Invoke;
+        OnHealthDecreased += onHealthDecreased.Invoke;
         health = maxHealth;
     }
 
@@ -27,16 +30,16 @@ public class Entity : MonoBehaviour, IEntity
         if (health <= 0) return;
         
         health -= damage;
-        Debug.Log(name + ": Health: " + health);
+        OnHealthDecreased.Invoke();
         
         // Heal player if lifesteal spell is active
-        if (DataManager.Instance.IsLifeStealActive)
+        if (DataManager.Instance.IsLifeStealActive && this is not PlayerEntity)
         {
-            FindAnyObjectByType<PlayerEntity>().ApplyHealing(damage);
+            PlayerEntity.Instance.ApplyHealing(damage);
         }
 
         if (health <= 0)
-            OnDeath?.Invoke();
+            OnDeath.Invoke();
     }
 
     public void ApplyHealing(float healing)
