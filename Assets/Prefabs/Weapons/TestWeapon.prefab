@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8417363103256090157}
   - component: {fileID: 7980448123960269092}
   - component: {fileID: 3381016332477537790}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Sight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 2848035074197793249}
   - component: {fileID: 4908080582872464352}
   - component: {fileID: 2490286033612949221}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5598754848155978882}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: TestWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}

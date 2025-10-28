@@ -156,11 +156,8 @@ namespace Player.Weapons
             }
             else{SoundManager.Instance.PlaySound2D("MachinegunFire");}
             var didHit = Physics.Raycast(ShootRay, out var hit, 1000);
-            if (!didHit || hit.transform.gameObject.layer != EntityLayer) return;
+            if (!didHit || !hit.transform.TryGetComponent<IEntity>(out var entity)) return;
             
-            var entity = hit.transform.GetComponent<IEntity>();
-            if (entity == null)
-                Debug.Log(hit.transform);
             entity.ApplyDamage(damage);
         }
     }
