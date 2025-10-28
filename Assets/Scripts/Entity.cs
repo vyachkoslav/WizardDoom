@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Player;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -17,14 +18,13 @@ public class Entity : MonoBehaviour, IEntity
     [SerializeField] private UnityEvent onHealthDecreased;
     [SerializeField] private UnityEvent onDeath;
 
-    private DamageFlash damageFlash;
+    public bool takingDamage = false;
 
     protected virtual void Awake()
     {
         OnDeath += onDeath.Invoke;
         OnHealthDecreased += onHealthDecreased.Invoke;
         health = maxHealth;
-        damageFlash = GetComponent<DamageFlash>();
     }
 
     public void ApplyDamage(float damage)
@@ -33,7 +33,7 @@ public class Entity : MonoBehaviour, IEntity
         if (health <= 0) return;
         
         health -= damage;
-        damageFlash.Flash();
+        StartCoroutine(TakingDamage());
         OnHealthDecreased.Invoke();
         
         
@@ -53,6 +53,13 @@ public class Entity : MonoBehaviour, IEntity
         if (health <= 0) return;
 
         health += healing;
+    }
+
+    private IEnumerator TakingDamage()
+    {
+        takingDamage = true;
+        yield return new WaitForSeconds(0.2f);
+        takingDamage = false;
     }
 
 }
