@@ -15,6 +15,6 @@ MonoBehaviour:
   _cost: 10
   _damage: 0
   _moveSpeed: 0
-  _durationInSeconds: 5
+  _color: {r: 0.028924897, g: 0.4716981, b: 0.037861004, a: 0.72156864}
   spellObject: {fileID: 0}
-  _spellAudioClip: {fileID: 0}
+  _durationInSeconds: 5

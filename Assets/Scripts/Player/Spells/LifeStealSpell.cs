@@ -18,7 +18,7 @@ namespace Player.Spells
             // Not really proud of this one... it works though
             FindAnyObjectByType<SpellController>().StartCoroutine(ActivateLifeSteal());
         }
-        
+
         // Wait and then set global bool IsLifeStealActive to false
         private IEnumerator ActivateLifeSteal()
         {
@@ -28,5 +28,10 @@ namespace Player.Spells
             Debug.Log("Lifesteal: " + DataManager.Instance.IsLifeStealActive);
             SoundManager.Instance.PlaySound2D("LifestealEnd");
         }
+        public override string ToString()
+        {
+            return "Lifesteal";
+        }
     }
+    
 }

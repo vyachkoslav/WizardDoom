@@ -23,5 +23,10 @@ namespace Player.Spells
                 _moveSpeed, _mainCamera.transform.forward
             );
         }
+        public override string ToString()
+        {
+            return "Confusion";
+        }
     }
+    
 }

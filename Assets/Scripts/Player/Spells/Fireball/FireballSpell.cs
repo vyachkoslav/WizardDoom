@@ -24,5 +24,9 @@ namespace Player.Spells
                 _explosionDurationInSeconds, _moveSpeed, _mainCamera.transform.forward
             );
         }
+        public override string ToString()
+        {
+            return "Fireball";
+        }
     }
 }

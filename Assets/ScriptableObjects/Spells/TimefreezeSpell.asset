@@ -15,8 +15,7 @@ MonoBehaviour:
   _cost: 10
   _damage: 0
   _moveSpeed: 200
-  _durationInSeconds: 5
+  _color: {r: 0.754717, g: 0.21003917, b: 0.69343466, a: 0.8}
   spellObject: {fileID: 6680064958511329048, guid: b00962b25228743908879fa0b331eca2, type: 3}
   _explosionRadius: 0.5
-  _explosionDurationInSeconds: 0.5
   _freezeDurationInSeconds: 3
