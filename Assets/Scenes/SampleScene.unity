@@ -18535,6 +18535,7 @@ GameObject:
   - component: {fileID: 1160555489}
   - component: {fileID: 1160555490}
   - component: {fileID: 1160555492}
+  - component: {fileID: 1160555493}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -18726,6 +18727,20 @@ MonoBehaviour:
   playerEntity: {fileID: 1160555491}
   Player: {fileID: 1160555483}
   Weapon: {fileID: 1160555485}
+--- !u!114 &1160555493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160555481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6d94b09c26be1c4b89586e60e7f89f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DamageFlash
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  flashDuration: 0.1
 --- !u!4 &1180200466 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8663360151887524142, guid: f57ab4b8c0ffece4f971c5eefb09c713, type: 3}
