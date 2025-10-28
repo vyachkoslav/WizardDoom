@@ -7,8 +7,7 @@ public class FireballExplosion : Explosion
     protected override void Awake()
     {
         base.Awake();
-        // TODO sfx
-        // SoundManager.Instance.PlaySound3D("Fireball explosion", transform.position);
+        SoundManager.Instance.PlaySound3D("FireballExplosion", transform.position);
     }
 
     public void Spawn(float damage, float durationInSeconds, float radius)

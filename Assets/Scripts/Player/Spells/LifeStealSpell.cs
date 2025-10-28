@@ -22,9 +22,11 @@ namespace Player.Spells
         // Wait and then set global bool IsLifeStealActive to false
         private IEnumerator ActivateLifeSteal()
         {
+            SoundManager.Instance.PlaySound2D("LifestealStart");
             yield return new WaitForSeconds(_durationInSeconds);
             DataManager.Instance.IsLifeStealActive = false;
             Debug.Log("Lifesteal: " + DataManager.Instance.IsLifeStealActive);
+            SoundManager.Instance.PlaySound2D("LifestealEnd");
         }
     }
 }

@@ -60,6 +60,7 @@ namespace Player
                 {
                     _playerMana -= _manaCost;
                     _currentSelectedSpell.Cast();
+                    SoundManager.Instance.PlaySound2D("Cast");
                     Debug.Log("Current mana: " + _playerMana);    
                 }
             }

@@ -6,8 +6,7 @@ public class TimefreezeExplosion : Explosion
     protected override void Awake()
     {
         base.Awake();
-        // TODO sfx
-        // SoundManager.Instance.PlaySound3D("Timefreeze explosion", transform.position);
+        SoundManager.Instance.PlaySound3D("Timefreeze", transform.position);
     }
 
     public void Spawn(float freezeDuration, float radius)

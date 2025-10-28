@@ -21128,9 +21128,21 @@ MonoBehaviour:
   - groupID: WeaponReload
     clips:
     - {fileID: 8300000, guid: c8062ec68b7db424e918e4391a4a48d2, type: 3}
-  - groupID: Fireball
+  - groupID: Cast
     clips:
     - {fileID: 8300000, guid: a64822dbcb63e9c4f87ad5f6a4d80a57, type: 3}
+  - groupID: FireballExplosion
+    clips:
+    - {fileID: 8300000, guid: d6d8d9c0cba854ebfb5bfd2ade580542, type: 3}
+  - groupID: LifestealStart
+    clips:
+    - {fileID: 8300000, guid: 33128a017e1a24c309bee927c69b06a4, type: 3}
+  - groupID: LifestealEnd
+    clips:
+    - {fileID: 8300000, guid: 346f9d33fe9e54858bbff4bfb879aff4, type: 3}
+  - groupID: Timefreeze
+    clips:
+    - {fileID: 8300000, guid: 5ea93c0a15ab44b0286e7ad4d805921c, type: 3}
   - groupID: EnemyRangedAttack
     clips:
     - {fileID: 8300000, guid: 27035812b68bf4d438326d50baef231e, type: 3}
