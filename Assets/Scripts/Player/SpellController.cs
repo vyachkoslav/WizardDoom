@@ -25,7 +25,9 @@ namespace Player
         [SerializeField] private int _maxMana;
         [SerializeField] private int _manaRegenPerSecond;
         [SerializeField] private UnityEvent onManaChanged;
-         public event Action OnManaChanged;
+        [SerializeField] private UnityEvent onSpellChanged;
+        public event Action OnManaChanged;
+        public event Action OnSpellChanged;
 
         private int _currentSpellIndex;
         private Spell _currentSelectedSpell;
@@ -36,15 +38,22 @@ namespace Player
 
         public Transform ProjectileSpawn { get { return _projectileSpawn; } }
         public float MaxMana { get { return _maxMana; } }
-        public float CurrentMana { get { return _currentMana; }}
+        public float CurrentMana { get { return _currentMana; } }
+        public Spell CurrentSelectedSpell { get { return _currentSelectedSpell; }}
 
         // Set current spell to first in list
         private void Awake()
         {
             _currentSpellIndex = 0;
+            _currentSelectedSpell = _spellList[_currentSpellIndex];
             _currentMana = _maxMana;
             OnManaChanged += onManaChanged.Invoke;
+            OnSpellChanged += onSpellChanged.Invoke;
             Debug.Log(_spellList.Count);
+        }
+        private void Start()
+        {
+            OnSpellChanged.Invoke();
         }
 
         private void OnEnable()
@@ -63,7 +72,6 @@ namespace Player
         // current spell, play audio
         private void CastSpell(InputAction.CallbackContext context)
         {
-            _currentSelectedSpell = _spellList[_currentSpellIndex];
             _manaCost = _currentSelectedSpell.Cost;
 
             if (_currentMana >= _manaCost)
@@ -88,7 +96,8 @@ namespace Player
                 _currentSpellIndex++;
             }
             else { _currentSpellIndex = 0; }
-
+            _currentSelectedSpell = _spellList[_currentSpellIndex];
+            OnSpellChanged.Invoke();
             Debug.Log("Using: " + _spellList[_currentSpellIndex]);
             SoundManager.Instance.PlaySound2D("NextSpell");
         }
