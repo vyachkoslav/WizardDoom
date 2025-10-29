@@ -25,7 +25,7 @@ namespace Player.Spells
         }
         public override string ToString()
         {
-            return "Confusion";
+            return "Timefreeze";
         }
     }
     
