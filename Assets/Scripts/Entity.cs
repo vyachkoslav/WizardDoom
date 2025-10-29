@@ -30,7 +30,7 @@ public class Entity : MonoBehaviour, IEntity
         health = maxHealth;
     }
 
-    public void ApplyDamage(float damage)
+    public virtual void ApplyDamage(float damage)
     {
         Assert.IsTrue(damage >= 0);
         if (health <= 0) return;
@@ -38,7 +38,6 @@ public class Entity : MonoBehaviour, IEntity
         health -= damage;
         StartCoroutine(TakingDamage());
         OnHealthDecreased.Invoke();
-        
         
         // Heal player if lifesteal spell is active
         if (DataManager.Instance.IsLifeStealActive && this is not PlayerEntity)

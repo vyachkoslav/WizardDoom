@@ -16394,6 +16394,7 @@ RectTransform:
   - {fileID: 1342760393}
   - {fileID: 1541904081}
   - {fileID: 995852694}
+  - {fileID: 1840694757}
   m_Father: {fileID: 1160555484}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -18689,8 +18690,8 @@ MonoBehaviour:
   nextSpellAction: {fileID: -6646960622630018294, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   _projectileSpawn: {fileID: 697707538}
   _spellList:
-  - {fileID: 11400000, guid: dcf3e69f1094f4706828b7ecae6283ee, type: 2}
-  - {fileID: 11400000, guid: 5909184e8ef4e444e9ea1b4ef489c407, type: 2}
+  - {fileID: 11400000, guid: 800a3aa81968147bdbea239f1003281f, type: 2}
+  - {fileID: 11400000, guid: 4f75c806cb2d34134a17d5db49edf3b8, type: 2}
   - {fileID: 11400000, guid: 00d0c5542329a48bfaaf885cee60208d, type: 2}
   _maxMana: 100
   _manaRegenPerSecond: 5
@@ -21746,6 +21747,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player.UI.HealthUI
   healthSlider: {fileID: 1541904082}
+  damageFlash: {fileID: 1840694758}
+  flashDuration: 0.2
+  flashSpeed: 5
 --- !u!4 &1573797727 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8663360151887524142, guid: f57ab4b8c0ffece4f971c5eefb09c713, type: 3}
@@ -21832,6 +21836,9 @@ MonoBehaviour:
   - groupID: EnemyMeleeAttack
     clips:
     - {fileID: 8300000, guid: a6c4a5c3cc9e3a94e856723fe5dbfa36, type: 3}
+  - groupID: PlayerDamage
+    clips:
+    - {fileID: 8300000, guid: 238754b6c77cd468bad1bb631d7f15eb, type: 3}
 --- !u!4 &1581908288
 Transform:
   m_ObjectHideFlags: 0
@@ -24358,6 +24365,81 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8663360151887524142, guid: f57ab4b8c0ffece4f971c5eefb09c713, type: 3}
   m_PrefabInstance: {fileID: 81707133}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1840694756
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1840694757}
+  - component: {fileID: 1840694759}
+  - component: {fileID: 1840694758}
+  m_Layer: 0
+  m_Name: PlayerDamageFlash
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1840694757
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1840694756}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1017697253}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.000030518, y: 0}
+  m_SizeDelta: {x: 1722, y: 856}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1840694758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1840694756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.990566, g: 0.21960661, b: 0.21960661, a: 0.5019608}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1840694759
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1840694756}
+  m_CullTransparentMesh: 1
 --- !u!43 &1886193521
 Mesh:
   m_ObjectHideFlags: 0
