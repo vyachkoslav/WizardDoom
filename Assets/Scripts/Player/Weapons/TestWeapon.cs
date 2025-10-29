@@ -30,6 +30,12 @@ namespace Player.Weapons
             _ = ReloadRoutine(cancelSource.Token);
         }
 
+        protected override void OnDestroy()
+        {
+            Hide();
+            cancelSource?.Cancel();
+        }
+
         public override void Hide()
         {
             base.Hide();
@@ -94,6 +100,10 @@ namespace Player.Weapons
                     isReloading = false;
                 }
             }
+            catch (OperationCanceledException)
+            {
+                throw;
+            }
             catch (Exception ex)
             {
                 Debug.LogException(ex);
@@ -139,6 +149,10 @@ namespace Player.Weapons
                     if (!isAutomatic)
                         StopShooting();
                 }
+            }
+            catch (OperationCanceledException)
+            {
+                throw;
             }
             catch (Exception ex)
             {

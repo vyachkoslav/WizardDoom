@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Assertions;
+using Utils;
 
 namespace Player.Weapons
 {
@@ -33,6 +34,7 @@ namespace Player.Weapons
         {
             Assert.IsNull(WeaponObject);
             WeaponObject = Instantiate(weaponPrefab, parent);
+            WeaponObject.AddComponent<OnDestroyEventProvider>().OnDestroyed.AddListener(OnDestroy);
             WeaponObject.SetActive(false);
             ShootOrigin = shootOrigin;
             RecoilController = recoilController;
@@ -40,6 +42,7 @@ namespace Player.Weapons
         }
         
         protected virtual void OnSpawn() {}
+        protected virtual void OnDestroy() {}
         
         // TODO: animation and sound
         public virtual void Show()
