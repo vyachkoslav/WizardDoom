@@ -32,6 +32,7 @@ public class MusicManager : MonoBehaviour
         }
 
         musicSource.clip = nextTrack;
+        musicSource.volume = 0.5f;
         musicSource.Play();
     }
 }
