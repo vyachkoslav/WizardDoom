@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa8fb9d5755f45a982531b2a826d8cd6, type: 3}
-  m_Name: Test Weapon 2
+  m_Name: AR
   m_EditorClassIdentifier: Assembly-CSharp::Player.Weapons.TestWeapon
   weaponPrefab: {fileID: 7750404293600654010, guid: 6d6b66969aea5ad4f92bc9a756a85f4b, type: 3}
   shotSound: {fileID: 8300000, guid: da590b4de0b41214086cd3d809dd4afe, type: 3}

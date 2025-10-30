@@ -10,17 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa8fb9d5755f45a982531b2a826d8cd6, type: 3}
-  m_Name: Test Weapon
+  m_Name: Shotgun
   m_EditorClassIdentifier: Assembly-CSharp::Player.Weapons.TestWeapon
   weaponPrefab: {fileID: 7750404293600654010, guid: 6d6b66969aea5ad4f92bc9a756a85f4b, type: 3}
-  shotSound: {fileID: 8300000, guid: da590b4de0b41214086cd3d809dd4afe, type: 3}
-  emptySound: {fileID: 8300000, guid: b64bb1f1b20649f4fabbf848ea74e014, type: 3}
-  reloadSound: {fileID: 8300000, guid: 54f7891663923ab429b7800622e3be26, type: 3}
   maxLoadedAmmo: 5
   maxAmmo: 25
-  fireRateSeconds: 0.3
+  fireRateSeconds: 0.5
   reloadTimeSeconds: 0.4
-  damage: 10
+  damage: 50
   isAutomatic: 0
   recoilSmoothTime: 0.1
   recoilPattern:
