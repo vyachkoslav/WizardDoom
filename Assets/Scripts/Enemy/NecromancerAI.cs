@@ -19,6 +19,7 @@ public class NecromancerAI : BaseEnemyAI
     {
         base.Start();
         var selfEntity = GetComponent<IEntity>();
+        var playerCharController = player.GetComponent<CharacterController>();
         getAttackData = () => new Attack.AttackData()
         {
             WeaponPosition = transform.position,
@@ -26,6 +27,7 @@ public class NecromancerAI : BaseEnemyAI
             SelfEntity = selfEntity,
             TargetEntity = playerEntity,
             TargetPosition = player.transform.position,
+            TargetSpeed = playerCharController.velocity,
         };
         attack.OnAttacked += OnAttacked.Invoke;
     }

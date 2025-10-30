@@ -22,6 +22,7 @@ public class RangedEnemyAI : BaseEnemyAI
     {
         base.Start();
         var selfEntity = GetComponent<IEntity>();
+        var playerCharController = player.GetComponent<CharacterController>();
         getAttackData = () => new Attack.AttackData()
         {
             WeaponPosition = transform.position, // todo
@@ -29,6 +30,7 @@ public class RangedEnemyAI : BaseEnemyAI
             SelfEntity = selfEntity,
             TargetEntity = playerEntity,
             TargetPosition = player.transform.position,
+            TargetSpeed = playerCharController.velocity
         };
         attack.OnAttacked += OnAttacked.Invoke;
     }

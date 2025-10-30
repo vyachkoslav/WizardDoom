@@ -70,9 +70,12 @@ namespace Enemy
         private void Attack(AttackData data, Func<Collider, bool> collisionHandler)
         {
             SoundManager.Instance.PlaySound3D("EnemyRangedAttack", data.WeaponPosition);
-            var direction = (data.TargetPosition - data.WeaponPosition).normalized;
+            var direction = data.TargetPosition - data.WeaponPosition;
+            var timeToHit = direction.magnitude / projectileSpeed; // not accurate
+            var predictedPosition = data.TargetPosition + data.TargetSpeed * (timeToHit * 0.5f);
+            var directionToPrediction = (predictedPosition - data.WeaponPosition).normalized;
             LinearProjectile.Spawn(projectilePrefab,
-                data.WeaponPosition, direction, Quaternion.LookRotation(direction),
+                data.WeaponPosition, directionToPrediction, Quaternion.LookRotation(direction),
                 projectileSpeed, projectileRange, collisionHandler);
             InvokeAttacked();
         }

@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy.RangedProjectileAttack
   delayBetweenAttacks: 0.5
   damage: 10
-  attackSound: {fileID: 8300000, guid: f097c87559f954bbb96cbb5ed2398f98, type: 3}
   projectilePrefab: {fileID: 2613836050053531179, guid: c3ea17c9ae02c4b4a9e0c1babac271cf, type: 3}
-  projectileSpeed: 2
+  projectileSpeed: 8
   projectileRange: 20

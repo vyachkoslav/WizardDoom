@@ -15,5 +15,5 @@ MonoBehaviour:
   delayBetweenAttacks: 0.2
   damage: 10
   projectilePrefab: {fileID: 2613836050053531179, guid: c3ea17c9ae02c4b4a9e0c1babac271cf, type: 3}
-  projectileSpeed: 4
+  projectileSpeed: 8
   projectileRange: 20

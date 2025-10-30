@@ -27,6 +27,7 @@ namespace Enemy
             public Vector3 WeaponPosition;
             public Vector3 WeaponForward;
             public Vector3 TargetPosition;
+            public Vector3 TargetSpeed;
             public IEntity SelfEntity;
             public IEntity TargetEntity;
         }
