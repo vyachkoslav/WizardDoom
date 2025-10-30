@@ -16139,7 +16139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MusicLibrary
   tracks:
   - trackName: TestSong
-    clip: {fileID: 8300000, guid: 3821c303748a9a144a426cc962d70615, type: 3}
+    clip: {fileID: 8300000, guid: 2bbc54c6e7f90478dbcfafb637c2fd19, type: 3}
 --- !u!114 &938984926
 MonoBehaviour:
   m_ObjectHideFlags: 0
