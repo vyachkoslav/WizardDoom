@@ -9,13 +9,19 @@ namespace Enemy
     {
         [SerializeField] private float attackRange;
         
+        public override void AttackOnce(AttackData attackData)
+        {
+            if (Vector3.Distance(attackData.TargetPosition, attackData.WeaponPosition) <= attackRange)
+                Attack(attackData);
+        }
+
         public override IDisposable StartAttacking(Func<AttackData> attackData)
         {
             var cancelableAttack = new CancelableAttack();
             _ = AttackRoutine(cancelableAttack.Token, attackData);
             return cancelableAttack;
         }
-        
+
         private async Awaitable AttackRoutine(CancellationToken cancelToken, Func<AttackData> getAttackData)
         {
             try

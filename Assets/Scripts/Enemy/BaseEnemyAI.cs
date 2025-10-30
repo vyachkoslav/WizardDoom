@@ -42,7 +42,7 @@ public abstract class BaseEnemyAI : MonoBehaviour
         // Rotates enemy to look at the last known player location
         Vector3 directionToLook = lastKnownPlayerPosition - transform.position;
         Quaternion targetRotation = Quaternion.LookRotation(directionToLook);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        transform.rotation = targetRotation;
     }
 
     protected bool IsDestinationReached()

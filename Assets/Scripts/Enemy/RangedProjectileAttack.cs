@@ -27,7 +27,13 @@ namespace Enemy
                 return !other.isTrigger;
             };
         }
-        
+
+        public override void AttackOnce(AttackData attackData)
+        {
+            var collisionHandler = CreateCollisionHandler(() => attackData); // todo
+            Attack(attackData, collisionHandler);
+        }
+
         public override IDisposable StartAttacking(Func<AttackData> attackData)
         {
             var cancellableAttack = new CancelableAttack();
