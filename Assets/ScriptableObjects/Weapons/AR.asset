@@ -15,7 +15,7 @@ MonoBehaviour:
   weaponPrefab: {fileID: 4503104358237778821, guid: 32d0759fb64784a60a1bdab1615d0a44, type: 3}
   maxLoadedAmmo: 30
   maxAmmo: 5000
-  fireRateSeconds: 0.05
+  fireRateSeconds: 0.085
   reloadTimeSeconds: 0.4
   damage: 15
   isAutomatic: 1

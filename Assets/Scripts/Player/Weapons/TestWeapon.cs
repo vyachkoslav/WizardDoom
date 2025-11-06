@@ -163,6 +163,8 @@ namespace Player.Weapons
         private void Shoot()
         {
             CurrentLoadedAmmo--;
+            WeaponObject.GetComponent<Animator>().SetTrigger("TrShoot");
+
             //Soundmanagment for different guns
             if (!isAutomatic)
             {
@@ -171,7 +173,7 @@ namespace Player.Weapons
             else{SoundManager.Instance.PlaySound2D("MachinegunFire");}
             var didHit = Physics.Raycast(ShootRay, out var hit, 1000);
             if (!didHit || !hit.transform.TryGetComponent<IEntity>(out var entity)) return;
-            
+
             entity.ApplyDamage(damage);
         }
     }
