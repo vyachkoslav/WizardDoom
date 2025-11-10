@@ -13,21 +13,23 @@ namespace Player
         [SerializeField] private InputActionReference movementAction;
         [SerializeField] private InputActionReference lookAction;
 
-
         [Header("Settings")]
         [SerializeField] private float maxVerticalLookAngle;
         [SerializeField] private float lookSensitivity;
+        [SerializeField] private float acceleration;
         [SerializeField] private float speed;
-
-
+        
+        private float currentSpeed;
         private Vector3 direction;
         private float verticalLook;
-
+        
+        public float CurrentSpeed => currentSpeed;
+        public float MaxSpeed => speed;
+        public float Accelation => acceleration;
 
         public void AddCameraDelta(Vector2 delta)
         {
             characterController.transform.Rotate(new Vector3() { y = delta.x });
-
 
             verticalLook = verticalLook + -delta.y;
             verticalLook = Mathf.Clamp(verticalLook, -maxVerticalLookAngle, maxVerticalLookAngle);
@@ -35,7 +37,6 @@ namespace Player
             camEulers.x = verticalLook;
             cameraTransform.localEulerAngles = camEulers;
         }
-
 
         private void Awake()
         {
@@ -73,10 +74,15 @@ namespace Player
 
         private void Update()
         {
+            if (direction == Vector3.zero)
+                currentSpeed = 0;
+            else
+                currentSpeed = Mathf.MoveTowards(currentSpeed, speed, acceleration * Time.deltaTime);
+            
             var forward = characterController.transform.forward;
             var right = characterController.transform.right;
-            var movementY = (direction.y * speed) * forward;
-            var movementX = (direction.x * speed) * right;
+            var movementY = (direction.y * currentSpeed) * forward;
+            var movementX = (direction.x * currentSpeed) * right;
             var movement = movementX + movementY;
             characterController.SimpleMove(movement);
         }
