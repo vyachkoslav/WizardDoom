@@ -13,21 +13,16 @@ namespace Player
         [Header("Input")]
         [SerializeField] private InputActionReference castSpellAction;
         [SerializeField] private InputActionReference nextSpellAction;
-
-        [Header("Camera and projectile spawn position")]
-        // [SerializeField] private Camera _mainCamera;
+        
+        [Header("Projectile spawnpoint")]
         [SerializeField] private Transform _projectileSpawn;
-
-        [Header("Spells")]
-        // [SerializeField] private Spell _lifesteal;
-        // [SerializeField] private Spell _fireball;
-        // [SerializeField] private Spell _timefreeze;
 
         [Header("Mana")]
         [SerializeField] private int _maxMana;
         [SerializeField] private int _manaRegenPerSecond;
         [SerializeField] private UnityEvent onManaChanged;
         [SerializeField] private UnityEvent onSpellChanged;
+
         public event Action OnManaChanged;
         public event Action OnSpellChanged;
 
@@ -85,13 +80,19 @@ namespace Player
                     OnManaChanged.Invoke();
                     _currentSelectedSpell.Cast();
                     SoundManager.Instance.PlaySound2D("Cast");
-                    Debug.Log("Current mana: " + _currentMana);    
+                    Debug.Log("Current mana: " + _currentMana);
                 }
             }
         }
 
-        // Check if out of bounds, then append spell list index accordingly
+        // Switch spell
         private void NextSpell(InputAction.CallbackContext context)
+        {
+            SwitchSpell();
+        }
+
+        // Check if out of bounds, then append spell list index accordingly
+        private void SwitchSpell()
         {
             if (_spellList.Count <= 0) { return; }
 
@@ -106,18 +107,14 @@ namespace Player
             SoundManager.Instance.PlaySound2D("NextSpell");
         }
 
+        // Called when acquiring a new spell, check if new spell and add to list accordingly
         public void AddSpellToList(Spell spell)
         {
             if (!_spellList.Contains(spell))
             {
                 _spellList.Add(spell);
-
-                if (_spellList.Count <= 1)
-                {
-                    _currentSelectedSpell = _spellList[_currentSpellIndex];
-                }
-
-                OnSpellChanged.Invoke();
+                if (_spellList.Count <= 0) { _currentSelectedSpell = _spellList[_currentSpellIndex]; }
+                SwitchSpell();
             }
         }
 
