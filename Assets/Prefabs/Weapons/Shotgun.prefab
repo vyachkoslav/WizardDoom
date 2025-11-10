@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7977060380259856042}
   - component: {fileID: 5323574281644778626}
   - component: {fileID: 5124452853804928655}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 8396261653986607327}
   - component: {fileID: 2996676467322727002}
   - component: {fileID: 7912202211409994083}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Stock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 7513542183189692936}
   - component: {fileID: 2704906569774409321}
   - component: {fileID: 7617494490262152925}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +277,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7240063734399280224}
   - component: {fileID: 7350588960978213840}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Shotgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -336,7 +336,7 @@ GameObject:
   - component: {fileID: 2130754208118774792}
   - component: {fileID: 7509382377270980991}
   - component: {fileID: 5007504233600289002}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Forend
   m_TagString: Untagged
   m_Icon: {fileID: 0}

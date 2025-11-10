@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1057801794138237271}
   - component: {fileID: 4468377560893464096}
   - component: {fileID: 7618044369581264204}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 4075172337013442675}
   - component: {fileID: 8028516581637006158}
   - component: {fileID: 2218481359517978224}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Stock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,7 +190,7 @@ GameObject:
   - component: {fileID: 28564906478846498}
   - component: {fileID: 4631756223459949355}
   - component: {fileID: 7645749635398844539}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -300,7 +300,7 @@ GameObject:
   - component: {fileID: 4695747609584460914}
   - component: {fileID: 8558030033121967103}
   - component: {fileID: 1281776517902149324}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -388,7 +388,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8222287104806166584}
   - component: {fileID: 53198227984188324}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Assault Rifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -450,7 +450,7 @@ GameObject:
   - component: {fileID: 6621092007065103395}
   - component: {fileID: 7020981641179143228}
   - component: {fileID: 6082882145677457807}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Magazine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -560,7 +560,7 @@ GameObject:
   - component: {fileID: 8903509795602520554}
   - component: {fileID: 2396880524813785742}
   - component: {fileID: 6768021142693020416}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body (Inner)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
