@@ -19,7 +19,9 @@ namespace Player
         [SerializeField] private Transform _projectileSpawn;
 
         [Header("Spells")]
-        [SerializeField] private List<Spell> _spellList;
+        // [SerializeField] private Spell _lifesteal;
+        // [SerializeField] private Spell _fireball;
+        // [SerializeField] private Spell _timefreeze;
 
         [Header("Mana")]
         [SerializeField] private int _maxMana;
@@ -29,6 +31,7 @@ namespace Player
         public event Action OnManaChanged;
         public event Action OnSpellChanged;
 
+        private List<Spell> _spellList = new List<Spell>();
         private int _currentSpellIndex;
         private Spell _currentSelectedSpell;
         private int _currentMana;
@@ -42,18 +45,15 @@ namespace Player
         public Spell CurrentSelectedSpell { get { return _currentSelectedSpell; }}
 
         // Set current spell to first in list
-        private void Awake()
+        private void Start()
         {
             _currentSpellIndex = 0;
-            _currentSelectedSpell = _spellList[_currentSpellIndex];
+            // _currentSelectedSpell = _spellList[_currentSpellIndex];
             _currentMana = _maxMana;
             OnManaChanged += onManaChanged.Invoke;
             OnSpellChanged += onSpellChanged.Invoke;
             Debug.Log(_spellList.Count);
-        }
-        private void Start()
-        {
-            OnSpellChanged.Invoke();
+            // OnSpellChanged.Invoke();
         }
 
         private void OnEnable()
@@ -72,6 +72,8 @@ namespace Player
         // current spell, play audio
         private void CastSpell(InputAction.CallbackContext context)
         {
+            if (_spellList.Count <= 0) { return; }
+
             _manaCost = _currentSelectedSpell.Cost;
 
             if (_currentMana >= _manaCost)
@@ -91,6 +93,8 @@ namespace Player
         // Check if out of bounds, then append spell list index accordingly
         private void NextSpell(InputAction.CallbackContext context)
         {
+            if (_spellList.Count <= 0) { return; }
+
             if (_currentSpellIndex < _spellList.Count - 1)
             {
                 _currentSpellIndex++;
@@ -100,6 +104,21 @@ namespace Player
             OnSpellChanged.Invoke();
             Debug.Log("Using: " + _spellList[_currentSpellIndex]);
             SoundManager.Instance.PlaySound2D("NextSpell");
+        }
+
+        public void AddSpellToList(Spell spell)
+        {
+            if (!_spellList.Contains(spell))
+            {
+                _spellList.Add(spell);
+
+                if (_spellList.Count <= 1)
+                {
+                    _currentSelectedSpell = _spellList[_currentSpellIndex];
+                }
+
+                OnSpellChanged.Invoke();
+            }
         }
 
         // Check if mana is less than max, then regenerate

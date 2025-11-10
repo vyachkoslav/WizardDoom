@@ -18962,10 +18962,6 @@ MonoBehaviour:
   castSpellAction: {fileID: -4957478515478436546, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   nextSpellAction: {fileID: -6646960622630018294, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   _projectileSpawn: {fileID: 697707538}
-  _spellList:
-  - {fileID: 11400000, guid: 800a3aa81968147bdbea239f1003281f, type: 2}
-  - {fileID: 11400000, guid: 4f75c806cb2d34134a17d5db49edf3b8, type: 2}
-  - {fileID: 11400000, guid: 00d0c5542329a48bfaaf885cee60208d, type: 2}
   _maxMana: 100
   _manaRegenPerSecond: 5
   onManaChanged:
@@ -28421,7 +28417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
