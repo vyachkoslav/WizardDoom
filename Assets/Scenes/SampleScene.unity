@@ -19090,6 +19090,7 @@ GameObject:
   - component: {fileID: 1160555489}
   - component: {fileID: 1160555490}
   - component: {fileID: 1160555492}
+  - component: {fileID: 1160555493}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -19288,6 +19289,21 @@ MonoBehaviour:
   playerEntity: {fileID: 1160555491}
   Player: {fileID: 1160555483}
   Weapon: {fileID: 1160555485}
+--- !u!114 &1160555493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160555481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ace9c2d17e93b42f7bfe6a884d1ea9de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player.PlayerFootsteps
+  playerControls: {fileID: 1160555483}
+  soundLibrary: {fileID: 1581908287}
+  stepIntervalinSeconds: 0.3
 --- !u!4 &1180200466 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8663360151887524142, guid: f57ab4b8c0ffece4f971c5eefb09c713, type: 3}
@@ -22334,6 +22350,9 @@ MonoBehaviour:
   - groupID: PlayerDamage
     clips:
     - {fileID: 8300000, guid: 238754b6c77cd468bad1bb631d7f15eb, type: 3}
+  - groupID: PlayerFootstep
+    clips:
+    - {fileID: 8300000, guid: 9ad4eeceaafe94120b35f456b6ca43dd, type: 3}
 --- !u!4 &1581908288
 Transform:
   m_ObjectHideFlags: 0

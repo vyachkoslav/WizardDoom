@@ -972,106 +972,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 610975046}
   m_CullTransparentMesh: 1
---- !u!1 &611240216
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 611240219}
-  - component: {fileID: 611240218}
-  - component: {fileID: 611240217}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &611240217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 611240216}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38d31f1ad7c71df42819deab4625c3db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
-  sfxLibary: {fileID: 611240218}
-  sfx2DSource: {fileID: 706529376}
---- !u!114 &611240218
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 611240216}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48616b962bd247b4fb4e31590cd41a87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SoundLibrary
-  soundEffects:
-  - groupID: MachinegunFire
-    clips:
-    - {fileID: 8300000, guid: 6aec1e4358d5d449790cb4897fc26333, type: 3}
-  - groupID: ShotgunFire
-    clips:
-    - {fileID: 8300000, guid: f0f5b5f59e2b24748ada5cf6a931cb4f, type: 3}
-  - groupID: WeaponEmpty
-    clips:
-    - {fileID: 8300000, guid: fb9b3b6b0734e4d3d80dafb3542405c6, type: 3}
-  - groupID: WeaponReload
-    clips:
-    - {fileID: 8300000, guid: c8062ec68b7db424e918e4391a4a48d2, type: 3}
-  - groupID: Cast
-    clips:
-    - {fileID: 8300000, guid: a64822dbcb63e9c4f87ad5f6a4d80a57, type: 3}
-  - groupID: NextSpell
-    clips:
-    - {fileID: 8300000, guid: 8acb1632e204143ed98f7b4831e676bc, type: 3}
-  - groupID: FireballExplosion
-    clips:
-    - {fileID: 8300000, guid: d6d8d9c0cba854ebfb5bfd2ade580542, type: 3}
-  - groupID: LifestealStart
-    clips:
-    - {fileID: 8300000, guid: 33128a017e1a24c309bee927c69b06a4, type: 3}
-  - groupID: LifestealEnd
-    clips:
-    - {fileID: 8300000, guid: 346f9d33fe9e54858bbff4bfb879aff4, type: 3}
-  - groupID: Timefreeze
-    clips:
-    - {fileID: 8300000, guid: 5ea93c0a15ab44b0286e7ad4d805921c, type: 3}
-  - groupID: EnemyRangedAttack
-    clips:
-    - {fileID: 8300000, guid: 27035812b68bf4d438326d50baef231e, type: 3}
-  - groupID: EnemyMeleeAttack
-    clips:
-    - {fileID: 8300000, guid: a6c4a5c3cc9e3a94e856723fe5dbfa36, type: 3}
-  - groupID: PlayerDamage
-    clips:
-    - {fileID: 8300000, guid: 238754b6c77cd468bad1bb631d7f15eb, type: 3}
---- !u!4 &611240219
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 611240216}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.18773, y: 0, z: 5.15775}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 706529377}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &621388939
 GameObject:
   m_ObjectHideFlags: 0
@@ -1361,7 +1261,7 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &706529375
+--- !u!1 &771825936
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1369,8 +1269,44 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 706529377}
-  - component: {fileID: 706529376}
+  - component: {fileID: 771825937}
+  m_Layer: 5
+  m_Name: Fill Area
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &771825937
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771825936}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 55451273}
+  m_Father: {fileID: 942716014}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.25}
+  m_AnchorMax: {x: 1, y: 0.75}
+  m_AnchoredPosition: {x: -5, y: 0}
+  m_SizeDelta: {x: -20, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &783153072
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 783153074}
+  - component: {fileID: 783153073}
   m_Layer: 0
   m_Name: SFXSource
   m_TagString: Untagged
@@ -1378,13 +1314,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!82 &706529376
+--- !u!82 &783153073
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 706529375}
+  m_GameObject: {fileID: 783153072}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -1475,57 +1411,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!4 &706529377
+--- !u!4 &783153074
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 706529375}
+  m_GameObject: {fileID: 783153072}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 611240219}
+  m_Father: {fileID: 1114857169}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &771825936
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 771825937}
-  m_Layer: 5
-  m_Name: Fill Area
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &771825937
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 771825936}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 55451273}
-  m_Father: {fileID: 942716014}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.25}
-  m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -5, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &788607517
 GameObject:
   m_ObjectHideFlags: 0
@@ -7036,6 +6936,109 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1008015425}
   m_CullTransparentMesh: 1
+--- !u!1 &1114857166
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1114857169}
+  - component: {fileID: 1114857168}
+  - component: {fileID: 1114857167}
+  m_Layer: 0
+  m_Name: 'AudioManager '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1114857167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114857166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d31f1ad7c71df42819deab4625c3db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
+  sfxLibary: {fileID: 1114857168}
+  sfx2DSource: {fileID: 783153073}
+--- !u!114 &1114857168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114857166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48616b962bd247b4fb4e31590cd41a87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundLibrary
+  soundEffects:
+  - groupID: MachinegunFire
+    clips:
+    - {fileID: 8300000, guid: 6aec1e4358d5d449790cb4897fc26333, type: 3}
+  - groupID: ShotgunFire
+    clips:
+    - {fileID: 8300000, guid: f0f5b5f59e2b24748ada5cf6a931cb4f, type: 3}
+  - groupID: WeaponEmpty
+    clips:
+    - {fileID: 8300000, guid: fb9b3b6b0734e4d3d80dafb3542405c6, type: 3}
+  - groupID: WeaponReload
+    clips:
+    - {fileID: 8300000, guid: c8062ec68b7db424e918e4391a4a48d2, type: 3}
+  - groupID: Cast
+    clips:
+    - {fileID: 8300000, guid: a64822dbcb63e9c4f87ad5f6a4d80a57, type: 3}
+  - groupID: NextSpell
+    clips:
+    - {fileID: 8300000, guid: 8acb1632e204143ed98f7b4831e676bc, type: 3}
+  - groupID: FireballExplosion
+    clips:
+    - {fileID: 8300000, guid: d6d8d9c0cba854ebfb5bfd2ade580542, type: 3}
+  - groupID: LifestealStart
+    clips:
+    - {fileID: 8300000, guid: 33128a017e1a24c309bee927c69b06a4, type: 3}
+  - groupID: LifestealEnd
+    clips:
+    - {fileID: 8300000, guid: 346f9d33fe9e54858bbff4bfb879aff4, type: 3}
+  - groupID: Timefreeze
+    clips:
+    - {fileID: 8300000, guid: 5ea93c0a15ab44b0286e7ad4d805921c, type: 3}
+  - groupID: EnemyRangedAttack
+    clips:
+    - {fileID: 8300000, guid: 27035812b68bf4d438326d50baef231e, type: 3}
+  - groupID: EnemyMeleeAttack
+    clips:
+    - {fileID: 8300000, guid: a6c4a5c3cc9e3a94e856723fe5dbfa36, type: 3}
+  - groupID: PlayerDamage
+    clips:
+    - {fileID: 8300000, guid: 238754b6c77cd468bad1bb631d7f15eb, type: 3}
+  - groupID: PlayerFootstep
+    clips:
+    - {fileID: 8300000, guid: 9ad4eeceaafe94120b35f456b6ca43dd, type: 3}
+--- !u!4 &1114857169
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114857166}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.18773, y: 0, z: 5.15775}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 783153074}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1146516980
 GameObject:
   m_ObjectHideFlags: 0
@@ -8641,4 +8644,4 @@ SceneRoots:
   - {fileID: 324062849}
   - {fileID: 851625753}
   - {fileID: 1359473287}
-  - {fileID: 611240219}
+  - {fileID: 1114857169}
