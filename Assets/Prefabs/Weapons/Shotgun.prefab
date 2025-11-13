@@ -277,6 +277,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7240063734399280224}
   - component: {fileID: 7350588960978213840}
+  - component: {fileID: 2246337221368956460}
   m_Layer: 6
   m_Name: Shotgun
   m_TagString: Untagged
@@ -325,6 +326,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2246337221368956460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3955386897127769008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17d346f7027cb4968b8a81d45fb7a0ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player.Weapons.WeaponMove
+  _animator: {fileID: 7350588960978213840}
 --- !u!1 &6476724870033945295
 GameObject:
   m_ObjectHideFlags: 0

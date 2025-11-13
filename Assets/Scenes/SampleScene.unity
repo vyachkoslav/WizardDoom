@@ -19301,9 +19301,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ace9c2d17e93b42f7bfe6a884d1ea9de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player.PlayerFootsteps
-  playerControls: {fileID: 1160555483}
-  soundLibrary: {fileID: 1581908287}
-  stepIntervalinSeconds: 0.3
+  _playerControls: {fileID: 1160555483}
+  _stepIntervalInSeconds: 0.3
 --- !u!4 &1180200466 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8663360151887524142, guid: f57ab4b8c0ffece4f971c5eefb09c713, type: 3}
