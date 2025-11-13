@@ -16,7 +16,7 @@ MonoBehaviour:
   maxLoadedAmmo: 30
   maxAmmo: 5000
   fireRateSeconds: 0.085
-  reloadTimeSeconds: 0.4
+  reloadTimeSeconds: 0.5
   damage: 15
   isAutomatic: 1
   recoilSmoothTime: 0.1

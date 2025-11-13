@@ -78,6 +78,7 @@ namespace Player.Weapons
                     CurrentAmmo += CurrentLoadedAmmo;
                     CurrentLoadedAmmo = 0;
                     SoundManager.Instance.PlaySound2D("WeaponReload");
+                    WeaponObject.GetComponent<Animator>().SetTrigger("TrEmptyReload");
                     var startTime = Time.time;
                     while (isReloading)
                     {
