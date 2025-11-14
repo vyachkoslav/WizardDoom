@@ -4,19 +4,13 @@ public class MusicManager : MonoBehaviour
 {
 
     private static float musicVolume = 1;
-    public float MusicVolume { get { return musicVolume; } set { musicVolume = value; } }
+    public float MusicVolume { get { return musicVolume; } set { musicVolume = musicSource.volume = value; } }
     
     private static MusicManager _instance;
     [SerializeField] private MusicLibrary musicLibrary;
     [SerializeField] private AudioSource musicSource;
 
     public static MusicManager Instance { get { return _instance; } }
-
-    private void Update()
-    {
-        musicSource.volume = musicVolume;
-    }
-
 
     private void Start()
     {
