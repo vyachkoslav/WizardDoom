@@ -6,7 +6,7 @@ public class MainMenu : MonoBehaviour
     public void Start()
     {
         //Put the Game Music List Here
-        MusicManager.Instance.PlayMusic("TestSong");
+        //MusicManager.Instance.PlayMusic("TestSong");
     }
 
     public void StartGame()

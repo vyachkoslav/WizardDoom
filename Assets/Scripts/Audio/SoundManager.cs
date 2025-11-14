@@ -7,6 +7,10 @@ public class SoundManager : MonoBehaviour
 
     public static SoundManager Instance { get { return _instance; } }
 
+    private static float sfxvolume = 1;
+    public float SFXvolume { get { return sfxvolume; } set { sfxvolume = value; } }
+
+
     [SerializeField]
     private SoundLibrary sfxLibary;
     [SerializeField]
@@ -29,7 +33,7 @@ public class SoundManager : MonoBehaviour
     {
         if (clip != null)
         {
-            AudioSource.PlayClipAtPoint(clip, pos);
+            AudioSource.PlayClipAtPoint(clip, pos, sfxvolume);
         }
     }
 
@@ -43,7 +47,12 @@ public class SoundManager : MonoBehaviour
     //Used for 2D sounds, like menu sounds
     public void PlaySound2D(string soundName)
     {
-        sfx2DSource.PlayOneShot(sfxLibary.GetClipFromName(soundName));
+        sfx2DSource.PlayOneShot(sfxLibary.GetClipFromName(soundName), sfxvolume);
+    }
+
+        public void UpdateSFXVolume(float value)
+    {
+        sfxvolume = value;
     }
 
 
