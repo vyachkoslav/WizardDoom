@@ -43,12 +43,9 @@ namespace Player
         private void Start()
         {
             _currentSpellIndex = 0;
-            // _currentSelectedSpell = _spellList[_currentSpellIndex];
             _currentMana = _maxMana;
             OnManaChanged += onManaChanged.Invoke;
             OnSpellChanged += onSpellChanged.Invoke;
-            Debug.Log(_spellList.Count);
-            // OnSpellChanged.Invoke();
         }
 
         private void OnEnable()
@@ -80,7 +77,6 @@ namespace Player
                     OnManaChanged.Invoke();
                     _currentSelectedSpell.Cast();
                     SoundManager.Instance.PlaySound2D("Cast");
-                    Debug.Log("Current mana: " + _currentMana);
                 }
             }
         }
@@ -103,7 +99,6 @@ namespace Player
             else { _currentSpellIndex = 0; }
             _currentSelectedSpell = _spellList[_currentSpellIndex];
             OnSpellChanged.Invoke();
-            Debug.Log("Using: " + _spellList[_currentSpellIndex]);
             SoundManager.Instance.PlaySound2D("NextSpell");
         }
 
@@ -140,7 +135,6 @@ namespace Player
             OnManaChanged.Invoke();
             yield return new WaitForSeconds(1);
             _manaRegen = false;
-            Debug.Log("Current mana: " + _currentMana);
         }
     }
 }

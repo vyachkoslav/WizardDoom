@@ -31,7 +31,6 @@ public class FireballExplosion : Explosion
                 return;
             }
 
-            Debug.Log("Exploded " + target);
             Entity entity = target.transform.GetComponent<Entity>();
             entity?.ApplyDamage(_damage);
         }

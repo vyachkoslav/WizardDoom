@@ -12,8 +12,6 @@ public class TimefreezeProjectile : Projectile
     protected override void Awake()
     {
         base.Awake();
-        // TODO sfx
-        // SoundManager.Instance.PlaySound3D("Timefreeze", transform.position);
     }
 
     // Initializes stats for timefreeze projectile

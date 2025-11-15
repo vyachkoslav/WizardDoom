@@ -30,7 +30,6 @@ public class TimefreezeExplosion : Explosion
             }
 
             Debug.Log("Frozen " + target);
-            Debug.Log(_durationInSeconds);
             target.GetComponent<EnemyTimefreeze>().ApplyTimefreeze(_durationInSeconds);
         }
         Destroy(this.gameObject);
