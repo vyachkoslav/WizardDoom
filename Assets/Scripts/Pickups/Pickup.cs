@@ -26,8 +26,13 @@ public abstract class Pickup : MonoBehaviour
     {
         _model.SetActive(false);
         _collider.enabled = false;
-        yield return new WaitForSeconds(_respawnTimeInSeconds);
-        _model.SetActive(true);
-        _collider.enabled = true;
+        
+        if (_respawnTimeInSeconds != 0)
+        {
+            yield return new WaitForSeconds(_respawnTimeInSeconds);
+            _model.SetActive(true);
+            _collider.enabled = true;
+        }
+        else { yield break;}
     }
 }

@@ -29,6 +29,7 @@ public class AmmoPickup : Pickup
                 weapon.AddAmmo(_ammoToAdd);
             }
 
+            // SoundManager.Instance.PlaySound3D("AmmoPickup", transform.position);
             StartCoroutine(Respawn());
         }
     }
