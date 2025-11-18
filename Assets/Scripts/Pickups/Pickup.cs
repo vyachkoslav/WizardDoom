@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Pickup : MonoBehaviour
 {
     [SerializeField] protected Collider _collider;
-    [SerializeField] protected MeshRenderer _meshRenderer;
+    [SerializeField] protected GameObject _model;
 
     [Header("Stats")]
     [SerializeField] protected Vector3 _rotationAxis;
@@ -24,10 +24,10 @@ public abstract class Pickup : MonoBehaviour
     // Handle pickup respawning
     protected virtual IEnumerator Respawn()
     {
-        _meshRenderer.enabled = false;
+        _model.SetActive(false);
         _collider.enabled = false;
         yield return new WaitForSeconds(_respawnTimeInSeconds);
-        _meshRenderer.enabled = true;
+        _model.SetActive(true);
         _collider.enabled = true;
     }
 }

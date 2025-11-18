@@ -159,8 +159,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthPickup
   _collider: {fileID: 6432264961135075138}
-  _meshRenderer: {fileID: 5680264337948046099}
+  _model: {fileID: 1603328233546294014}
   _rotationAxis: {x: 0, y: 1, z: 0}
   _rotationSpeed: 50
   _respawnTimeInSeconds: 3
-  _health: 20
+  _healthToAdd: 20

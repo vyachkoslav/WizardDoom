@@ -22,6 +22,7 @@ namespace Player
 
         private int currentWeaponIndex = -1;
         public Weapon CurrentWeapon => availableWeapons[currentWeaponIndex];
+        public List<Weapon> AvailableWeapons => availableWeapons;
 
         private void Awake()
         {

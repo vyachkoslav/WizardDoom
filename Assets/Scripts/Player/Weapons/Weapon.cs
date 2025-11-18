@@ -61,5 +61,15 @@ namespace Player.Weapons
         public abstract void StartShooting();
         public abstract void StopShooting();
         public abstract void Reload();
+
+        // Don't let player get more ammo than max
+        public virtual void AddAmmo(int ammoToAdd)
+        {
+            CurrentAmmo += ammoToAdd;
+            if (CurrentAmmo > maxAmmo) 
+            { 
+                CurrentAmmo = maxAmmo; 
+            }
+        }
     }
 }

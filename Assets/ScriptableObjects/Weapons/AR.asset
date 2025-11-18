@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player.Weapons.TestWeapon
   weaponPrefab: {fileID: 4503104358237778821, guid: 32d0759fb64784a60a1bdab1615d0a44, type: 3}
   maxLoadedAmmo: 30
-  maxAmmo: 5000
+  maxAmmo: 180
   fireRateSeconds: 0.085
   reloadTimeSeconds: 0.5
   damage: 15
