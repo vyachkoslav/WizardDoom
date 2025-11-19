@@ -165,6 +165,7 @@ namespace Player.Weapons
         {
             CurrentLoadedAmmo--;
             WeaponObject.GetComponent<Animator>().SetTrigger("TrShoot");
+            PlayerEntity.Instance.gameObject.GetComponent<MuzzleFlash>().ActivateMuzzleFlash();
 
             //Soundmanagment for different guns
             if (!isAutomatic)
