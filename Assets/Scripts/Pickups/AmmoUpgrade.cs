@@ -22,7 +22,7 @@ public class AmmoUpgrade : Pickup
         foreach (Weapon weapon in _weaponList)
         {
             weapon.CurrentAmmo += _maxAmmoToAdd;
-            weapon.MaxAmmo += _maxAmmoToAdd;
+            weapon.MaxCarriableAmmo += _maxAmmoToAdd;
             // SoundManager.Instance.PlaySound3D("PickupGet", transform.position);
         }
     }

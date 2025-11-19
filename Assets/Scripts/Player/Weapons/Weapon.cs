@@ -10,8 +10,6 @@ namespace Player.Weapons
         
         [SerializeField] private GameObject weaponPrefab;
         
-
-    
         [Header("Stats")]
         [SerializeField] protected int maxLoadedAmmo;
         [SerializeField] protected int maxAmmo;
@@ -19,9 +17,11 @@ namespace Player.Weapons
         [SerializeField] protected float reloadTimeSeconds;
         [SerializeField] protected float damage;
 
+        private int maxCarriableAmmo;
+
         public int CurrentLoadedAmmo { get; protected set; }
         public int CurrentAmmo { get; set; }
-        public int MaxAmmo { get { return maxAmmo; } set { maxAmmo = value;} }
+        public int MaxCarriableAmmo { get { return maxCarriableAmmo; } set { maxCarriableAmmo = value;} }
         
         protected GameObject WeaponObject;
 
@@ -39,6 +39,7 @@ namespace Player.Weapons
             WeaponObject.SetActive(false);
             ShootOrigin = shootOrigin;
             RecoilController = recoilController;
+            maxCarriableAmmo = maxAmmo - maxLoadedAmmo;
             OnSpawn();
         }
         
@@ -62,14 +63,14 @@ namespace Player.Weapons
         public abstract void StartShooting();
         public abstract void StopShooting();
         public abstract void Reload();
-
+        
         // Don't let player get more ammo than max
         public virtual void AddAmmo(int ammoToAdd)
         {
             CurrentAmmo += ammoToAdd;
-            if (CurrentAmmo > maxAmmo) 
+            if (CurrentAmmo > maxCarriableAmmo) 
             { 
-                CurrentAmmo = maxAmmo; 
+                CurrentAmmo = maxCarriableAmmo; 
             }
         }
     }
