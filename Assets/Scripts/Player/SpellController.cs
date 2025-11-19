@@ -33,11 +33,13 @@ namespace Player
         private int _manaCost;
 
         private bool _manaRegen = false;
+        private float _regenSpeedInSeconds = 1f;
 
         public Transform ProjectileSpawn { get { return _projectileSpawn; } }
         public float MaxMana { get { return _maxMana; } }
         public float CurrentMana { get { return _currentMana; } }
         public Spell CurrentSelectedSpell { get { return _currentSelectedSpell; }}
+        public float RegenSpeedInSeconds { get { return _regenSpeedInSeconds; } set {_regenSpeedInSeconds = value; } }
 
         // Set current spell to first in list
         private void Start()
@@ -138,7 +140,7 @@ namespace Player
                 _currentMana = _maxMana;
             }
             OnManaChanged.Invoke();
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(_regenSpeedInSeconds);
             _manaRegen = false;
         }
     }
