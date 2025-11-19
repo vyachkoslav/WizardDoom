@@ -20,7 +20,7 @@ namespace Player.Weapons
         [SerializeField] protected float damage;
 
         public int CurrentLoadedAmmo { get; protected set; }
-        public int CurrentAmmo { get; protected set; }
+        public int CurrentAmmo { get; set; }
         
         protected GameObject WeaponObject;
 

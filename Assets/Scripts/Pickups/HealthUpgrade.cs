@@ -19,5 +19,6 @@ public class HealthUpgrade : Pickup
     {
         _player.MaxHealth += _maxHealthToAdd;
         _healthBar.UpdateStats();
+        // SoundManager.Instance.PlaySound3D("PickupGet", transform.position);
     }
 }

@@ -3,27 +3,26 @@ using Player;
 using Player.Weapons;
 using UnityEngine;
 
-public class AmmoPickup : Pickup
+public class AmmoUpgrade : Pickup
 {
-    [SerializeField] private int _ammoToAdd;
-
-    private GameObject _player;
+    [SerializeField] private int _maxAmmoToAdd;
+    
+    private PlayerEntity _player;
     private List<Weapon> _weaponList;
 
-    // Get list of player weapons
     private void Start()
     {
-        _player = PlayerEntity.Instance.gameObject;
+        _player = PlayerEntity.Instance;
         _weaponList = _player.GetComponent<WeaponController>().AvailableWeapons;
     }
 
-    // Add ammo to player upon contact
+    // Add to player's max ammo
     protected override void PickupEffect()
     {
         foreach (Weapon weapon in _weaponList)
         {
-            weapon.AddAmmo(_ammoToAdd);
+            weapon.CurrentAmmo += _maxAmmoToAdd;
+            // SoundManager.Instance.PlaySound3D("PickupGet", transform.position);
         }
-        // SoundManager.Instance.PlaySound3D("PickupGet", transform.position);
     }
 }
