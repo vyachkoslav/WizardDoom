@@ -1,4 +1,5 @@
 using System.Collections;
+using Player;
 using UnityEngine;
 
 // Abstract class for pickups like hp, ammo
@@ -18,21 +19,28 @@ public abstract class Pickup : MonoBehaviour
         transform.RotateAround(transform.position, _rotationAxis, _rotationSpeed * Time.deltaTime);
     }
 
-    // Handle pickup functionality
-    protected abstract void OnTriggerEnter(Collider _);
+    // Handle collision with player, disappear pickup and respawn if needed
+    protected virtual void OnTriggerEnter(Collider _)
+    {
+        var target = _.gameObject;
+
+        if (target == PlayerEntity.Instance.gameObject)
+        {
+            PickupEffect();
+            _model.SetActive(false);
+            _collider.enabled = false;
+            if (_respawnTimeInSeconds > 0) { StartCoroutine(Respawn()); }
+        }
+    }
+
+    // Implement pickup functionality in extending classes
+    protected abstract void PickupEffect();
 
     // Handle pickup respawning
     protected virtual IEnumerator Respawn()
     {
-        _model.SetActive(false);
-        _collider.enabled = false;
-        
-        if (_respawnTimeInSeconds != 0)
-        {
-            yield return new WaitForSeconds(_respawnTimeInSeconds);
-            _model.SetActive(true);
-            _collider.enabled = true;
-        }
-        else { yield break;}
+        yield return new WaitForSeconds(_respawnTimeInSeconds);
+        _model.SetActive(true);
+        _collider.enabled = true;
     }
 }

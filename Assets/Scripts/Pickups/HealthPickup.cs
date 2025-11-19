@@ -6,15 +6,9 @@ public class HealthPickup : Pickup
     [SerializeField] private float _healthToAdd;
 
     // Apply health to player
-    protected override void OnTriggerEnter(Collider _)
+    protected override void PickupEffect()
     {
-        var target = _.gameObject;
-
-        if (target == PlayerEntity.Instance.gameObject)
-        {
-            PlayerEntity.Instance.ApplyHealing(_healthToAdd);
-            // SoundManager.Instance.PlaySound3D("HealthPickup", transform.position);
-            StartCoroutine(Respawn());
-        }
+        PlayerEntity.Instance.ApplyHealing(_healthToAdd);
+        // SoundManager.Instance.PlaySound3D("HealthPickup", transform.position);
     }
 }

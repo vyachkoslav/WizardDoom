@@ -18,19 +18,12 @@ public class AmmoPickup : Pickup
     }
 
     // Add ammo to player upon contact
-    protected override void OnTriggerEnter(Collider _)
+    protected override void PickupEffect()
     {
-        var target = _.gameObject;
-
-        if (target == _player)
+        foreach (Weapon weapon in _weaponList)
         {
-            foreach (Weapon weapon in _weaponList)
-            {
-                weapon.AddAmmo(_ammoToAdd);
-            }
-
-            // SoundManager.Instance.PlaySound3D("AmmoPickup", transform.position);
-            StartCoroutine(Respawn());
+            weapon.AddAmmo(_ammoToAdd);
         }
+        // SoundManager.Instance.PlaySound3D("AmmoPickup", transform.position);
     }
 }
