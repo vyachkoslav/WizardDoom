@@ -21,6 +21,7 @@ namespace Player.Weapons
 
         public int CurrentLoadedAmmo { get; protected set; }
         public int CurrentAmmo { get; set; }
+        public int MaxAmmo { get { return maxAmmo; } set { maxAmmo = value;} }
         
         protected GameObject WeaponObject;
 
