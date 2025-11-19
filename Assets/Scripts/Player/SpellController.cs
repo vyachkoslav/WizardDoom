@@ -113,6 +113,11 @@ namespace Player
             }
         }
 
+        public void AddMaxMana(int manaToAdd)
+        {
+            _maxMana += manaToAdd;
+        }
+
         // Check if mana is less than max, then regenerate
         private void Update()
         {

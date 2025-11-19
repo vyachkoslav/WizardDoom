@@ -2,10 +2,10 @@ using Player;
 using Player.UI;
 using UnityEngine;
 
-public class HealthUpgrade : Pickup
+public class ManaUpgrade : Pickup
 {
-    [SerializeField] private float _maxHealthToAdd;
-    [SerializeField] private HealthUI _healthBar;
+    [SerializeField] private int _maxManaToAdd;
+    [SerializeField] private ManaUI _manaBar;
 
     private PlayerEntity _player;
 
@@ -14,11 +14,11 @@ public class HealthUpgrade : Pickup
         _player = PlayerEntity.Instance;
     }
 
-    // Add to player's max health
+    // Add to player's max mana
     protected override void PickupEffect()
     {
-        _player.MaxHealth += _maxHealthToAdd;
-        _healthBar.UpdateMaxHealth();
+        _player.GetComponent<SpellController>().AddMaxMana(_maxManaToAdd);
+        _manaBar.UpdateMaxMana();
         // SoundManager.Instance.PlaySound3D("PickupGet", transform.position);
     }
 }

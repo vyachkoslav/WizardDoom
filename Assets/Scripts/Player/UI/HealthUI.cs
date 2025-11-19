@@ -73,7 +73,7 @@ namespace Player.UI
         private void OnHealthDecreased()
         {
             healthSlider.value = PlayerEntity.Instance.Health;
-            UpdateStats();
+            UpdateMaxHealth();
 
             // damageFlash visible, reset duration timer for Update()
             damageFlash.color = new Color(damageFlash.color.r, damageFlash.color.g, damageFlash.color.b, damageMaxAlpha);
@@ -87,7 +87,7 @@ namespace Player.UI
         private void OnHealthIncreased()
         {
             healthSlider.value = PlayerEntity.Instance.Health;
-            UpdateStats();
+            UpdateMaxHealth();
 
             // Heal flash visible, reset timer
             healFlash.color = new Color(healFlash.color.r, healFlash.color.g, healFlash.color.b, healmaxAlpha);
@@ -98,7 +98,7 @@ namespace Player.UI
             damageFlashDurationTimer = 0;
         }
 
-        public void UpdateStats()
+        public void UpdateMaxHealth()
         {
             healthSlider.maxValue = PlayerEntity.Instance.MaxHealth;
             healthText.text = "Health: " + healthSlider.value + "/" + healthSlider.maxValue;
