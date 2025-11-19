@@ -1,11 +1,13 @@
 using UnityEngine.UI;
 using UnityEngine;
+using TMPro;
 
 namespace Player.UI
 {
     public class HealthUI : MonoBehaviour
     {
         [SerializeField] private Slider healthSlider;
+        [SerializeField] private TMP_Text healthText;
 
         [Header("Damage and heal visuals")]
         [SerializeField] private Image damageFlash;
@@ -28,6 +30,8 @@ namespace Player.UI
             healthSlider.maxValue = PlayerEntity.Instance.MaxHealth;
 
             healthSlider.value = PlayerEntity.Instance.Health;
+
+            healthText.text = "Health: " + healthSlider.value + "/" + healthSlider.maxValue;
 
             // Store max alpha value and then set damage and heal flash invisible
             damageMaxAlpha = damageFlash.color.a;
@@ -69,6 +73,7 @@ namespace Player.UI
         private void OnHealthDecreased()
         {
             healthSlider.value = PlayerEntity.Instance.Health;
+            UpdateStats();
 
             // damageFlash visible, reset duration timer for Update()
             damageFlash.color = new Color(damageFlash.color.r, damageFlash.color.g, damageFlash.color.b, damageMaxAlpha);
@@ -82,6 +87,7 @@ namespace Player.UI
         private void OnHealthIncreased()
         {
             healthSlider.value = PlayerEntity.Instance.Health;
+            UpdateStats();
 
             // Heal flash visible, reset timer
             healFlash.color = new Color(healFlash.color.r, healFlash.color.g, healFlash.color.b, healmaxAlpha);
@@ -90,6 +96,12 @@ namespace Player.UI
             // Make damage flash invisible
             damageFlash.color = new Color(damageFlash.color.r, damageFlash.color.g, damageFlash.color.b, 0);
             damageFlashDurationTimer = 0;
+        }
+
+        public void UpdateStats()
+        {
+            healthSlider.maxValue = PlayerEntity.Instance.MaxHealth;
+            healthText.text = "Health: " + healthSlider.value + "/" + healthSlider.maxValue;
         }
     }
 }
