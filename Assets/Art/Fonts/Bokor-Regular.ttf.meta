@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: aff81becf327970489c76d82d4ee36d6
+guid: e003cf317518160469c700b0e7076750
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,10 +9,10 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Faith Collapsing
+  - Bokor
   fallbackFontReferences: []
   customCharacters: 
-  fontRenderingMode: 0
+  fontRenderingMode: 2
   ascentCalculationMode: 1
   useLegacyBoundsCalculation: 0
   shouldRoundAdvanceValue: 1
