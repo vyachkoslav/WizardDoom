@@ -187,7 +187,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6718151276195734093}
-  - component: {fileID: 8608914983393036452}
+  - component: {fileID: 7197783616378965725}
   - component: {fileID: 5654890364049360697}
   m_Layer: 0
   m_Name: AmmoPickup
@@ -212,8 +212,8 @@ Transform:
   - {fileID: 1184456430560278}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &8608914983393036452
-CapsuleCollider:
+--- !u!135 &7197783616378965725
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -230,10 +230,8 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5654890364049360697
 MonoBehaviour:
@@ -247,7 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7958b7b08d4f145ca9312bf08b616c9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AmmoPickup
-  _collider: {fileID: 8608914983393036452}
+  _collider: {fileID: 7197783616378965725}
   _model: {fileID: 8526415395088159918}
   _rotationAxis: {x: 0, y: 1, z: 0}
   _rotationSpeed: 50

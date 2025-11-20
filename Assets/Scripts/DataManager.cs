@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class DataManager : MonoBehaviour
@@ -11,6 +12,19 @@ public class DataManager : MonoBehaviour
     {
         get { return isLifeStealActive; }
         set { isLifeStealActive = value; }
+    }
+
+    // Player's key collection
+    private static List<Key> keyList = new List<Key>();
+    public List<Key> KeyList { get {return keyList; } }
+
+    public void AddKeyToList(Key key)
+    {
+        if (!keyList.Contains(key))
+        {
+            keyList.Add(key);
+        }
+        foreach (Key k in keyList){Debug.Log(k);}
     }
 
     private void Awake()
