@@ -28,10 +28,10 @@ namespace Enemy
             };
         }
 
-        public override void AttackOnce(AttackData attackData)
+        public override void AttackOnce(Func<AttackData> data, CancellationToken cancellationToken)
         {
-            var collisionHandler = CreateCollisionHandler(() => attackData); // todo
-            Attack(attackData, collisionHandler);
+            var collisionHandler = CreateCollisionHandler(data);
+            Attack(data(), collisionHandler);
         }
 
         public override IDisposable StartAttacking(Func<AttackData> attackData)
@@ -77,7 +77,6 @@ namespace Enemy
             LinearProjectile.Spawn(projectilePrefab,
                 data.WeaponPosition, directionToPrediction, Quaternion.LookRotation(direction),
                 projectileSpeed, projectileRange, collisionHandler);
-            InvokeAttacked();
         }
     }
 }

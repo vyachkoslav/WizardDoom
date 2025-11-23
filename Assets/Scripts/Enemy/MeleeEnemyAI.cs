@@ -24,7 +24,6 @@ public class MeleeEnemyAI : BaseEnemyAI
             TargetEntity = playerEntity,
             TargetPosition = player.transform.position,
         };
-        attack.OnAttacked += OnAttacked.Invoke;
     }
 
     protected override void Start()

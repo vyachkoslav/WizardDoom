@@ -6,6 +6,7 @@ using UnityEngine.Assertions;
 public class NecromancerAI : BaseEnemyAI
 {
     [SerializeField] private Attack attack;
+    
     [SerializeField] private float fleeTriggerRange = 3f;
     [SerializeField] private float attackRange = 5f;
     
@@ -29,7 +30,6 @@ public class NecromancerAI : BaseEnemyAI
             TargetPosition = player.transform.position,
             TargetSpeed = playerCharController.velocity,
         };
-        attack.OnAttacked += OnAttacked.Invoke;
     }
 
     private void OnDisable()

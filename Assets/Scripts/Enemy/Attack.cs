@@ -40,14 +40,7 @@ namespace Enemy
         protected float Damage => damage;
 
 
-        public event Action OnAttacked;
-
         public abstract IDisposable StartAttacking(Func<AttackData> attackData);
-        public abstract void AttackOnce(AttackData attackData);
-
-        protected void InvokeAttacked()
-        {
-            OnAttacked?.Invoke();
-        }
+        public abstract void AttackOnce(Func<AttackData> data, CancellationToken cancellationToken);
     }
 }

@@ -25,7 +25,7 @@ public abstract class BaseEnemyAI : MonoBehaviour
     private float rotationSpeed;
     [SerializeField] private float stopDuration = 1f;
     
-    public UnityEvent OnAttacked;
+    public UnityEvent OnAttacked = new();
 
     // Virtual-keyword allows inheriting classes to override
     protected virtual void Start()

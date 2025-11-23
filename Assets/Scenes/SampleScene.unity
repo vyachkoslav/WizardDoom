@@ -20031,7 +20031,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9de921c807af4c7ba406d565273bdf12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player.PlayerEntity
-  maxHealth: 100
+  maxHealth: 10000
   onHealthDecreased:
     m_PersistentCalls:
       m_Calls: []
@@ -31069,7 +31069,7 @@ MonoBehaviour:
   OnAttacked:
     m_PersistentCalls:
       m_Calls: []
-  attack: {fileID: 11400000, guid: 998e195629429b941b46fc363eaf4ada, type: 2}
+  attack: {fileID: 11400000, guid: 48b74cb9b5ff7ae4ab3c1b9f5e43ae55, type: 2}
   fleeTriggerRange: 3
   attackRange: 10
 --- !u!1660057539 &9223372036854775807

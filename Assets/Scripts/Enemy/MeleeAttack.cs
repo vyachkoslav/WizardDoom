@@ -9,8 +9,9 @@ namespace Enemy
     {
         [SerializeField] private float attackRange;
         
-        public override void AttackOnce(AttackData attackData)
+        public override void AttackOnce(Func<AttackData> getAttackData, CancellationToken cancellationToken)
         {
+            var attackData = getAttackData();
             if (Vector3.Distance(attackData.TargetPosition, attackData.WeaponPosition) <= attackRange)
                 Attack(attackData);
         }
@@ -57,7 +58,6 @@ namespace Enemy
         {
             SoundManager.Instance.PlaySound3D("EnemyMeleeAttack", data.WeaponPosition);
             data.TargetEntity.ApplyDamage(Damage);
-            InvokeAttacked();
         }
     }
 }

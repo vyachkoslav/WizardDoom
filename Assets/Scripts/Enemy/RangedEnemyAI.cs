@@ -32,7 +32,6 @@ public class RangedEnemyAI : BaseEnemyAI
             TargetPosition = player.transform.position,
             TargetSpeed = playerCharController.velocity
         };
-        attack.OnAttacked += OnAttacked.Invoke;
     }
 
     private void OnDisable()
