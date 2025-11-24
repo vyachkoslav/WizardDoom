@@ -13,8 +13,7 @@ GameObject:
   - component: {fileID: 8523968313935513238}
   - component: {fileID: 6964903134281052072}
   - component: {fileID: 999655989906603026}
-  - component: {fileID: 4226075488819383293}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,20 +144,6 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &4226075488819383293
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1761982907212263974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b93f00936a984cd3a30d05ce0ea77df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Door
-  _key: {fileID: 0}
-  _hingeJoint: {fileID: 999655989906603026}
 --- !u!1 &9011192681721154118
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,7 +155,7 @@ GameObject:
   - component: {fileID: 6144053428790614721}
   - component: {fileID: 8365273526135507917}
   - component: {fileID: 2015574476966449186}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DoorModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
