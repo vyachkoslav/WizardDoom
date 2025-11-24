@@ -19,7 +19,7 @@ public abstract class BaseEnemyAI : MonoBehaviour
     protected bool obstacleBlocksVision => detectPlayer.ObstacleBlocksVision;
     protected bool IsAttacking { get; private set; }
     protected float distanceToPlayer => Vector3.Distance(transform.position, player.transform.position);
-    protected Vector3 lastKnownPlayerPosition;
+    protected Vector3 lastKnownPlayerPosition = Vector3.negativeInfinity;
 
     
     private float rotationSpeed;
@@ -40,6 +40,8 @@ public abstract class BaseEnemyAI : MonoBehaviour
     protected void LookAtPlayer()
     {
         // Rotates enemy to look at the last known player location
+        if (lastKnownPlayerPosition.sqrMagnitude > 10000f)
+            return;
         Vector3 directionToLook = lastKnownPlayerPosition - transform.position;
         Quaternion targetRotation = Quaternion.LookRotation(directionToLook);
         transform.rotation = targetRotation;

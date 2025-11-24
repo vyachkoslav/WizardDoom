@@ -15,9 +15,9 @@ MonoBehaviour:
   delayBetweenAttacks: 4
   damage: 10
   aoePrefab: {fileID: 6192162193539411909, guid: e4e33174c552ac346ac8041f6b1cd234, type: 3}
-  aoeDuration: 3
+  aoeDuration: 8
   aoeDelayBetweenDamage: 0.2
   delayBeforeDamage: 0.5
   aoeSpawnMaxDispersion: 0.5
-  aoeRange: 4
+  aoeRange: 6
   yPositionForAoe: 0
