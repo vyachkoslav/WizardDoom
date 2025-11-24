@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: abbeceec88e04ee288dac150e04256b8, type: 3}
-  m_Name: Necromancer spawn attack
+  m_Name: Necromancer ranged spawn attack
   m_EditorClassIdentifier: Assembly-CSharp::Enemy.EnemySpawnAttack
   delayBetweenAttacks: 3
   damage: 0
-  enemyPrefab: {fileID: 3210546729803314872, guid: 149d0c3621f49534687da9861499814c, type: 3}
-  distanceBetweenSpawns: 1
-  enemyAmount: 3
-  yPositionForSpawn: 0
+  enemyPrefab: {fileID: 5750608459987162048, guid: e3eb76f468a37ff418fdd50c8a54c9b8, type: 3}
+  distanceBetweenSpawns: 2
+  enemyAmount: 2
+  yPositionForSpawn: 0.87
