@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Assertions;
 using UnityEngine.Events;
+using Utils;
 
 public abstract class BaseEnemyAI : MonoBehaviour
 {
@@ -40,9 +41,9 @@ public abstract class BaseEnemyAI : MonoBehaviour
     protected void LookAtPlayer()
     {
         // Rotates enemy to look at the last known player location
-        if (lastKnownPlayerPosition.sqrMagnitude > 10000f)
+        if (lastKnownPlayerPosition.sqrMagnitude > 1000000f)
             return;
-        Vector3 directionToLook = lastKnownPlayerPosition - transform.position;
+        Vector3 directionToLook = (lastKnownPlayerPosition - transform.position).WithY(0);
         Quaternion targetRotation = Quaternion.LookRotation(directionToLook);
         transform.rotation = targetRotation;
     }
