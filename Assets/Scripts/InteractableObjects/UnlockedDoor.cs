@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class UnlockedDoor : Interactable
 {
@@ -19,5 +20,10 @@ public class UnlockedDoor : Interactable
         // SoundManager.Instance.PlaySound3D("DoorOpen", transform.position);
         yield return new WaitForSeconds(_doorOpenTimeInSeconds);
         _hingeJoint.useSpring = false;
+    }
+
+    public override string DisplayText()
+    {
+        return "Press '" + interactAction.action.GetBindingDisplayString() + "' to open door";
     }
 }

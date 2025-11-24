@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Key : Pickup
 {
+    [SerializeField] private string _keyName;
     private ItemsUI _itemsDisplay; 
 
     private void Start()
@@ -14,5 +15,10 @@ public class Key : Pickup
     {
         DataManager.Instance.AddKeyToList(this);
         _itemsDisplay.UpdateItemDisplay(this);
+    }
+
+    public override string ToString()
+    {
+        return _keyName;
     }
 }

@@ -1,6 +1,6 @@
 using System.Collections;
-using Player;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class LockedDoor : Interactable
 {
@@ -25,5 +25,14 @@ public class LockedDoor : Interactable
         // SoundManager.Instance.PlaySound3D("DoorOpen", transform.position);
         yield return new WaitForSeconds(_doorOpenTimeInSeconds);
         _hingeJoint.useSpring = false;
+    }
+
+    public override string DisplayText()
+    {
+        if (DataManager.Instance.KeyList.Contains(_key))
+        {
+            return "Press '" + interactAction.action.GetBindingDisplayString() + "' to unlock door.";
+        }
+        else { return "Find '" + _key.ToString() + "' to unlock door."; }
     }
 }

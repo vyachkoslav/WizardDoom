@@ -1,7 +1,10 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public abstract class Interactable : MonoBehaviour
 {
+    [SerializeField] protected InputActionReference interactAction;
+
     protected bool _canInteract;
     public bool CanInteract { get { return _canInteract; } }
 
@@ -15,4 +18,6 @@ public abstract class Interactable : MonoBehaviour
     {
         _canInteract = false; // Use base.Interact in the end to disable interaction
     }
+
+    public abstract string DisplayText(); // Display text on player HUD about the interaction
 }
