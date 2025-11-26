@@ -24387,7 +24387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e03cc655efaa2244184a6ebf6acb6146, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PauseMenu
-  playerEntity: {fileID: 0}
+  playerEntity: {fileID: 1160555491}
   pauseMenu: {fileID: 1680984643}
   Player: {fileID: 1160555483}
   Weapon: {fileID: 1160555485}
@@ -30323,6 +30323,7 @@ MonoBehaviour:
   obstacleLayerMask:
     serializedVersion: 2
     m_Bits: 512
+  myRoom: {fileID: 0}
 --- !u!4 &3112976191598525018
 Transform:
   m_ObjectHideFlags: 0

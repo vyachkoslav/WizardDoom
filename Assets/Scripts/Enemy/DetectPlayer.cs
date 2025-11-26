@@ -22,6 +22,8 @@ public class DetectPlayer : MonoBehaviour
     public bool HasLineOfSight { get => hasLineOfSight; }
     public bool ObstacleBlocksVision {  get => obstacleBlocksVision; }
 
+    [SerializeField] private RoomManager myRoom;
+
     void Start()
     {
         target = PlayerEntity.Instance.gameObject;
@@ -29,11 +31,20 @@ public class DetectPlayer : MonoBehaviour
 
     void FixedUpdate()
     {
-        // If either method returns true, player is detected
-        if (ProximityDetection() || LineOfSightDetection())
+        // Get info from room this enemy is located in
+        if (myRoom.IsPlayerInRoom)
         {
-            playerIsDetected = true;
-            hasLineOfSight = LineOfSightDetection();
+            // If either method returns true, player is detected
+            if (ProximityDetection() || LineOfSightDetection())
+            {
+                playerIsDetected = true;
+                hasLineOfSight = LineOfSightDetection();
+            }
+            else
+            {
+                playerIsDetected = false;
+                hasLineOfSight = false;
+            }
         }
         else
         {

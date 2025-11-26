@@ -45,14 +45,18 @@ public class MeleeEnemyAI : BaseEnemyAI
 
     private void Update()
     {
-        if (playerIsDetected)
+        if (myRoom.IsPlayerInRoom)
         {
-            lastKnownPlayerPosition = player.transform.position;
-            agent.SetDestination(player.transform.position);
+            if (playerIsDetected)
+            {
+                lastKnownPlayerPosition = player.transform.position;
+                agent.SetDestination(player.transform.position);
+            }
+            else
+            {
+                LookAtPlayer();
+            }
         }
-        else
-        {
-            LookAtPlayer();
-        }
+        else { agent.SetDestination(startLocation); }
     }
 }

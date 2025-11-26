@@ -60,54 +60,58 @@ public class RangedEnemyAI : BaseEnemyAI
     {
         fleeDistance = attackRange - fleeTriggerRange;
 
-        if (playerIsDetected)
+        if (myRoom.IsPlayerInRoom)
         {
-            lastKnownPlayerPosition = player.transform.position;
-
-            if (hasLineOfSight)
+            if (playerIsDetected)
             {
-                sawPlayer = true;
-            }
+                lastKnownPlayerPosition = player.transform.position;
 
-            if (isInAttackRange && !obstacleBlocksVision)
-            {
-                if (distanceToPlayer < fleeTriggerRange)
+                if (hasLineOfSight)
                 {
-                    // Makes enemy flee directly away from player by a fixed distance
-                    Vector3 directionAwayFromPlayer = -(player.transform.position - transform.position).normalized;
-                    Vector3 fleePosition = transform.position + directionAwayFromPlayer * fleeDistance;
-                    isFleeing = true;
-                    agent.SetDestination(fleePosition);
+                    sawPlayer = true;
                 }
-                else if (!isFleeing && !IsAttacking)
-                {
-                    agent.ResetPath();
-                    PerformAttack();
-                }
-            }
-            else if (!isInAttackRange && !isFleeing && !IsAttacking || obstacleBlocksVision)
-            {
-                agent.SetDestination(player.transform.position);
-            }
-        }
-        
-        if (IsAttacking && (!isInAttackRange || isFleeing || obstacleBlocksVision))
-        {
-            attackRoutine.Dispose();
-            attackRoutine = null;
-            OnEndAttacking();
-        }
-        if (IsDestinationReached())
-        {
-            isFleeing = false;
-            LookAtPlayer();
 
-            if (sawPlayer && !hasLineOfSight)
+                if (isInAttackRange && !obstacleBlocksVision)
+                {
+                    if (distanceToPlayer < fleeTriggerRange)
+                    {
+                        // Makes enemy flee directly away from player by a fixed distance
+                        Vector3 directionAwayFromPlayer = -(player.transform.position - transform.position).normalized;
+                        Vector3 fleePosition = transform.position + directionAwayFromPlayer * fleeDistance;
+                        isFleeing = true;
+                        agent.SetDestination(fleePosition);
+                    }
+                    else if (!isFleeing && !IsAttacking)
+                    {
+                        agent.ResetPath();
+                        PerformAttack();
+                    }
+                }
+                else if (!isInAttackRange && !isFleeing && !IsAttacking || obstacleBlocksVision)
+                {
+                    agent.SetDestination(player.transform.position);
+                }
+            }
+            
+            if (IsAttacking && (!isInAttackRange || isFleeing || obstacleBlocksVision))
             {
-                agent.SetDestination(lastKnownPlayerPosition);
-                sawPlayer = false;
+                attackRoutine.Dispose();
+                attackRoutine = null;
+                OnEndAttacking();
+            }
+            if (IsDestinationReached())
+            {
+                isFleeing = false;
+                LookAtPlayer();
+
+                if (sawPlayer && !hasLineOfSight)
+                {
+                    agent.SetDestination(lastKnownPlayerPosition);
+                    sawPlayer = false;
+                }
             }
         }
+        else { agent.SetDestination(startLocation); }
     }
 
     private void OnDrawGizmos()

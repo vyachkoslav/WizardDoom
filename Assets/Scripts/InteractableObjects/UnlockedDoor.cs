@@ -1,12 +1,10 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
 public class UnlockedDoor : Interactable
 {
     [SerializeField] private HingeJoint _hingeJoint;
-    [SerializeField] private NavMeshObstacle _navMeshObstacle;
     [SerializeField] private float _doorOpenTimeInSeconds = 1f;
 
     public override void Interact()
@@ -21,7 +19,6 @@ public class UnlockedDoor : Interactable
         _hingeJoint.useSpring = true;
         // SoundManager.Instance.PlaySound3D("DoorOpen", transform.position);
         yield return new WaitForSeconds(_doorOpenTimeInSeconds);
-        _navMeshObstacle.carving = false;
         _hingeJoint.useSpring = false;
     }
 
