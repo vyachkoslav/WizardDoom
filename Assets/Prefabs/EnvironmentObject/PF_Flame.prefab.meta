@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c14c94f4c1c004c4db9a29d80a1ef822
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 203664
+  packageName: Old Torch
+  packageVersion: 1.0.0
+  assetPath: Assets/Old Torch/Prefab/PF_Flame.prefab
+  uploadId: 478580

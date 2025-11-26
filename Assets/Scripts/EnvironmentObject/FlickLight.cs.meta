@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 706b8fedf367d7d428b423cd8d725643
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 203664
+  packageName: Old Torch
+  packageVersion: 1.0.0
+  assetPath: Assets/Old Torch/Script/FlickLight.cs
+  uploadId: 478580

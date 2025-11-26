@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6bce94b90fc7bcb48a509e80d03ac628
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 203664
+  packageName: Old Torch
+  packageVersion: 1.0.0
+  assetPath: Assets/Old Torch/Material/Flame_Material.mat
+  uploadId: 478580
