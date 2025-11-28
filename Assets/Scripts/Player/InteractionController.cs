@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 namespace Player
 {
-    public class InteractionControls : MonoBehaviour
+    public class InteractionController : MonoBehaviour
     {
         [SerializeField] private InputActionReference interactAction;
         [SerializeField] private Collider _playerCollider;

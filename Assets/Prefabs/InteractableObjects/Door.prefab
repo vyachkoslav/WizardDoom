@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6964903134281052072}
   - component: {fileID: 999655989906603026}
   - component: {fileID: 1166723697867806370}
+  - component: {fileID: 7582122284727522916}
   m_Layer: 10
   m_Name: Door
   m_TagString: Untagged
@@ -77,7 +78,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 2, y: 2, z: 1.5}
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!54 &6964903134281052072
 Rigidbody:
@@ -161,6 +162,22 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 1, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &7582122284727522916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761982907212263974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06b0ebd4d25a948f4ac2c7c647555c07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Door
+  interactAction: {fileID: 1781555164194001046, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  _doorCollider: {fileID: 616470515843482847}
+  _hingeJoint: {fileID: 999655989906603026}
+  _doorBufferInSeconds: 0.5
 --- !u!1 &9011192681721154118
 GameObject:
   m_ObjectHideFlags: 0
