@@ -58,6 +58,7 @@ public class RangedEnemyAI : BaseEnemyAI
 
     private void Update()
     {
+        animator.SetBool("isWalking", agent.hasPath);
         fleeDistance = attackRange - fleeTriggerRange;
 
         if (myRoom.IsPlayerInRoom)

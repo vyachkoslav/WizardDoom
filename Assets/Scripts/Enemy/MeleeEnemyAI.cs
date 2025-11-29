@@ -47,6 +47,8 @@ public class MeleeEnemyAI : BaseEnemyAI
 
     private void Update()
     {
+        animator.SetBool("isWalking", agent.hasPath);
+
         if (myRoom.IsPlayerInRoom)
         {
             if (playerIsDetected)

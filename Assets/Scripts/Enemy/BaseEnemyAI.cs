@@ -65,6 +65,7 @@ public abstract class BaseEnemyAI : MonoBehaviour
     {
         Assert.IsFalse(IsAttacking);
         IsAttacking = true;
+        animator.SetBool("isAttacking", IsAttacking);
     }
 
     protected void OnAttack()
