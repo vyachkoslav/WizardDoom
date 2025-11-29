@@ -9,7 +9,7 @@ using UnityEngine;
 public class MeleeEnemyAI : BaseEnemyAI
 {
     [SerializeField] private Attack attack;
-    
+
     private IDisposable attackRoutine;
     private Func<Attack.AttackData> getAttackData;
 
@@ -34,6 +34,8 @@ public class MeleeEnemyAI : BaseEnemyAI
 
     private void OnEnable()
     {
+        animator = gameObject.transform.Find("Model").GetComponent<Animator>();
+
         // Always attack
         attackRoutine = attack.StartAttacking(getAttackData);
     }

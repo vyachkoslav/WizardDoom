@@ -129,6 +129,7 @@ MonoBehaviour:
   obstacleLayerMask:
     serializedVersion: 2
     m_Bits: 512
+  myRoom: {fileID: 0}
 --- !u!195 &1114088589149806059
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -164,6 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MeleeEnemyAI
   stopDuration: 0.5
+  myRoom: {fileID: 0}
   OnAttacked:
     m_PersistentCalls:
       m_Calls: []
@@ -254,7 +256,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: eba757e030da43741b9c71f0fb32d604, type: 2}
     - target: {fileID: 919132149155446097, guid: 495671230c985804dac8154125e7b874, type: 3}
       propertyPath: m_Name
-      value: skeleton_model
+      value: Model
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

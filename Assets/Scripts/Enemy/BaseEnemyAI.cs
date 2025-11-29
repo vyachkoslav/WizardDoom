@@ -14,6 +14,7 @@ public abstract class BaseEnemyAI : MonoBehaviour
     protected NavMeshAgent agent { get; private set; }
     protected GameObject player { get; private set; }
     protected Entity playerEntity { get; private set; }
+    protected Animator animator;
     protected bool playerIsDetected => detectPlayer.PlayerIsDetected;
     protected bool hasLineOfSight => detectPlayer.HasLineOfSight;
     protected bool sawPlayer;
@@ -35,6 +36,7 @@ public abstract class BaseEnemyAI : MonoBehaviour
     protected virtual void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        animator = gameObject.transform.Find("Model").GetComponent<Animator>();
         playerEntity = PlayerEntity.Instance;
         player = playerEntity.gameObject;
         detectPlayer = GetComponent<DetectPlayer>();
@@ -88,5 +90,6 @@ public abstract class BaseEnemyAI : MonoBehaviour
 
         if (!IsAttacking)
             agent.isStopped = false;
+            animator.SetBool("isAttacking", IsAttacking);
     }
 }
