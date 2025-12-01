@@ -32,7 +32,7 @@ public class DetectPlayer : MonoBehaviour
     void FixedUpdate()
     {
         // Get info from room this enemy is located in
-        if (myRoom.IsPlayerInRoom)
+        if (myRoom?.IsPlayerInRoom != false)
         {
             // If either method returns true, player is detected
             if (ProximityDetection() || LineOfSightDetection())

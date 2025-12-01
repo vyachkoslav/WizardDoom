@@ -26,9 +26,11 @@ public abstract class BaseEnemyAI : MonoBehaviour
     private float rotationSpeed;
     protected Vector3 startLocation;
 
+    [SerializeField] protected float delayBeforeAttack;
     [SerializeField] private float stopDuration = 1f;
     [SerializeField] protected RoomManager myRoom;
     
+    public UnityEvent OnBeforeAttackDelay = new();
     public UnityEvent OnAttacked = new();
 
     // Virtual-keyword allows inheriting classes to override
@@ -46,7 +48,7 @@ public abstract class BaseEnemyAI : MonoBehaviour
     protected void LookAtPlayer()
     {
         // Rotates enemy to look at the last known player location
-        if (lastKnownPlayerPosition.sqrMagnitude > 1000000f)
+        if (lastKnownPlayerPosition.sqrMagnitude > 1000000f || (lastKnownPlayerPosition - transform.position).sqrMagnitude < 0.1f)
             return;
         Vector3 directionToLook = (lastKnownPlayerPosition - transform.position).WithY(0);
         Quaternion targetRotation = Quaternion.LookRotation(directionToLook);
@@ -74,7 +76,8 @@ public abstract class BaseEnemyAI : MonoBehaviour
     {
         Assert.IsTrue(IsAttacking);
         IsAttacking = false;
-        stopAttackCoroutine ??= StartCoroutine(StopAttackingRoutine());
+        agent.isStopped = false;
+        // stopAttackCoroutine ??= StartCoroutine(StopAttackingRoutine());
     }
 
     private IEnumerator StopAttackingRoutine()

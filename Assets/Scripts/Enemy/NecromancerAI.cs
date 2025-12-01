@@ -2,6 +2,7 @@ using System;
 using Enemy;
 using UnityEngine;
 using UnityEngine.Assertions;
+using static Enemy.Attack;
 
 public class NecromancerAI : BaseEnemyAI
 {
@@ -13,15 +14,15 @@ public class NecromancerAI : BaseEnemyAI
     private float fleeDistance;
     private bool isInAttackRange => distanceToPlayer <= attackRange;
     private bool isFleeing = false;
-    private Func<Attack.AttackData> getAttackData;
-    private IDisposable attackRoutine;
+    private Func<AttackData> getAttackData;
+    private CancelableAttack attacker;
 
     protected override void Start()
     {
         base.Start();
         var selfEntity = GetComponent<IEntity>();
         var playerCharController = player.GetComponent<CharacterController>();
-        getAttackData = () => new Attack.AttackData()
+        getAttackData = () => new AttackData()
         {
             WeaponPosition = transform.position,
             WeaponForward = transform.forward,
@@ -30,11 +31,22 @@ public class NecromancerAI : BaseEnemyAI
             TargetPosition = player.transform.position,
             TargetSpeed = playerCharController.velocity,
         };
+        attacker = attack.CreateAttacker(getAttackData, delayBeforeAttack);
+        attacker.OnAttack += OnAttacked.Invoke;
+        attacker.OnBeforeAttackDelay += OnBeforeAttackDelay.Invoke;
     }
 
     private void OnDisable()
     {
-        attackRoutine?.Dispose();
+        if (!IsAttacking) return;
+
+        OnEndAttacking();
+        attacker?.Pause();
+    }
+
+    private void OnDestroy()
+    {
+        attacker?.Dispose();
     }
 
     private void PerformAttack()
@@ -45,10 +57,9 @@ public class NecromancerAI : BaseEnemyAI
         {
             if (!IsAttacking)
             {
-                Assert.IsNull(attackRoutine);
                 OnStartAttacking();
                 agent.isStopped = true;
-                attackRoutine = attack.StartAttacking(getAttackData);
+                attacker.Start();
             }
         } 
     }
@@ -92,8 +103,7 @@ public class NecromancerAI : BaseEnemyAI
         
         if (IsAttacking && (!isInAttackRange || obstacleBlocksVision))
         {
-            attackRoutine.Dispose();
-            attackRoutine = null;
+            attacker.Pause();
             OnEndAttacking();
         }
         if (IsDestinationReached())

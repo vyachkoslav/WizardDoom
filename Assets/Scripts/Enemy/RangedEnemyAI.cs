@@ -2,6 +2,7 @@ using System;
 using Enemy;
 using UnityEngine;
 using UnityEngine.Assertions;
+using static Enemy.Attack;
 
 /* TODO:
 - after losing line of sight of player and moving to last known player location, enemy rotates toward direction where player went
@@ -15,15 +16,15 @@ public class RangedEnemyAI : BaseEnemyAI
     private float fleeDistance;
     private bool isInAttackRange => distanceToPlayer <= attackRange;
     private bool isFleeing = false;
-    private Func<Attack.AttackData> getAttackData;
-    private IDisposable attackRoutine;
+    private Func<AttackData> getAttackData;
+    private CancelableAttack attacker;
 
     protected override void Start()
     {
         base.Start();
         var selfEntity = GetComponent<IEntity>();
         var playerCharController = player.GetComponent<CharacterController>();
-        getAttackData = () => new Attack.AttackData()
+        getAttackData = () => new AttackData()
         {
             WeaponPosition = transform.position, // todo
             WeaponForward = transform.forward, // todo
@@ -32,11 +33,22 @@ public class RangedEnemyAI : BaseEnemyAI
             TargetPosition = player.transform.position,
             TargetSpeed = playerCharController.velocity
         };
+        attacker = attack.CreateAttacker(getAttackData, delayBeforeAttack);
+        attacker.OnAttack += OnAttacked.Invoke;
+        attacker.OnBeforeAttackDelay += OnBeforeAttackDelay.Invoke;
     }
 
     private void OnDisable()
     {
-        attackRoutine?.Dispose();
+        if (!IsAttacking) return;
+
+        OnEndAttacking();
+        attacker?.Pause();
+    }
+
+    private void OnDestroy()
+    {
+        attacker?.Dispose();
     }
 
     private void PerformAttack()
@@ -47,10 +59,9 @@ public class RangedEnemyAI : BaseEnemyAI
         {
             if (!IsAttacking)
             {
-                Assert.IsNull(attackRoutine);
                 OnStartAttacking();
                 agent.isStopped = true;
-                attackRoutine = attack.StartAttacking(getAttackData);
+                attacker.Start();
             }
         } 
     }
@@ -60,7 +71,7 @@ public class RangedEnemyAI : BaseEnemyAI
     {
         fleeDistance = attackRange - fleeTriggerRange;
 
-        if (myRoom.IsPlayerInRoom)
+        if (myRoom?.IsPlayerInRoom != false)
         {
             if (playerIsDetected)
             {
@@ -95,8 +106,7 @@ public class RangedEnemyAI : BaseEnemyAI
             
             if (IsAttacking && (!isInAttackRange || isFleeing || obstacleBlocksVision))
             {
-                attackRoutine.Dispose();
-                attackRoutine = null;
+                attacker.Pause();
                 OnEndAttacking();
             }
             if (IsDestinationReached())

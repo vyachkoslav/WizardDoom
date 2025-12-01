@@ -34,27 +34,36 @@ namespace Enemy
             Attack(data(), collisionHandler);
         }
 
-        public override IDisposable StartAttacking(Func<AttackData> attackData)
+        public override CancelableAttack CreateAttacker(Func<AttackData> attackData, float attackDelay)
         {
-            var cancellableAttack = new CancelableAttack();
-            _ = AttackRoutine(cancellableAttack.Token, attackData);
-            return cancellableAttack;
+            var handle = new CancelableAttack.Handle();
+            var cancelableAttack = new CancelableAttack(handle);
+            _ = AttackRoutine(cancelableAttack.Token, handle, attackDelay, attackData);
+            return cancelableAttack;
         }
         
-        private async Awaitable AttackRoutine(CancellationToken cancelToken, Func<AttackData> getAttackData)
+        private async Awaitable AttackRoutine(CancellationToken cancelToken, 
+                CancelableAttack.Handle handle,
+                float attackDelay,
+                Func<AttackData> getAttackData)
         {
             var collisionHandler = CreateCollisionHandler(getAttackData);
             try
             {
-                var lastShot = float.MinValue;
                 while (true)
                 {
-                    await Awaitable.NextFrameAsync(cancelToken);
+                    if (handle.Paused)
+                    {
+                        await Awaitable.NextFrameAsync(cancelToken);
+                        continue;
+                    }
 
-                    if (Time.time - lastShot < DelayBetweenAttacks) continue;
-                    lastShot = Time.time;
-
+                    handle.BeforeAttackDelay();
+                    await Awaitable.WaitForSecondsAsync(attackDelay, cancelToken);
+                    handle.Attacked();
                     Attack(getAttackData(), collisionHandler);
+
+                    await Awaitable.WaitForSecondsAsync(DelayBetweenAttacks, cancelToken);
                 }
             }
             catch (OperationCanceledException)

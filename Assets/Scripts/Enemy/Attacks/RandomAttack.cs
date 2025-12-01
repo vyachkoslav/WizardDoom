@@ -18,26 +18,39 @@ namespace Enemy
         
         public override void AttackOnce(Func<AttackData> data, CancellationToken cancellationToken)
         {
-            _ = AttackRoutine(cancellationToken, data, true);
+            _ = AttackRoutine(cancellationToken, null, 0, data);
             GetRandomAttack().AttackOnce(data, cancellationToken);
         }
 
-        public override IDisposable StartAttacking(Func<AttackData> attackData)
+        public override CancelableAttack CreateAttacker(Func<AttackData> attackData, float attackDelay)
         {
-            var cancellableAttack = new CancelableAttack();
-            _ = AttackRoutine(cancellableAttack.Token, attackData, false);
-            return cancellableAttack;
+            var handle = new CancelableAttack.Handle();
+            var cancelableAttack = new CancelableAttack(handle);
+            _ = AttackRoutine(cancelableAttack.Token, handle, attackDelay, attackData);
+            return cancelableAttack;
         }
         
-        private async Awaitable AttackRoutine(CancellationToken cancelToken, Func<AttackData> getAttackData, bool once)
+        private async Awaitable AttackRoutine(CancellationToken cancelToken, 
+                CancelableAttack.Handle handle,
+                float attackDelay,
+                Func<AttackData> getAttackData)
         {
             try
             {
                 while (true)
                 {
+                    if (handle?.Paused == true)
+                    {
+                        await Awaitable.NextFrameAsync(cancelToken);
+                        continue;
+                    }
+
+                    handle?.BeforeAttackDelay();
+                    await Awaitable.WaitForSecondsAsync(attackDelay, cancelToken);
+                    handle?.Attacked();
                     GetRandomAttack().AttackOnce(getAttackData, cancelToken);
 
-                    if (once) break;
+                    if (handle == null) break;
                     
                     await Awaitable.WaitForSecondsAsync(DelayBetweenAttacks, cancelToken);
                 }

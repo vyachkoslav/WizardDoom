@@ -1,6 +1,7 @@
 using System;
 using Enemy;
 using UnityEngine;
+using static Enemy.Attack;
 
 /* TODO:
 - make enemy only attack when facing player and only rotate towards player when not attacking
@@ -10,13 +11,13 @@ public class MeleeEnemyAI : BaseEnemyAI
 {
     [SerializeField] private Attack attack;
     
-    private IDisposable attackRoutine;
-    private Func<Attack.AttackData> getAttackData;
+    private CancelableAttack attacker;
+    private Func<AttackData> getAttackData;
 
     private void Awake()
     {
         var selfEntity = GetComponent<IEntity>();
-        getAttackData = () => new Attack.AttackData()
+        getAttackData = () => new AttackData()
         {
             WeaponPosition = transform.position,
             WeaponForward = transform.forward,
@@ -24,6 +25,9 @@ public class MeleeEnemyAI : BaseEnemyAI
             TargetEntity = playerEntity,
             TargetPosition = player.transform.position,
         };
+        attacker = attack.CreateAttacker(getAttackData, delayBeforeAttack);
+        attacker.OnAttack += OnAttacked.Invoke;
+        attacker.OnBeforeAttackDelay += OnBeforeAttackDelay.Invoke;
     }
 
     protected override void Start()
@@ -35,17 +39,22 @@ public class MeleeEnemyAI : BaseEnemyAI
     private void OnEnable()
     {
         // Always attack
-        attackRoutine = attack.StartAttacking(getAttackData);
+        attacker.Start();
     }
 
     private void OnDisable()
     {
-        attackRoutine?.Dispose();
+        attacker?.Pause();
+    }
+
+    private void OnDestroy()
+    {
+        attacker?.Dispose();
     }
 
     private void Update()
     {
-        if (myRoom.IsPlayerInRoom)
+        if (myRoom?.IsPlayerInRoom != false)
         {
             if (playerIsDetected)
             {

@@ -16,32 +16,47 @@ namespace Enemy
                 Attack(attackData);
         }
 
-        public override IDisposable StartAttacking(Func<AttackData> attackData)
+        public override CancelableAttack CreateAttacker(Func<AttackData> attackData, float attackDelay)
         {
-            var cancelableAttack = new CancelableAttack();
-            _ = AttackRoutine(cancelableAttack.Token, attackData);
+            var handle = new CancelableAttack.Handle();
+            var cancelableAttack = new CancelableAttack(handle);
+            _ = AttackRoutine(cancelableAttack.Token, handle, attackDelay, attackData);
             return cancelableAttack;
         }
 
-        private async Awaitable AttackRoutine(CancellationToken cancelToken, Func<AttackData> getAttackData)
+        private async Awaitable AttackRoutine(CancellationToken cancelToken, 
+                CancelableAttack.Handle handle,
+                float attackDelay,
+                Func<AttackData> getAttackData)
         {
             try
             {
                 var lastAttack = float.MinValue;
                 while (true)
                 {
-                    await Awaitable.NextFrameAsync(cancelToken);
-
-                    if (Time.time - lastAttack < DelayBetweenAttacks) 
+                    if (handle.Paused)
+                    {
+                        await Awaitable.NextFrameAsync(cancelToken);
                         continue;
+                    }
                     
                     var attackData = getAttackData();
                     if (Vector3.Distance(attackData.TargetPosition, attackData.WeaponPosition) > attackRange)
+                    {
+                        await Awaitable.NextFrameAsync(cancelToken);
                         continue;
+                    }
                     
                     lastAttack = Time.time;
-
+                    
+                    handle.BeforeAttackDelay();
+                    await Awaitable.WaitForSecondsAsync(attackDelay, cancelToken);
+                    if (Vector3.Distance(attackData.TargetPosition, attackData.WeaponPosition) > attackRange)
+                        continue;
+                    handle.Attacked();
                     Attack(attackData);
+
+                    await Awaitable.WaitForSecondsAsync(DelayBetweenAttacks, cancelToken);
                 }
             }
             catch (OperationCanceledException)

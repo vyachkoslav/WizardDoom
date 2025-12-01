@@ -22,19 +22,31 @@ namespace Enemy
             CreateAOE(data());
         }
 
-        public override IDisposable StartAttacking(Func<AttackData> attackData)
+        public override CancelableAttack CreateAttacker(Func<AttackData> attackData, float attackDelay)
         {
-            var cancellableAttack = new CancelableAttack();
-            _ = AttackRoutine(cancellableAttack.Token, attackData);
-            return cancellableAttack;
+            var handle = new CancelableAttack.Handle();
+            var cancelableAttack = new CancelableAttack(handle);
+            _ = AttackRoutine(cancelableAttack.Token, handle, attackDelay, attackData);
+            return cancelableAttack;
         }
         
-        private async Awaitable AttackRoutine(CancellationToken cancelToken, Func<AttackData> getAttackData)
+        private async Awaitable AttackRoutine(CancellationToken cancelToken, 
+                CancelableAttack.Handle handle,
+                float attackDelay,
+                Func<AttackData> getAttackData)
         {
             try
             {
                 while (true)
                 {
+                    if (handle.Paused)
+                    {
+                        await Awaitable.NextFrameAsync(cancelToken);
+                        continue;
+                    }
+                    handle.BeforeAttackDelay();
+                    await Awaitable.WaitForSecondsAsync(attackDelay, cancelToken);
+                    handle.Attacked();
                     CreateAOE(getAttackData());
                     await Awaitable.WaitForSecondsAsync(DelayBetweenAttacks, cancelToken);
                 }

@@ -6,10 +6,49 @@ namespace Enemy
 {
     public abstract class Attack : ScriptableObject
     {
-        protected class CancelableAttack : IDisposable
+        public class CancelableAttack : IDisposable
         {
+            public class Handle
+            {
+                public bool Paused = true;
+                public Action BeforeAttackDelay;
+                public Action Attacked;
+            }
+
             private readonly CancellationTokenSource cts = new();
             public CancellationToken Token => cts.Token;
+
+            public event Action OnBeforeAttackDelay;
+            public event Action OnAttack;
+
+            private readonly Handle handle;
+
+            public CancelableAttack(Handle handle)
+            {
+                this.handle = handle;
+                handle.Attacked += InvokeOnAttack;
+                handle.BeforeAttackDelay += InvokeOnBeforeDelay;
+            }
+
+            private void InvokeOnAttack()
+            {
+                OnAttack?.Invoke();
+            }
+
+            private void InvokeOnBeforeDelay()
+            {
+                OnBeforeAttackDelay?.Invoke();
+            }
+
+            public void Start()
+            {
+                handle.Paused = false;
+            }
+
+            public void Pause()
+            {
+                handle.Paused = true;
+            }
 
             public void Dispose()
             {
@@ -40,7 +79,7 @@ namespace Enemy
         protected float Damage => damage;
 
 
-        public abstract IDisposable StartAttacking(Func<AttackData> attackData);
+        public abstract CancelableAttack CreateAttacker(Func<AttackData> attackData, float attackDelay);
         public abstract void AttackOnce(Func<AttackData> data, CancellationToken cancellationToken);
     }
 }
