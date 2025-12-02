@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Enemy;
 using UnityEngine;
 using static Enemy.Attack;
@@ -38,12 +39,18 @@ public class MeleeEnemyAI : BaseEnemyAI
 
     private void OnEnable()
     {
+        animator = gameObject.transform.Find("Model").GetComponent<Animator>();
+        // Sets bool for animator
+        attacker.OnBeforeAttackDelay += StartAttackAnimation;
+
         // Always attack
         attacker.Start();
     }
 
     private void OnDisable()
     {
+        attacker.OnBeforeAttackDelay -= StartAttackAnimation;
+
         attacker?.Pause();
     }
 
@@ -54,6 +61,9 @@ public class MeleeEnemyAI : BaseEnemyAI
 
     private void Update()
     {
+        bool isWalking = agent.velocity.sqrMagnitude > 0.1f;
+        animator.SetBool("isWalking", isWalking);
+
         if (myRoom?.IsPlayerInRoom != false)
         {
             if (playerIsDetected)

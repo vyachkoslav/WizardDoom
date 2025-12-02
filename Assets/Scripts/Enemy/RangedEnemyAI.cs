@@ -36,6 +36,9 @@ public class RangedEnemyAI : BaseEnemyAI
         attacker = attack.CreateAttacker(getAttackData, delayBeforeAttack);
         attacker.OnAttack += OnAttacked.Invoke;
         attacker.OnBeforeAttackDelay += OnBeforeAttackDelay.Invoke;
+
+        // Sets bool for animator
+        attacker.OnBeforeAttackDelay += StartAttackAnimation;
     }
 
     private void OnDisable()
@@ -44,6 +47,8 @@ public class RangedEnemyAI : BaseEnemyAI
 
         OnEndAttacking();
         attacker?.Pause();
+
+        attacker.OnBeforeAttackDelay -= StartAttackAnimation;
     }
 
     private void OnDestroy()
@@ -69,6 +74,9 @@ public class RangedEnemyAI : BaseEnemyAI
 
     private void Update()
     {
+        bool isWalking = agent.velocity.sqrMagnitude > 0.1f;
+        animator.SetBool("isWalking", isWalking);
+
         fleeDistance = attackRange - fleeTriggerRange;
 
         if (myRoom?.IsPlayerInRoom != false)
