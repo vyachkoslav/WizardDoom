@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b667d4ed8dffc8041acf7418ad2b7dcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MeleeEnemyAI
-  delayBeforeAttack: 0
+  delayBeforeAttack: 0.4
   stopDuration: 0.5
   myRoom: {fileID: 0}
   OnBeforeAttackDelay:

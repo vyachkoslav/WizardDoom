@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd977f6195be8374ab3ca6a60a3d1585, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RangedEnemyAI
-  delayBeforeAttack: 0
+  delayBeforeAttack: 0.4
   stopDuration: 0.5
   myRoom: {fileID: 0}
   OnBeforeAttackDelay:
