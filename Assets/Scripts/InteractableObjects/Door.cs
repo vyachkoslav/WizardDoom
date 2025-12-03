@@ -28,7 +28,10 @@ public class Door : Interactable
 
     public override void Interact()
     {
-        StartCoroutine(OpenDoor());
+        if (!DataManager.Instance.IsFighting)
+        {
+            StartCoroutine(OpenDoor());
+        }
     }
 
     // For opening door
@@ -82,6 +85,13 @@ public class Door : Interactable
     // Display text on HUD
     public override string DisplayText()
     {
-        return "Press '" + interactAction.action.GetBindingDisplayString() + "' to open door.";
+        if (DataManager.Instance.IsFighting)
+        {
+            return "Defeat all enemies!";
+        }
+        else
+        {
+            return "Press '" + interactAction.action.GetBindingDisplayString() + "' to open door.";
+        }
     }
 }

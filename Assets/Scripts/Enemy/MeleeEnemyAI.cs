@@ -11,7 +11,7 @@ using static Enemy.Attack;
 public class MeleeEnemyAI : BaseEnemyAI
 {
     [SerializeField] private Attack attack;
-    
+
     private CancelableAttack attacker;
     private Func<AttackData> getAttackData;
 
@@ -64,18 +64,14 @@ public class MeleeEnemyAI : BaseEnemyAI
         bool isWalking = agent.velocity.sqrMagnitude > 0.1f;
         animator.SetBool("isWalking", isWalking);
 
-        if (myRoom?.IsPlayerInRoom != false)
+        if (playerIsDetected)
         {
-            if (playerIsDetected)
-            {
-                lastKnownPlayerPosition = player.transform.position;
-                agent.SetDestination(player.transform.position);
-            }
-            else
-            {
-                LookAtPlayer();
-            }
+            lastKnownPlayerPosition = player.transform.position;
+            agent.SetDestination(player.transform.position);
         }
-        else { agent.SetDestination(startLocation); }
+        else
+        {
+            LookAtPlayer();
+        }
     }
 }

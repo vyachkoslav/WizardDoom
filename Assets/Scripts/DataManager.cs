@@ -14,6 +14,14 @@ public class DataManager : MonoBehaviour
         set { isLifeStealActive = value; }
     }
 
+    // Is player in combat?
+    private static bool isFighting = false;
+    public bool IsFighting 
+    { 
+        get { return isFighting; } 
+        set { isFighting = value; }
+    }
+
     // Player's key collection
     private static List<Key> keyList = new List<Key>();
     public List<Key> KeyList { get {return keyList; } }
@@ -33,6 +41,25 @@ public class DataManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        else { _instance = this; }
+        else 
+        { 
+            _instance = this; 
+            DontDestroyOnLoad(this.gameObject);
+        }
+    }
+
+    // When player dies, variables related to in game events should be reset
+    public void ResetGameStats()
+    {
+        isLifeStealActive = false;
+        isFighting = false;
+    }
+
+    // Used when reseting everything
+    public void ResetAllStats()
+    {
+        ResetGameStats();
+
+        keyList.Clear();
     }
 }

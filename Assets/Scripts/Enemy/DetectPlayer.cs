@@ -51,6 +51,11 @@ public class DetectPlayer : MonoBehaviour
             playerIsDetected = false;
             hasLineOfSight = false;
         }
+
+        if (playerIsDetected)
+        {
+            DataManager.Instance.IsFighting = true;
+        }
     }
 
     public void DetectPlayerForSeconds(float timeSeconds)

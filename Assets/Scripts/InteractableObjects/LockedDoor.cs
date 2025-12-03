@@ -7,7 +7,7 @@ public class LockedDoor : Door
     public override void Interact()
     {
         // Check if assigned key is already obtained
-        if (DataManager.Instance.KeyList.Contains(_key))
+        if (!DataManager.Instance.IsFighting && DataManager.Instance.KeyList.Contains(_key))
         {
             StartCoroutine(OpenDoor());
         }
@@ -15,7 +15,11 @@ public class LockedDoor : Door
 
     public override string DisplayText()
     {
-        if (DataManager.Instance.KeyList.Contains(_key))
+        if (DataManager.Instance.IsFighting)
+        {
+            return "Defeat all enemies!";
+        }
+        else if (DataManager.Instance.KeyList.Contains(_key))
         {
             return base.DisplayText();
         }

@@ -511,7 +511,7 @@ PrefabInstance:
       objectReference: {fileID: 1117269571}
     - target: {fileID: 570413469243419509, guid: 9d49c30188430ea49b3394e7ccdf4998, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 570413469243419509, guid: 9d49c30188430ea49b3394e7ccdf4998, type: 3}
       propertyPath: m_LocalPosition.y
@@ -523,19 +523,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 570413469243419509, guid: 9d49c30188430ea49b3394e7ccdf4998, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.6354044
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 570413469243419509, guid: 9d49c30188430ea49b3394e7ccdf4998, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 570413469243419509, guid: 9d49c30188430ea49b3394e7ccdf4998, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.7721796
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 570413469243419509, guid: 9d49c30188430ea49b3394e7ccdf4998, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 570413469243419509, guid: 9d49c30188430ea49b3394e7ccdf4998, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -543,7 +543,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 570413469243419509, guid: 9d49c30188430ea49b3394e7ccdf4998, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -258.9
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 570413469243419509, guid: 9d49c30188430ea49b3394e7ccdf4998, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -557,11 +557,40 @@ PrefabInstance:
       propertyPath: m_Name
       value: Melee Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 6791439316894853510, guid: 9d49c30188430ea49b3394e7ccdf4998, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6791439316894853510, guid: 9d49c30188430ea49b3394e7ccdf4998, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1117269571}
+    - target: {fileID: 6791439316894853510, guid: 9d49c30188430ea49b3394e7ccdf4998, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RemoveEnemyFromList
+      objectReference: {fileID: 0}
+    - target: {fileID: 6791439316894853510, guid: 9d49c30188430ea49b3394e7ccdf4998, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RoomManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6791439316894853510, guid: 9d49c30188430ea49b3394e7ccdf4998, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 26911505}
+    - target: {fileID: 6791439316894853510, guid: 9d49c30188430ea49b3394e7ccdf4998, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d49c30188430ea49b3394e7ccdf4998, type: 3}
+--- !u!1 &26911505 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5944944523572578519, guid: 9d49c30188430ea49b3394e7ccdf4998, type: 3}
+  m_PrefabInstance: {fileID: 26911504}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &48392579
 GameObject:
   m_ObjectHideFlags: 0
@@ -985,7 +1014,7 @@ GameObject:
   - component: {fileID: 72324871}
   - component: {fileID: 72324870}
   - component: {fileID: 72324869}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Arch (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3247,7 +3276,7 @@ GameObject:
   - component: {fileID: 120343029}
   - component: {fileID: 120343028}
   - component: {fileID: 120343027}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Arch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6332,6 +6361,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AmmoPickup
       objectReference: {fileID: 0}
+    - target: {fileID: 3082999285264788505, guid: 1e587ed8c7b5d4d6b8dfa4c4871e0a20, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6718151276195734093, guid: 1e587ed8c7b5d4d6b8dfa4c4871e0a20, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3
@@ -8964,7 +8997,7 @@ GameObject:
   - component: {fileID: 458250825}
   - component: {fileID: 458250824}
   - component: {fileID: 458250823}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Stairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15085,7 +15118,7 @@ GameObject:
   - component: {fileID: 793219644}
   - component: {fileID: 793219643}
   - component: {fileID: 793219642}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Arch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17590,6 +17623,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Entrance key
       objectReference: {fileID: 0}
+    - target: {fileID: 30379801424850994, guid: fab356fb2c82547e7acb4f9df1ac2ea1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4570504115860037160, guid: fab356fb2c82547e7acb4f9df1ac2ea1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7
@@ -18434,7 +18471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9de921c807af4c7ba406d565273bdf12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player.PlayerEntity
-  maxHealth: 10000
+  maxHealth: 100
   onHealthDecreased:
     m_PersistentCalls:
       m_Calls: []
@@ -18458,8 +18495,8 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1722368985}
         m_TargetAssemblyTypeName: DataManager, Assembly-CSharp
-        m_MethodName: set_IsLifeStealActive
-        m_Mode: 6
+        m_MethodName: ResetGameStats
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -21638,6 +21675,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomManager
   _collider: {fileID: 1117269572}
+  _enemyList:
+  - {fileID: 26911505}
 --- !u!65 &1117269572
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22902,7 +22941,7 @@ GameObject:
   - component: {fileID: 1381014464}
   - component: {fileID: 1381014463}
   - component: {fileID: 1381014462}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Arch (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22945,7 +22984,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 1744126067}
+  m_Mesh: {fileID: 336746329}
 --- !u!33 &1381014463
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -25825,7 +25864,7 @@ GameObject:
   - component: {fileID: 1604150345}
   - component: {fileID: 1604150344}
   - component: {fileID: 1604150343}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Arch (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25868,7 +25907,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 812812677}
+  m_Mesh: {fileID: 63557830}
 --- !u!33 &1604150344
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -27994,6 +28033,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthPickup
       objectReference: {fileID: 0}
+    - target: {fileID: 2230468880369151597, guid: 7532697a7717b462a81080a78a0e1e9b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8128517308281287725, guid: 7532697a7717b462a81080a78a0e1e9b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3
@@ -28058,7 +28101,7 @@ GameObject:
   - component: {fileID: 1656532136}
   - component: {fileID: 1656532135}
   - component: {fileID: 1656532134}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Arch (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28101,7 +28144,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 336746329}
+  m_Mesh: {fileID: 812812677}
 --- !u!33 &1656532135
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -31218,6 +31261,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1722368985}
+        m_TargetAssemblyTypeName: DataManager, Assembly-CSharp
+        m_MethodName: ResetAllStats
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 878506273}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: OnMainMenuButtonClicked
