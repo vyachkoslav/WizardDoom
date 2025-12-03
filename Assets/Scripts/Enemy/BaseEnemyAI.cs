@@ -25,7 +25,6 @@ public abstract class BaseEnemyAI : MonoBehaviour
 
     
     private float rotationSpeed;
-    protected Vector3 startLocation;
 
     [SerializeField] protected float delayBeforeAttack;
     [SerializeField] private float stopDuration = 1f;
@@ -43,8 +42,6 @@ public abstract class BaseEnemyAI : MonoBehaviour
         player = playerEntity.gameObject;
         detectPlayer = GetComponent<DetectPlayer>();
         rotationSpeed = agent.angularSpeed;
-
-        startLocation = this.transform.position;
     }
 
     protected void LookAtPlayer()

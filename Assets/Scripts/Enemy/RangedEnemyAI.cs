@@ -129,7 +129,6 @@ public class RangedEnemyAI : BaseEnemyAI
                 }
             }
         }
-        else { agent.SetDestination(startLocation); }
     }
 
     private void OnDrawGizmos()
