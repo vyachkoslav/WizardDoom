@@ -17,6 +17,10 @@ public class Door : Interactable
     protected float _springForce;
     protected float _springDamper;
 
+    // RoomManager uses to determine lockdown
+    protected bool _isDoorClosed = false;
+    public bool IsDoorClosed { get { return _isDoorClosed; } }
+
     protected virtual void Start()
     {
         _limitMin = _hingeJoint.limits.min;
@@ -46,6 +50,7 @@ public class Door : Interactable
         _doorCollider.enabled = true;
 
         _canInteract = false;
+        _isDoorClosed = false;
     }
 
     // Close door behind player after leaving trigger collider
@@ -71,6 +76,7 @@ public class Door : Interactable
         _doorCollider.enabled = true;
         
         _canInteract = true;
+        _isDoorClosed = true;
     }
 
     // Reverse hinge joint movement direction

@@ -8779,6 +8779,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8214131454283347019, guid: bd851e936463d4a318facc8dd8d8e27d, type: 3}
   m_PrefabInstance: {fileID: 436817988}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &436818002 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7582122284727522916, guid: bd851e936463d4a318facc8dd8d8e27d, type: 3}
+  m_PrefabInstance: {fileID: 436817988}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06b0ebd4d25a948f4ac2c7c647555c07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Door
 --- !u!1 &441733599
 GameObject:
   m_ObjectHideFlags: 0
@@ -21675,6 +21686,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomManager
   _collider: {fileID: 1117269572}
+  _door: {fileID: 436818002}
   _enemyList:
   - {fileID: 26911505}
 --- !u!65 &1117269572

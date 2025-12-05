@@ -52,10 +52,10 @@ public class DetectPlayer : MonoBehaviour
             hasLineOfSight = false;
         }
 
-        if (playerIsDetected)
-        {
-            DataManager.Instance.IsFighting = true;
-        }
+        // if (playerIsDetected)
+        // {
+        //     DataManager.Instance.IsFighting = true;
+        // }
     }
 
     public void DetectPlayerForSeconds(float timeSeconds)
