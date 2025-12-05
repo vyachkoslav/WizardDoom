@@ -27,6 +27,7 @@ public abstract class BaseEnemyAI : MonoBehaviour
     private float rotationSpeed;
 
     [SerializeField] protected float delayBeforeAttack;
+    [SerializeField] float attackAnimationDuration;
     [SerializeField] private float stopDuration = 1f;
     [SerializeField] protected RoomManager myRoom;
     
@@ -100,8 +101,6 @@ public abstract class BaseEnemyAI : MonoBehaviour
 
     private IEnumerator HandleAttackAnimation()
     {
-        float attackAnimationDuration = 0.5f;
-
         animator.SetBool("isAttacking", true);
         yield return new WaitForSeconds(attackAnimationDuration);
         animator.SetBool("isAttacking", false);

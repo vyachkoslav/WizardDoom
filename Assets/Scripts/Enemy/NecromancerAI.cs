@@ -2,6 +2,7 @@ using System;
 using Enemy;
 using UnityEngine;
 using UnityEngine.Assertions;
+using Utils;
 using static Enemy.Attack;
 
 public class NecromancerAI : BaseEnemyAI
@@ -22,9 +23,12 @@ public class NecromancerAI : BaseEnemyAI
         base.Start();
         var selfEntity = GetComponent<IEntity>();
         var playerCharController = player.GetComponent<CharacterController>();
+
+        float yAxisOffset = 1f;
+
         getAttackData = () => new AttackData()
         {
-            WeaponPosition = transform.position,
+            WeaponPosition = transform.position.WithY(transform.position.y + yAxisOffset),
             WeaponForward = transform.forward,
             SelfEntity = selfEntity,
             TargetEntity = playerEntity,
@@ -34,6 +38,8 @@ public class NecromancerAI : BaseEnemyAI
         attacker = attack.CreateAttacker(getAttackData, delayBeforeAttack);
         attacker.OnAttack += OnAttacked.Invoke;
         attacker.OnBeforeAttackDelay += OnBeforeAttackDelay.Invoke;
+
+        attacker.OnBeforeAttackDelay += StartAttackAnimation;
     }
 
     private void OnDisable()
@@ -42,6 +48,8 @@ public class NecromancerAI : BaseEnemyAI
 
         OnEndAttacking();
         attacker?.Pause();
+
+        attacker.OnBeforeAttackDelay -= StartAttackAnimation;
     }
 
     private void OnDestroy()
