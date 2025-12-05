@@ -13,7 +13,10 @@ public class Key : Pickup
 
     protected override void PickupEffect()
     {
-        DataManager.Instance.AddKeyToList(this);
+        if (!DataManager.Instance.CheckKeyInList(this)) 
+        {
+            DataManager.Instance.AddKeyToList(this);
+        }
         _itemsDisplay.UpdateItemDisplay(this);
     }
 

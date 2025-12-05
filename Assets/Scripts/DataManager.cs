@@ -23,16 +23,20 @@ public class DataManager : MonoBehaviour
     }
 
     // Player's key collection
-    private static List<Key> keyList = new List<Key>();
-    public List<Key> KeyList { get {return keyList; } }
+    // AddKeyToList and CheckKeyInList methods ensure only Key type can be used to add to list
+    private static List<string> keyList = new List<string>();
 
     public void AddKeyToList(Key key)
     {
-        if (!keyList.Contains(key))
+        if (!keyList.Contains(key.ToString()))
         {
-            keyList.Add(key);
+            keyList.Add(key.ToString());
         }
-        foreach (Key k in keyList){Debug.Log(k);}
+    }
+
+    public bool CheckKeyInList(Key key)
+    {
+        return keyList.Contains(key.ToString());
     }
 
     private void Awake()

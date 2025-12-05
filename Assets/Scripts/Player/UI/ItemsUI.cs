@@ -11,7 +11,7 @@ namespace Player.UI
 
         public void UpdateItemDisplay(Key key)
         {
-            if (DataManager.Instance.KeyList.Contains(key))
+            if (DataManager.Instance.CheckKeyInList(key))
             {
                 Instantiate(_itemDisplay, _parent.transform);
             }
