@@ -27,13 +27,13 @@ public abstract class BaseEnemyAI : MonoBehaviour
     private float rotationSpeed;
 
     [SerializeField] protected float delayBeforeAttack;
+    [SerializeField] float attackAnimationDuration;
     [SerializeField] private float stopDuration = 1f;
     [SerializeField] protected RoomManager myRoom;
     
     public UnityEvent OnBeforeAttackDelay = new();
     public UnityEvent OnAttacked = new();
 
-    // Virtual-keyword allows inheriting classes to override
     protected virtual void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -75,7 +75,10 @@ public abstract class BaseEnemyAI : MonoBehaviour
     {
         Assert.IsTrue(IsAttacking);
         IsAttacking = false;
-        agent.isStopped = false;
+        if (agent.isActiveAndEnabled)
+        {
+            agent.isStopped = false;
+        }
         // stopAttackCoroutine ??= StartCoroutine(StopAttackingRoutine());
     }
 
@@ -100,8 +103,6 @@ public abstract class BaseEnemyAI : MonoBehaviour
 
     private IEnumerator HandleAttackAnimation()
     {
-        float attackAnimationDuration = 0.5f;
-
         animator.SetBool("isAttacking", true);
         yield return new WaitForSeconds(attackAnimationDuration);
         animator.SetBool("isAttacking", false);

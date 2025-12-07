@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abbeceec88e04ee288dac150e04256b8, type: 3}
   m_Name: Necromancer melee spawn attack
   m_EditorClassIdentifier: Assembly-CSharp::Enemy.EnemySpawnAttack
-  delayBetweenAttacks: 3
+  delayBetweenAttacks: 10
   damage: 0
   enemyPrefab: {fileID: 3210546729803314872, guid: 149d0c3621f49534687da9861499814c, type: 3}
   distanceBetweenSpawns: 1
-  enemyAmount: 3
+  enemyAmount: 1
   yPositionForSpawn: 0
