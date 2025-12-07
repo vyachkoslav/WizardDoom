@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dc72ce7b76a44b4a96c0b0c49e55e6a, type: 3}
+  m_Name: Necromancer attacks
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy.RandomAttack
+  delayBetweenAttacks: 2
+  damage: 0
+  attacks:
+  - {fileID: 11400000, guid: e6e685dfab9afca42a1243fa14b7f2fd, type: 2}
+  - {fileID: 11400000, guid: 79f2e86e8235e9e4491bdf1db6f23386, type: 2}
+  - {fileID: 11400000, guid: a426c8cea6385b241a5de39286b8d163, type: 2}
+  - {fileID: 11400000, guid: a426c8cea6385b241a5de39286b8d163, type: 2}
+  - {fileID: 11400000, guid: a426c8cea6385b241a5de39286b8d163, type: 2}

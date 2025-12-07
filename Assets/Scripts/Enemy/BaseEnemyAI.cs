@@ -34,7 +34,6 @@ public abstract class BaseEnemyAI : MonoBehaviour
     public UnityEvent OnBeforeAttackDelay = new();
     public UnityEvent OnAttacked = new();
 
-    // Virtual-keyword allows inheriting classes to override
     protected virtual void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -76,7 +75,10 @@ public abstract class BaseEnemyAI : MonoBehaviour
     {
         Assert.IsTrue(IsAttacking);
         IsAttacking = false;
-        agent.isStopped = false;
+        if (agent.isActiveAndEnabled)
+        {
+            agent.isStopped = false;
+        }
         // stopAttackCoroutine ??= StartCoroutine(StopAttackingRoutine());
     }
 

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: abbeceec88e04ee288dac150e04256b8, type: 3}
-  m_Name: Necromancer ranged spawn attack
+  m_Name: Final boss ranged spawn attack
   m_EditorClassIdentifier: Assembly-CSharp::Enemy.EnemySpawnAttack
   delayBetweenAttacks: 3
   damage: 0

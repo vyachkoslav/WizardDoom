@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8751540fd8bb480aa34d7c0383c89939, type: 3}
-  m_Name: Necromancer AOE attack
+  m_Name: Final boss AOE attack
   m_EditorClassIdentifier: Assembly-CSharp::Enemy.AOEAttack
   delayBetweenAttacks: 4
   damage: 10

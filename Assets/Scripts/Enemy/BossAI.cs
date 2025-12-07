@@ -5,7 +5,7 @@ using UnityEngine.Assertions;
 using Utils;
 using static Enemy.Attack;
 
-public class NecromancerAI : BaseEnemyAI
+public class BossAI : BaseEnemyAI
 {
     [SerializeField] private Attack attack;
     
@@ -75,6 +75,9 @@ public class NecromancerAI : BaseEnemyAI
 
     private void Update()
     {
+        bool isWalking = agent.velocity.sqrMagnitude > 0.1f;
+        animator.SetBool("isWalking", isWalking);
+
         fleeDistance = attackRange - fleeTriggerRange;
 
         if (playerIsDetected)

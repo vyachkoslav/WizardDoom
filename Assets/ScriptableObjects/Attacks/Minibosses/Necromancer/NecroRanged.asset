@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fed87ec9fffd4ff9b5de0df9e977c2a4, type: 3}
-  m_Name: Enemy fireball attack
+  m_Name: NecroRanged
   m_EditorClassIdentifier: Assembly-CSharp::Enemy.RangedProjectileAttack
-  delayBetweenAttacks: 0.5
-  damage: 15
-  projectilePrefab: {fileID: 2613836050053531179, guid: b9f4cc4ff8178db4dab6f2a3e04de31e, type: 3}
+  delayBetweenAttacks: 1
+  damage: 10
+  projectilePrefab: {fileID: 2613836050053531179, guid: c3ea17c9ae02c4b4a9e0c1babac271cf, type: 3}
   projectileSpeed: 8
   projectileRange: 20

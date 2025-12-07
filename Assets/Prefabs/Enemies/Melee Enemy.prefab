@@ -286,9 +286,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 495671230c985804dac8154125e7b874, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8298634160177862657}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 495671230c985804dac8154125e7b874, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 406767825238083330}
     - targetCorrespondingSourceObject: {fileID: 4928492724515802338, guid: 495671230c985804dac8154125e7b874, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7491854223493475760}
@@ -339,20 +336,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &406767825238083330
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8603949109718404429}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6d94b09c26be1c4b89586e60e7f89f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DamageFlash
-  flashColor: {r: 1, g: 0, b: 0, a: 1}
-  flashDuration: 0.1
 --- !u!4 &8947683298956384247 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 495671230c985804dac8154125e7b874, type: 3}

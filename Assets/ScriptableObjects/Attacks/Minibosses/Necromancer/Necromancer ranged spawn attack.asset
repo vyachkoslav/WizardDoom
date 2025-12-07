@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abbeceec88e04ee288dac150e04256b8, type: 3}
+  m_Name: Necromancer ranged spawn attack
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy.EnemySpawnAttack
+  delayBetweenAttacks: 15
+  damage: 0
+  enemyPrefab: {fileID: 5750608459987162048, guid: e3eb76f468a37ff418fdd50c8a54c9b8, type: 3}
+  distanceBetweenSpawns: 2
+  enemyAmount: 1
+  yPositionForSpawn: 0.87
