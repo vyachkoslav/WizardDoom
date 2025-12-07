@@ -165,6 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RangedEnemyAI
   delayBeforeAttack: 0.4
+  attackAnimationDuration: 0.5
   stopDuration: 0.5
   myRoom: {fileID: 0}
   OnBeforeAttackDelay:

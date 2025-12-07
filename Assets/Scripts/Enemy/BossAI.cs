@@ -7,16 +7,16 @@ using static Enemy.Attack;
 
 public class BossAI : BaseEnemyAI
 {
-    [SerializeField] private Attack attack;
+    [SerializeField] protected Attack attack;
     
-    [SerializeField] private float fleeTriggerRange = 3f;
-    [SerializeField] private float attackRange = 5f;
-    
-    private float fleeDistance;
-    private bool isInAttackRange => distanceToPlayer <= attackRange;
-    private bool isFleeing = false;
-    private Func<AttackData> getAttackData;
-    private CancelableAttack attacker;
+    [SerializeField] protected float fleeTriggerRange = 3f;
+    [SerializeField] protected float attackRange = 5f;
+
+    protected float fleeDistance;
+    protected bool isInAttackRange => distanceToPlayer <= attackRange;
+    protected bool isFleeing = false;
+    protected Func<AttackData> getAttackData;
+    protected CancelableAttack attacker;
 
     protected override void Start()
     {
@@ -42,7 +42,7 @@ public class BossAI : BaseEnemyAI
         attacker.OnBeforeAttackDelay += StartAttackAnimation;
     }
 
-    private void OnDisable()
+    protected void OnDisable()
     {
         if (!IsAttacking) return;
 
@@ -52,12 +52,12 @@ public class BossAI : BaseEnemyAI
         attacker.OnBeforeAttackDelay -= StartAttackAnimation;
     }
 
-    private void OnDestroy()
+    protected void OnDestroy()
     {
         attacker?.Dispose();
     }
 
-    private void PerformAttack()
+    protected void PerformAttack()
     {
         isFleeing = false;
 
@@ -73,7 +73,7 @@ public class BossAI : BaseEnemyAI
     }
 
 
-    private void Update()
+    protected virtual void Update()
     {
         bool isWalking = agent.velocity.sqrMagnitude > 0.1f;
         animator.SetBool("isWalking", isWalking);
@@ -130,7 +130,7 @@ public class BossAI : BaseEnemyAI
         }
     }
 
-    private void OnDrawGizmos()
+    protected void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRange);
