@@ -20,11 +20,14 @@ public class RoomManager : MonoBehaviour
     // Should prevent gauntlet softlocking caused by entering room slightly but backing out and closing door
     private void Update()
     {
-        if (_door.IsDoorClosed && _isPlayerInRoom && _enemyList.Count != 0)
+        if (_isPlayerInRoom)
         {
-            DataManager.Instance.IsFighting = true;
+            if (_door.IsDoorClosed && _enemyList.Count != 0)
+            {
+                DataManager.Instance.IsFighting = true;
+            }
+            else { DataManager.Instance.IsFighting = false; }
         }
-        else { DataManager.Instance.IsFighting = false; }
     }
 
     // Remove enemy from list and check if player is in combat
@@ -48,6 +51,7 @@ public class RoomManager : MonoBehaviour
         if (target == PlayerEntity.Instance.gameObject)
         {
             _isPlayerInRoom = true;
+            Debug.Log(_isPlayerInRoom);
         }
     }
 
@@ -58,6 +62,7 @@ public class RoomManager : MonoBehaviour
         if (target == PlayerEntity.Instance.gameObject)
         {
             _isPlayerInRoom = false;
+            Debug.Log(_isPlayerInRoom);
         }
     }
 }
