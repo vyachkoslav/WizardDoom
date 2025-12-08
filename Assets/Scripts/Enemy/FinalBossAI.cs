@@ -7,8 +7,10 @@ public class FinalBossAI : BossAI
     private Collider bossCollider;
     private GameObject model;
 
+    private bool levitating = false;
     private bool levitationComplete = false;
     private float levitationDuration = 1.75f;
+    private float totalLevitationHeight = 0;
 
     protected override void Start()
     {
@@ -25,7 +27,7 @@ public class FinalBossAI : BossAI
         if (playerIsDetected)
         {
             animator.SetBool("detectedPlayer", true);
-            if (!levitationComplete)
+            if (!levitating && !levitationComplete)
             {   
                 StartCoroutine("LevitationSequence");
             }
@@ -80,21 +82,25 @@ public class FinalBossAI : BossAI
 
     private IEnumerator LevitationSequence()
     {
+        levitating = true;
         float timeStep = 0.1f;
-        float levitateAmount = 0.001f;
+        float levitateAmount = 0.1f;
 
         // Enable if taking damage can be tied to child object collider
         //for (float i = 0; i < levitationDuration; i += timeStep)
         //{
+        //    totalLevitationHeight += levitateAmount;
+
         //    Vector3 colliderPos = bossCollider.transform.position;
         //    Vector3 modelPos = model.transform.position;
 
         //    bossCollider.transform.position = colliderPos.WithY(colliderPos.y + levitateAmount);
         //    model.transform.position = modelPos.WithY(modelPos.y + levitateAmount);
-        //    // TODO: Insert Attack data weapon position updated similar to above
 
         //    yield return new WaitForSeconds(timeStep);
         //}
+
+        yAxisOffset += totalLevitationHeight;
 
         // ...else, enable this
         yield return new WaitForSeconds(levitationDuration);

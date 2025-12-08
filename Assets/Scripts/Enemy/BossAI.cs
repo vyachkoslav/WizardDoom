@@ -11,6 +11,7 @@ public class BossAI : BaseEnemyAI
     
     [SerializeField] protected float fleeTriggerRange = 3f;
     [SerializeField] protected float attackRange = 5f;
+    protected float yAxisOffset = 1f;
 
     protected float fleeDistance;
     protected bool isInAttackRange => distanceToPlayer <= attackRange;
@@ -23,8 +24,6 @@ public class BossAI : BaseEnemyAI
         base.Start();
         var selfEntity = GetComponent<IEntity>();
         var playerCharController = player.GetComponent<CharacterController>();
-
-        float yAxisOffset = 1f;
 
         getAttackData = () => new AttackData()
         {
