@@ -87,23 +87,23 @@ public class FinalBossAI : BossAI
         float levitateAmount = 0.1f;
 
         // Enable if taking damage can be tied to child object collider
-        //for (float i = 0; i < levitationDuration; i += timeStep)
-        //{
-        //    totalLevitationHeight += levitateAmount;
+        for (float i = 0; i < levitationDuration; i += timeStep)
+        {
+            totalLevitationHeight += levitateAmount;
 
-        //    Vector3 colliderPos = bossCollider.transform.position;
-        //    Vector3 modelPos = model.transform.position;
+            Vector3 colliderPos = bossCollider.transform.position;
+            Vector3 modelPos = model.transform.position;
 
-        //    bossCollider.transform.position = colliderPos.WithY(colliderPos.y + levitateAmount);
-        //    model.transform.position = modelPos.WithY(modelPos.y + levitateAmount);
+            bossCollider.transform.position = colliderPos.WithY(colliderPos.y + levitateAmount);
+            model.transform.position = modelPos.WithY(modelPos.y + levitateAmount);
 
-        //    yield return new WaitForSeconds(timeStep);
-        //}
+            yield return new WaitForSeconds(timeStep);
+        }
 
         yAxisOffset += totalLevitationHeight;
 
         // ...else, enable this
-        yield return new WaitForSeconds(levitationDuration);
+        //yield return new WaitForSeconds(levitationDuration);
 
         levitationComplete = true;
     }

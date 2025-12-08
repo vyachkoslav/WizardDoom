@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2449379885679091731}
   - component: {fileID: 985596434948389024}
+  - component: {fileID: 370457347661885866}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -49,12 +50,25 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
   m_Height: 2.5078113
   m_Direction: 1
   m_Center: {x: 0, y: 0.75390565, z: 0}
+--- !u!114 &370457347661885866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 983330602280378098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7483d1ab8a4c43c4acfc32a9cd5e6610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChildEntity
+  entity: {fileID: 1471597356063888002}
 --- !u!1 &1152351656901454902
 GameObject:
   m_ObjectHideFlags: 0
@@ -111,7 +125,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Height: 2.5078113
