@@ -7,7 +7,7 @@ using UnityEngine.Assertions;
 namespace Player.Weapons
 {
     [CreateAssetMenu(fileName = "Test Weapon", menuName = "Weapons/TestWeapon")]
-    public class TestWeapon : Weapon
+    public class RangeWeapon : Weapon
     {
         private readonly RaycastHit[] hits = new RaycastHit[2];
 
