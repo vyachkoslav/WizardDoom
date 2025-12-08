@@ -7,6 +7,7 @@ public class ChildEntity : MonoBehaviour, IEntity
     [SerializeField] protected Entity entity;
     
     public float Health => entity.Health;
+    public float MaxHealth => entity.MaxHealth;
 
     public event Action OnHealthDecreased;
     public event Action OnHealthIncreased;

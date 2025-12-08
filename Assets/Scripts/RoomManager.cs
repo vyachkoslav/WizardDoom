@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Player;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class RoomManager : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class RoomManager : MonoBehaviour
 
     private bool _isPlayerInRoom = false;
     public bool IsPlayerInRoom { get { return _isPlayerInRoom; } }
+
+    public UnityEvent OnPlayerEnteredRoom = new();
+    public UnityEvent OnPlayerLeftRoom = new();
 
     // Check if player really has entered the room and fighting should start
     // Should prevent gauntlet softlocking caused by entering room slightly but backing out and closing door
@@ -51,6 +55,7 @@ public class RoomManager : MonoBehaviour
         if (target == PlayerEntity.Instance.gameObject)
         {
             _isPlayerInRoom = true;
+            OnPlayerEnteredRoom.Invoke();
             Debug.Log(_isPlayerInRoom);
         }
     }
@@ -62,6 +67,7 @@ public class RoomManager : MonoBehaviour
         if (target == PlayerEntity.Instance.gameObject)
         {
             _isPlayerInRoom = false;
+            OnPlayerLeftRoom.Invoke();
             Debug.Log(_isPlayerInRoom);
         }
     }

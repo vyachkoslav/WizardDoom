@@ -11,6 +11,7 @@ public class Entity : MonoBehaviour, IEntity
     
     private float health;
     public float Health => health;
+    public float MaxHealth => maxHealth;
 
     public event Action OnHealthDecreased;
     public event Action OnHealthIncreased;
