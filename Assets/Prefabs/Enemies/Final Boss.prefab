@@ -69,7 +69,8 @@ GameObject:
   - component: {fileID: 5342936297399855480}
   - component: {fileID: 8966934477422615464}
   - component: {fileID: 4050248542472573465}
-  m_Layer: 0
+  - component: {fileID: -261060131931837758}
+  m_Layer: 7
   m_Name: Final Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -232,6 +233,18 @@ MonoBehaviour:
   attack: {fileID: 11400000, guid: 48b74cb9b5ff7ae4ab3c1b9f5e43ae55, type: 2}
   fleeTriggerRange: 0
   attackRange: 8
+--- !u!114 &-261060131931837758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152351656901454902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2289d280b4cae4d56a505011b0230ba7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyTimefreeze
 --- !u!1001 &8292312277554051282
 PrefabInstance:
   m_ObjectHideFlags: 0

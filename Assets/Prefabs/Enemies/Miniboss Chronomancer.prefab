@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 5342936297399855480}
   - component: {fileID: 8966934477422615464}
   - component: {fileID: -6591741217586902012}
-  m_Layer: 0
+  - component: {fileID: -2313204165754754311}
+  m_Layer: 7
   m_Name: Miniboss Chronomancer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,6 +177,18 @@ MonoBehaviour:
   attack: {fileID: 11400000, guid: 283d6092c0a3f3441adb3f3511717cb1, type: 2}
   fleeTriggerRange: 0
   attackRange: 9
+--- !u!114 &-2313204165754754311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152351656901454902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2289d280b4cae4d56a505011b0230ba7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyTimefreeze
 --- !u!1001 &5839305762457803640
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 333618664293178904}
   - component: {fileID: -6913118436647843947}
   - component: {fileID: 8383302885437216473}
+  - component: {fileID: -2945116845687597912}
   m_Layer: 7
   m_Name: Spawned ranged enemy
   m_TagString: EnemyRanged
@@ -189,6 +190,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2289d280b4cae4d56a505011b0230ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyTimefreeze
+--- !u!95 &-2945116845687597912
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5750608459987162048}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2266e36546adcf34e9aadf75558639b1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &772825855120662622
 PrefabInstance:
   m_ObjectHideFlags: 0
