@@ -42,11 +42,14 @@ namespace Enemy
 
                     handle?.BeforeAttackDelay();
                     await Awaitable.WaitForSecondsAsync(attackDelay, cancelToken);
+                    if (handle?.Paused == true) continue;
+                    
                     handle?.Attacked();
                     for (int i = 0; i < attacksAmount; i++)
                     {
                         attack.AttackOnce(getAttackData, cancelToken);
                         await Awaitable.WaitForSecondsAsync(delayBetweenMultipleAttacksSeconds, cancelToken);
+                        if (handle?.Paused == true) break;
                     }
 
                     if (handle == null) break;

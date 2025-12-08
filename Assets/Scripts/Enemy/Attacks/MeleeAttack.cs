@@ -31,7 +31,6 @@ namespace Enemy
         {
             try
             {
-                var lastAttack = float.MinValue;
                 while (true)
                 {
                     if (handle.Paused)
@@ -47,10 +46,10 @@ namespace Enemy
                         continue;
                     }
                     
-                    lastAttack = Time.time;
-                    
                     handle.BeforeAttackDelay();
                     await Awaitable.WaitForSecondsAsync(attackDelay, cancelToken);
+                    if (handle.Paused) continue;
+                    
                     if (Vector3.Distance(attackData.TargetPosition, attackData.WeaponPosition) > attackRange)
                         continue;
                     handle.Attacked();

@@ -43,12 +43,11 @@ public class BossAI : BaseEnemyAI
 
     protected void OnDisable()
     {
+        attacker.OnBeforeAttackDelay -= StartAttackAnimation;
         if (!IsAttacking) return;
 
         OnEndAttacking();
         attacker?.Pause();
-
-        attacker.OnBeforeAttackDelay -= StartAttackAnimation;
     }
 
     protected void OnDestroy()

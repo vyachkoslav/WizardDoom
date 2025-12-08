@@ -47,6 +47,8 @@ namespace Enemy
 
                     handle?.BeforeAttackDelay();
                     await Awaitable.WaitForSecondsAsync(attackDelay, cancelToken);
+                    if (handle?.Paused == true) continue;
+                    
                     handle?.Attacked();
                     GetRandomAttack().AttackOnce(getAttackData, cancelToken);
 

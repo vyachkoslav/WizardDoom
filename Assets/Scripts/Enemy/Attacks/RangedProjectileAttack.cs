@@ -60,6 +60,8 @@ namespace Enemy
 
                     handle.BeforeAttackDelay();
                     await Awaitable.WaitForSecondsAsync(attackDelay, cancelToken);
+                    if (handle.Paused) continue;
+                    
                     handle.Attacked();
                     Attack(getAttackData(), collisionHandler);
 

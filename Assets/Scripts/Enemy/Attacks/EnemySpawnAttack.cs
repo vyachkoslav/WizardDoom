@@ -44,6 +44,8 @@ namespace Enemy
                     }
                     handle.BeforeAttackDelay();
                     await Awaitable.WaitForSecondsAsync(attackDelay, cancelToken);
+                    if (handle.Paused) continue;
+                    
                     handle.Attacked();
                     CreateEnemies(getAttackData());
                     await Awaitable.WaitForSecondsAsync(DelayBetweenAttacks, cancelToken);
