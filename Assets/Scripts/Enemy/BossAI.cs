@@ -19,11 +19,16 @@ public class BossAI : BaseEnemyAI
     protected Func<AttackData> getAttackData;
     protected CancelableAttack attacker;
 
+    private Entity entity;
+    [SerializeField] private SpellPickup spellPickup;
+
     protected override void Start()
     {
         base.Start();
         var selfEntity = GetComponent<IEntity>();
         var playerCharController = player.GetComponent<CharacterController>();
+        entity = GetComponent<Entity>();
+        entity.OnDeath += DropSpellPickup;
 
         getAttackData = () => new AttackData()
         {
@@ -125,6 +130,12 @@ public class BossAI : BaseEnemyAI
                 sawPlayer = false;
             }
         }
+    }
+
+    private void DropSpellPickup()
+    {
+        Vector3 dropLocation = transform.position.WithY(transform.position.y + 1);
+        Instantiate(spellPickup, dropLocation, spellPickup.transform.rotation);
     }
 
     protected void OnDrawGizmos()

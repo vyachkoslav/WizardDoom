@@ -177,6 +177,7 @@ MonoBehaviour:
   attack: {fileID: 11400000, guid: db6852b7e6c70694abde8abe148effac, type: 2}
   fleeTriggerRange: 0
   attackRange: 9
+  spellPickup: {fileID: 1996153176167399088, guid: 39b99d89c09258e4a8259c40f69b1f6c, type: 3}
 --- !u!114 &-8624168277494192025
 MonoBehaviour:
   m_ObjectHideFlags: 0

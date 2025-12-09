@@ -18,5 +18,8 @@ public class SpellPickup : Pickup
     {
         _player.GetComponent<SpellController>().AddSpellToList(_spell);
         // SoundManager.Instance.PlaySound3D("SpellPickup", transform.position);
+
+        // Destroys spell pickup object
+        Destroy(gameObject);
     }
 }
