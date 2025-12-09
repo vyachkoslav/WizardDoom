@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4392485124811349521}
-  - component: {fileID: 8587202273966291650}
   m_Layer: 0
   m_Name: WizardStatue
   m_TagString: Untagged
@@ -34,27 +33,6 @@ Transform:
   - {fileID: 7768608061514237702}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &8587202273966291650
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 365501470465992899}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.9905603, y: 1.0791363, z: 2.0222611}
-  m_Center: {x: 0.12250376, y: 0.3377158, z: -0.14879632}
 --- !u!1 &8029561904670433822
 GameObject:
   m_ObjectHideFlags: 0

@@ -138,7 +138,6 @@ GameObject:
   - component: {fileID: 8459163052174217637}
   - component: {fileID: 4812976289834802688}
   - component: {fileID: 7291282882527226570}
-  - component: {fileID: 5103127363897235488}
   m_Layer: 0
   m_Name: TorchLowPoly
   m_TagString: Untagged
@@ -219,27 +218,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5103127363897235488
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9092533823991991071}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Size: {x: 0.1815209, y: 0.5945208, z: 0.15664236}
-  m_Center: {x: 0.0075039864, y: 0.30059642, z: -0.006721206}
 --- !u!1001 &4138521283112404000
 PrefabInstance:
   m_ObjectHideFlags: 0
