@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7227250196257283813}
   - component: {fileID: 8614389203105704779}
-  m_Layer: 0
+  - component: {fileID: 2279446146345610834}
+  m_Layer: 9
   m_Name: SkullPile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2484648081693633599}
@@ -66,6 +67,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.764123, y: 0.9626275, z: 1.5454781}
   m_Center: {x: 0.4304737, y: 0.3130977, z: -0.6274221}
+--- !u!208 &2279446146345610834
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5447745171985622801}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.8820615, y: 0.48131374, z: 0.772739}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.4304737, y: 0.3130977, z: -0.6274221}
+  m_TimeToStationary: 0.5
 --- !u!1001 &2318798070671141434
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -133,6 +150,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: bf4fd5022d2b4244d93d5c6fcff3b744, type: 3}
       propertyPath: m_Name
       value: skeleton_skull (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bf4fd5022d2b4244d93d5c6fcff3b744, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: bf4fd5022d2b4244d93d5c6fcff3b744, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -217,6 +238,10 @@ PrefabInstance:
       value: skeleton_skull
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: bf4fd5022d2b4244d93d5c6fcff3b744, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bf4fd5022d2b4244d93d5c6fcff3b744, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -297,6 +322,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: bf4fd5022d2b4244d93d5c6fcff3b744, type: 3}
       propertyPath: m_Name
       value: skeleton_skull (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bf4fd5022d2b4244d93d5c6fcff3b744, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: bf4fd5022d2b4244d93d5c6fcff3b744, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -381,6 +410,10 @@ PrefabInstance:
       value: skeleton_skull (8)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: bf4fd5022d2b4244d93d5c6fcff3b744, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bf4fd5022d2b4244d93d5c6fcff3b744, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -461,6 +494,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: bf4fd5022d2b4244d93d5c6fcff3b744, type: 3}
       propertyPath: m_Name
       value: skeleton_skull (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bf4fd5022d2b4244d93d5c6fcff3b744, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: bf4fd5022d2b4244d93d5c6fcff3b744, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -545,6 +582,10 @@ PrefabInstance:
       value: skeleton_skull (2)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: bf4fd5022d2b4244d93d5c6fcff3b744, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bf4fd5022d2b4244d93d5c6fcff3b744, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -625,6 +666,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: bf4fd5022d2b4244d93d5c6fcff3b744, type: 3}
       propertyPath: m_Name
       value: skeleton_skull (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bf4fd5022d2b4244d93d5c6fcff3b744, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: bf4fd5022d2b4244d93d5c6fcff3b744, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -709,6 +754,10 @@ PrefabInstance:
       value: skeleton_skull (11)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: bf4fd5022d2b4244d93d5c6fcff3b744, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bf4fd5022d2b4244d93d5c6fcff3b744, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -789,6 +838,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: bf4fd5022d2b4244d93d5c6fcff3b744, type: 3}
       propertyPath: m_Name
       value: skeleton_skull (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bf4fd5022d2b4244d93d5c6fcff3b744, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: bf4fd5022d2b4244d93d5c6fcff3b744, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -873,6 +926,10 @@ PrefabInstance:
       value: skeleton_skull (10)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: bf4fd5022d2b4244d93d5c6fcff3b744, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bf4fd5022d2b4244d93d5c6fcff3b744, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -953,6 +1010,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: bf4fd5022d2b4244d93d5c6fcff3b744, type: 3}
       propertyPath: m_Name
       value: skeleton_skull (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bf4fd5022d2b4244d93d5c6fcff3b744, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: bf4fd5022d2b4244d93d5c6fcff3b744, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1037,6 +1098,10 @@ PrefabInstance:
       value: skeleton_skull (1)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: bf4fd5022d2b4244d93d5c6fcff3b744, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bf4fd5022d2b4244d93d5c6fcff3b744, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -1117,6 +1182,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: bf4fd5022d2b4244d93d5c6fcff3b744, type: 3}
       propertyPath: m_Name
       value: skeleton_skull (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bf4fd5022d2b4244d93d5c6fcff3b744, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: bf4fd5022d2b4244d93d5c6fcff3b744, type: 3}
       propertyPath: m_StaticEditorFlags
