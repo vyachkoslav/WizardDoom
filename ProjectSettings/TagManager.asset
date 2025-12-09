@@ -6,6 +6,7 @@ TagManager:
   tags:
   - EnemyMelee
   - EnemyRanged
+  - Miniboss
   layers:
   - Default
   - TransparentFX

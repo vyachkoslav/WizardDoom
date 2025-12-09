@@ -28,7 +28,11 @@ public class BossAI : BaseEnemyAI
         var selfEntity = GetComponent<IEntity>();
         var playerCharController = player.GetComponent<CharacterController>();
         entity = GetComponent<Entity>();
-        entity.OnDeath += DropSpellPickup;
+
+        if (gameObject.CompareTag("Miniboss"))
+        {
+            entity.OnDeath += DropSpellPickup;
+        }
 
         getAttackData = () => new AttackData()
         {
