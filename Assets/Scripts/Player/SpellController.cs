@@ -26,7 +26,7 @@ namespace Player
         public event Action OnManaChanged;
         public event Action OnSpellChanged;
 
-        private List<Spell> _spellList = new List<Spell>();
+        // private List<Spell> _spellList = new List<Spell>();
         private int _currentSpellIndex;
         private Spell _currentSelectedSpell;
         private int _currentMana;
@@ -66,7 +66,7 @@ namespace Player
         // current spell, play audio
         private void CastSpell(InputAction.CallbackContext context)
         {
-            if (_spellList.Count <= 0) { return; }
+            if (DataManager.Instance.SpellList.Count <= 0) { return; }
 
             _manaCost = _currentSelectedSpell.Cost;
 
@@ -92,14 +92,14 @@ namespace Player
         // Check if out of bounds, then append spell list index accordingly
         private void SwitchSpell()
         {
-            if (_spellList.Count <= 0) { return; }
+            if (DataManager.Instance.SpellList.Count <= 0) { return; }
 
-            if (_currentSpellIndex < _spellList.Count - 1)
+            if (_currentSpellIndex < DataManager.Instance.SpellList.Count - 1)
             {
                 _currentSpellIndex++;
             }
             else { _currentSpellIndex = 0; }
-            _currentSelectedSpell = _spellList[_currentSpellIndex];
+            _currentSelectedSpell = DataManager.Instance.SpellList[_currentSpellIndex];
             OnSpellChanged.Invoke();
             SoundManager.Instance.PlaySound2D("NextSpell");
         }
@@ -107,12 +107,9 @@ namespace Player
         // Called when acquiring a new spell, check if new spell and add to list accordingly
         public void AddSpellToList(Spell spell)
         {
-            if (!_spellList.Contains(spell))
-            {
-                _spellList.Add(spell);
-                if (_spellList.Count <= 0) { _currentSelectedSpell = _spellList[_currentSpellIndex]; }
-                SwitchSpell();
-            }
+            DataManager.Instance.AcquireSpell(spell);
+            // if (_spellList.Count <= 0) { _currentSelectedSpell = _spellList[_currentSpellIndex]; }
+            SwitchSpell();
         }
 
         public void AddMaxMana(int manaToAdd)

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Player.Spells;
 using UnityEngine;
 
 public class DataManager : MonoBehaviour
@@ -44,6 +45,17 @@ public class DataManager : MonoBehaviour
         return keyList.Contains(key.ToString());
     }
 
+    private static List<Spell> spellList = new List<Spell>();
+    public List<Spell> SpellList { get { return spellList; } }
+
+    public void AcquireSpell(Spell spell)
+    {
+        if (!spellList.Contains(spell))
+        {
+            spellList.Add(spell);
+        }
+    }
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -70,5 +82,6 @@ public class DataManager : MonoBehaviour
         ResetGameStats();
 
         keyList.Clear();
+        checkPoint = Vector3.zero;
     }
 }

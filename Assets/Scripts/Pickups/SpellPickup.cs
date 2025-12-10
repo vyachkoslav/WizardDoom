@@ -11,6 +11,11 @@ public class SpellPickup : Pickup
     private void Start()
     {
         _player = PlayerEntity.Instance.gameObject;
+        
+        if (DataManager.Instance.SpellList.Contains(_spell))
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     // Provide spell to player
