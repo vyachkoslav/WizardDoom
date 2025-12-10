@@ -5,18 +5,20 @@ public class DamageFlash : MonoBehaviour
 {
     private Renderer objectRenderer;
     private Entity entityScript;
+    private EnemyTimefreeze enemyTimefreeze;
     private bool takingDamage;
 
-    [SerializeField] private Color flashColor = Color.red;
+    [SerializeField] private Material flashMat;
     [SerializeField] private float flashDuration = 0.1f;
 
-    private Color originalColor;
+    private Material originalMaterial;
 
     void Start()
     {
         objectRenderer = GetComponent<Renderer>();
         entityScript = GetComponentInParent<Entity>();
-        originalColor = objectRenderer.material.color;
+        enemyTimefreeze = GetComponentInParent<EnemyTimefreeze>();
+        originalMaterial = objectRenderer.material;
     }
 
     private void Update()
@@ -30,14 +32,28 @@ public class DamageFlash : MonoBehaviour
 
     private IEnumerator DoFlash()
     {
-        objectRenderer.material.color = flashColor;
-        yield return new WaitForSeconds(flashDuration);
-        objectRenderer.material.color = originalColor;
+        // Normal behaviour if temporal material is not applied
+        if (!enemyTimefreeze.IsTimeFrozen)
+        {
+            objectRenderer.material = flashMat;
+            yield return new WaitForSeconds(flashDuration);
+            objectRenderer.material = originalMaterial;
+        }
+        else
+        {
+            objectRenderer.material = flashMat;
+            yield return new WaitForSeconds(flashDuration);
+
+            // Finally checks if time freeze effect is still active
+            if (enemyTimefreeze.IsTimeFrozen)
+            {
+                objectRenderer.material = enemyTimefreeze.temporalMaterial;
+            } 
+        }
     }
 
     public void Flash()
     {
-        StopAllCoroutines();
         StartCoroutine(DoFlash());
     }
 }
