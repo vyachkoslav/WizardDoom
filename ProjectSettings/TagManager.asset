@@ -8,6 +8,7 @@ TagManager:
   - EnemyRanged
   - Miniboss
   - Projectile
+  - FinalBossCollider
   layers:
   - Default
   - TransparentFX

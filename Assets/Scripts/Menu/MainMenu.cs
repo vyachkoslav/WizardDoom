@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
     public void StartGame()
     {
         //Load the first level here for now the SampleScene is used
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene(1);
     }
 
     public void QuitGame()
