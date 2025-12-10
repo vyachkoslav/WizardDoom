@@ -21,6 +21,14 @@ public class DataManager : MonoBehaviour
         set { isLifeStealActive = value; }
     }
 
+    //Has player won the game?
+    private static bool isWin = false;
+    public bool IsWin
+    {
+        get { return isWin; }
+        set { isWin = value; }
+    }
+
     // Is player in combat?
     private static bool isFighting = false;
     public bool IsFighting 
@@ -131,5 +139,6 @@ public class DataManager : MonoBehaviour
         maxAmmoToAdd = 0;
         maxManaToAdd = 0;
         newManaRegenSpeed = 1f;
+        isWin = false;
     }
 }

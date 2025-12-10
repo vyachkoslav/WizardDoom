@@ -38,7 +38,10 @@ public class PauseMenu : MonoBehaviour
         if (playerEntity = null)
             return;
         
-
+        if (DataManager.Instance.IsWin)
+        {
+            return;
+        }
         if (pauseMenu.activeSelf)
         {
             ResumeGame();

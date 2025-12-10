@@ -15,7 +15,7 @@ namespace Player.UI
             if (DataManager.Instance.CheckKeyInList(key))
             {
                 Image newItemDisplay = Instantiate(_itemDisplay, _parent.transform);
-                newItemDisplay.material = key.KeyMaterial;
+                newItemDisplay.color = key.KeyMaterial.color;
             }
         }
     }
