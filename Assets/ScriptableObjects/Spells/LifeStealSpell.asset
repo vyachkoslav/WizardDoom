@@ -16,5 +16,6 @@ MonoBehaviour:
   _damage: 0
   _moveSpeed: 0
   _color: {r: 0.02745098, g: 0.47058824, b: 0.039215688, a: 0.72156864}
+  _id: lifesteal
   spellObject: {fileID: 0}
   _durationInSeconds: 5

@@ -16,6 +16,7 @@ MonoBehaviour:
   _damage: 10
   _moveSpeed: 500
   _color: {r: 1, g: 0.4117647, b: 0, a: 0.8509804}
+  _id: fireball
   spellObject: {fileID: 2613836050053531179, guid: 0276fb296aacc48f4833763e966e7be5, type: 3}
   _explosionDamage: 100
   _explosionRadius: 0.5
