@@ -1,6 +1,7 @@
 using UnityEngine.UI;
 using UnityEngine;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 namespace Player.UI
 {
@@ -13,7 +14,8 @@ namespace Player.UI
         {
             if (DataManager.Instance.CheckKeyInList(key))
             {
-                Instantiate(_itemDisplay, _parent.transform);
+                Image newItemDisplay = Instantiate(_itemDisplay, _parent.transform);
+                newItemDisplay.material = key.KeyMaterial;
             }
         }
     }

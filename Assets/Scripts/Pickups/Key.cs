@@ -3,7 +3,12 @@ using UnityEngine;
 
 public class Key : Pickup
 {
+    [SerializeField] private Material _keyMaterial;
+
     private ItemsUI _itemsDisplay; 
+
+    public Material KeyMaterial { get { return _keyMaterial; }   }
+
 
     protected override void Start()
     {
