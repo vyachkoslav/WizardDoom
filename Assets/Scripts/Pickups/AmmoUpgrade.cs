@@ -10,8 +10,9 @@ public class AmmoUpgrade : Pickup
     private PlayerEntity _player;
     private List<Weapon> _weaponList;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         _player = PlayerEntity.Instance;
         _weaponList = _player.GetComponent<WeaponController>().AvailableWeapons;
     }
@@ -25,6 +26,10 @@ public class AmmoUpgrade : Pickup
             weapon.MaxCarriableAmmo += _maxAmmoToAdd;
             SoundManager.Instance.PlaySound3D("WeaponReload", transform.position);
         }
+
+        DataManager.Instance.UpgradeList.Add(this);
+        DataManager.Instance.MaxAmmoToAdd = _maxAmmoToAdd;
+        this.gameObject.SetActive(false);
     }
 
     public override string ToString()

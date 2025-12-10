@@ -9,12 +9,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3357540884284076598, guid: 0554c5b96166742359b159105fb6794d, type: 3}
+      propertyPath: _id
+      value: lifesteal
+      objectReference: {fileID: 0}
+    - target: {fileID: 3357540884284076598, guid: 0554c5b96166742359b159105fb6794d, type: 3}
       propertyPath: _spell
       value: 
       objectReference: {fileID: 11400000, guid: 4f75c806cb2d34134a17d5db49edf3b8, type: 2}
     - target: {fileID: 4298932382566880395, guid: 0554c5b96166742359b159105fb6794d, type: 3}
       propertyPath: m_Name
-      value: SpellPickup (Lifesteal) Variant
+      value: SpellPickup (Lifesteal)
       objectReference: {fileID: 0}
     - target: {fileID: 7456697296079367190, guid: 0554c5b96166742359b159105fb6794d, type: 3}
       propertyPath: m_LocalPosition.x

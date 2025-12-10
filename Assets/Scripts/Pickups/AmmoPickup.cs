@@ -11,7 +11,7 @@ public class AmmoPickup : Pickup
     private List<Weapon> _weaponList;
 
     // Get list of player weapons
-    private void Start()
+    protected override void Start()
     {
         _player = PlayerEntity.Instance.gameObject;
         _weaponList = _player.GetComponent<WeaponController>().AvailableWeapons;

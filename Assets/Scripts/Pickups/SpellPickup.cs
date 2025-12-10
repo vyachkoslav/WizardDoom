@@ -8,7 +8,7 @@ public class SpellPickup : Pickup
 
     private GameObject _player;
 
-    private void Start()
+    protected override void Start()
     {
         _player = PlayerEntity.Instance.gameObject;
         

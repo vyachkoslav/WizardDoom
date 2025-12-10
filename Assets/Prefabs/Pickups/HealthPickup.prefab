@@ -161,4 +161,5 @@ MonoBehaviour:
   _rotationAxis: {x: 0, y: 1, z: 0}
   _rotationSpeed: 50
   _respawnTimeInSeconds: 3
+  _id: health
   _healthToAdd: 20

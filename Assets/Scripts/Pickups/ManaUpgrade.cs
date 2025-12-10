@@ -9,8 +9,9 @@ public class ManaUpgrade : Pickup
 
     private PlayerEntity _player;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         _player = PlayerEntity.Instance;
     }
 
@@ -20,6 +21,10 @@ public class ManaUpgrade : Pickup
         _player.GetComponent<SpellController>().AddMaxMana(_maxManaToAdd);
         _manaBar.UpdateMaxMana();
         SoundManager.Instance.PlaySound3D("Mana", transform.position);
+
+        DataManager.Instance.UpgradeList.Add(this);
+        DataManager.Instance.MaxManaToAdd = _maxManaToAdd;
+        this.gameObject.SetActive(false);
     }
 
     public override string ToString()

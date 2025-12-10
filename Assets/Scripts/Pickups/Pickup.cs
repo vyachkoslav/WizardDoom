@@ -1,6 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
 using Player;
-using TMPro;
 using UnityEngine;
 
 // Abstract class for pickups like hp, ammo
@@ -13,6 +13,24 @@ public abstract class Pickup : MonoBehaviour
     [SerializeField] protected Vector3 _rotationAxis;
     [SerializeField] protected float _rotationSpeed;
     [SerializeField] protected float _respawnTimeInSeconds;
+
+    [Header("ID")]
+    [SerializeField] protected string _id;
+    public string ID { get { return _id; } }
+
+    private List<Pickup> _upgradeList;
+
+    protected virtual void Start()
+    {
+        _upgradeList = DataManager.Instance.UpgradeList;
+        foreach (Pickup upgrade in _upgradeList)
+        {
+            if (upgrade.ID == _id)
+            {
+                this.gameObject.SetActive(false); 
+            }
+        }
+    }
 
     // Handle pickup rotation
     protected virtual void FixedUpdate() 

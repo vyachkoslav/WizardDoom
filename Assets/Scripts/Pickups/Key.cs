@@ -3,12 +3,15 @@ using UnityEngine;
 
 public class Key : Pickup
 {
-    [SerializeField] private string _keyName;
     private ItemsUI _itemsDisplay; 
 
-    private void Start()
+    protected override void Start()
     {
-        _itemsDisplay = FindAnyObjectByType<ItemsUI>();
+        _itemsDisplay = FindAnyObjectByType<ItemsUI>();;
+        if (DataManager.Instance.CheckKeyInList(this))
+        {
+            this.gameObject.SetActive(false);
+        }
     }
 
     protected override void PickupEffect()
@@ -23,6 +26,6 @@ public class Key : Pickup
 
     public override string ToString()
     {
-        return _keyName;
+        return "Collected " + _id;
     }
 }

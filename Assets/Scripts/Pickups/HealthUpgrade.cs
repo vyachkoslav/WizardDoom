@@ -9,8 +9,9 @@ public class HealthUpgrade : Pickup
 
     private PlayerEntity _player;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         _player = PlayerEntity.Instance;
     }
 
@@ -20,6 +21,11 @@ public class HealthUpgrade : Pickup
         _player.MaxHealth += _maxHealthToAdd;
         _healthBar.UpdateMaxHealth();
         SoundManager.Instance.PlaySound3D("Health", transform.position);
+
+        DataManager.Instance.UpgradeList.Add(this);
+        DataManager.Instance.MaxHealthToAdd = _maxHealthToAdd;
+        
+        this.gameObject.SetActive(false);
     }
 
     public override string ToString()

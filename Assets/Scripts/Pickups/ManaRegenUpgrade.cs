@@ -7,8 +7,9 @@ public class ManaRegenUpgrade : Pickup
 
     private PlayerEntity _player;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         _player = PlayerEntity.Instance;
     }
 
@@ -17,6 +18,10 @@ public class ManaRegenUpgrade : Pickup
     {
         _player.GetComponent<SpellController>().RegenSpeedInSeconds = _newRegenSpeedInSeconds;
         SoundManager.Instance.PlaySound3D("Mana", transform.position);
+
+        DataManager.Instance.UpgradeList.Add(this);
+        DataManager.Instance.NewManaRegenSpeed = _newRegenSpeedInSeconds;
+        this.gameObject.SetActive(false);
     }
 
     public override string ToString()
