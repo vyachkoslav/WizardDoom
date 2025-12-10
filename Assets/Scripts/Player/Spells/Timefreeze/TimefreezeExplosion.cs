@@ -24,7 +24,15 @@ public class TimefreezeExplosion : Explosion
         // Ignore player and other projectiles
         if (target != PlayerEntity.Instance.gameObject && !target.CompareTag("Projectile")) 
         {
-            target.GetComponent<EnemyTimefreeze>()?.ApplyTimefreeze(_durationInSeconds);
+            if (target.CompareTag("FinalBossCollider"))
+            {
+                // Final boss special case object path & added multiplier to reduce effect on final boss
+                target.GetComponentInParent<EnemyTimefreeze>()?.ApplyTimefreeze(_durationInSeconds * 0.75f);
+            }
+            else
+            {
+                target.GetComponent<EnemyTimefreeze>()?.ApplyTimefreeze(_durationInSeconds);
+            }
             Destroy(this.gameObject);
         }
         

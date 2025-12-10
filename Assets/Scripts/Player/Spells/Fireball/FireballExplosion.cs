@@ -27,7 +27,14 @@ public class FireballExplosion : Explosion
         // Ignore player and other projectiles
         if (target != PlayerEntity.Instance.gameObject && !target.CompareTag("Projectile")) 
         {
-            target.GetComponent<Entity>()?.ApplyDamage(_damage);
+            if (target.CompareTag("FinalBossCollider"))
+            {
+                target.GetComponent<ChildEntity>()?.ApplyDamage(_damage);
+            }
+            else
+            {
+                target.GetComponent<Entity>()?.ApplyDamage(_damage);
+            }  
         }
     }
 }
