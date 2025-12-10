@@ -16,7 +16,7 @@ public class ManaRegenUpgrade : Pickup
     protected override void PickupEffect()
     {
         _player.GetComponent<SpellController>().RegenSpeedInSeconds = _newRegenSpeedInSeconds;
-        // SoundManager.Instance.PlaySound3D("PickupGet", transform.position);
+        SoundManager.Instance.PlaySound3D("Mana", transform.position);
     }
 
     public override string ToString()

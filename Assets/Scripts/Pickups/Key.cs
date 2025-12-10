@@ -1,4 +1,3 @@
-using System.Collections;
 using Player.UI;
 using UnityEngine;
 
@@ -18,6 +17,7 @@ public class Key : Pickup
         {
             DataManager.Instance.AddKeyToList(this);
             _itemsDisplay.UpdateItemDisplay(this);
+            SoundManager.Instance.PlaySound3D("Key", transform.position);
         }
     }
 

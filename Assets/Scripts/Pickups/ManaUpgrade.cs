@@ -19,7 +19,7 @@ public class ManaUpgrade : Pickup
     {
         _player.GetComponent<SpellController>().AddMaxMana(_maxManaToAdd);
         _manaBar.UpdateMaxMana();
-        // SoundManager.Instance.PlaySound3D("PickupGet", transform.position);
+        SoundManager.Instance.PlaySound3D("Mana", transform.position);
     }
 
     public override string ToString()

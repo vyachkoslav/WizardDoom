@@ -44,7 +44,7 @@ public class Door : Interactable
         SetSpring(_limitMax);
         _doorCollider.enabled = false;
         _hingeJoint.useSpring = true;
-        // SoundManager.Instance.PlaySound3D("Door", transform.position);
+        SoundManager.Instance.PlaySound3D("Door", transform.position);
         yield return new WaitForSeconds(_doorBufferInSeconds);
         _hingeJoint.useSpring = false;
         _doorCollider.enabled = true;
@@ -70,7 +70,7 @@ public class Door : Interactable
         SetSpring(_limitMin);
         _doorCollider.enabled = false;
         _hingeJoint.useSpring = true;
-        // SoundManager.Instance.PlaySound3D("Door", transform.position);
+        SoundManager.Instance.PlaySound3D("Door", transform.position);
         yield return new WaitForSeconds(_doorBufferInSeconds);
         _hingeJoint.useSpring = false;
         _doorCollider.enabled = true;

@@ -9,7 +9,7 @@ public class HealthPickup : Pickup
     protected override void PickupEffect()
     {
         PlayerEntity.Instance.ApplyHealing(_healthToAdd);
-        // SoundManager.Instance.PlaySound3D("PickupGet", transform.position);
+        SoundManager.Instance.PlaySound3D("Health", transform.position);
     }
 
     public override string ToString()
