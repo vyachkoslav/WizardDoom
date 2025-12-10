@@ -1,4 +1,4 @@
-using System.Collections;
+using Player;
 using UnityEngine;
 
 public class TimefreezeExplosion : Explosion
@@ -19,20 +19,15 @@ public class TimefreezeExplosion : Explosion
     // Disable enemy AI for targets inside explosion
     protected override void OnTriggerEnter(Collider _)
     {
-        GameObject target = _.gameObject;
+        var target = _.gameObject;
 
-        if (target.layer == 7) //TODO fix magic number later
+        // Ignore player and other projectiles
+        if (target != PlayerEntity.Instance.gameObject && !target.CompareTag("Projectile")) 
         {
-            // Ignore targets that are not enemy, such as projectiles
-            if (!target.GetComponent<BaseEnemyAI>())
-            {
-                return;
-            }
-
-            Debug.Log("Frozen " + target);
-            target.GetComponent<EnemyTimefreeze>().ApplyTimefreeze(_durationInSeconds);
+            target.GetComponent<EnemyTimefreeze>()?.ApplyTimefreeze(_durationInSeconds);
+            Destroy(this.gameObject);
         }
-        Destroy(this.gameObject);
+        
     }
 
     protected override void Update() { return; }

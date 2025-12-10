@@ -1,3 +1,4 @@
+using Player;
 using UnityEngine;
 
 public class FireballProjectile : Projectile
@@ -23,27 +24,21 @@ public class FireballProjectile : Projectile
     }
 
     // Apply damage and create explosion when target is hit
-    private void OnTriggerEnter(Collider _)
+    private void OnCollisionEnter(Collision _)
     {
-        GameObject target = _.gameObject;
+        var target = _.gameObject;
 
-        if (target.layer == 7) //TODO fix magic number later
+        // Ignore player and other projectiles
+        if (target != PlayerEntity.Instance.gameObject && !target.CompareTag("Projectile"))
         {
-            Entity entity = target.GetComponent<Entity>();
-
-            // Ignore targets that are not enemy, such as projectiles
-            if (!target.GetComponent<BaseEnemyAI>())
-            {
-                return;
-            }
-
+            Debug.Log(target);
             _moveSpeed = 0;
 
-            entity?.ApplyDamage(_damage);
+            target.GetComponent<Entity>()?.ApplyDamage(_damage);
             GameObject fireballExplosion = Instantiate(_explosionObject, transform.position, transform.rotation);
             fireballExplosion.GetComponent<FireballExplosion>().Spawn(_explosionDamage, _explosionDuration, _explosionRadius);
+            Destroy(this.gameObject);
         }
-        Destroy(this.gameObject);
     }
 
     // Projectile moves forwards from player camera

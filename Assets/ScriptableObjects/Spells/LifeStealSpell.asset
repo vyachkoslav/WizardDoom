@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f223fbb7462d9468f9c6fb3df14082c9, type: 3}
   m_Name: LifestealSpell
   m_EditorClassIdentifier: Assembly-CSharp::Player.Spells.LifestealSpell
-  _cost: 10
+  _cost: 100
   _damage: 0
   _moveSpeed: 0
   _color: {r: 0.02745098, g: 0.47058824, b: 0.039215688, a: 0.72156864}

@@ -44,6 +44,12 @@ namespace Player
             Cursor.visible = false;
         }
 
+        private void Start()
+        {
+            transform.position = DataManager.Instance.CheckPoint;
+            characterController.enabled = true;
+        }
+
         private void OnEnable()
         {
             movementAction.action.performed += OnMove;

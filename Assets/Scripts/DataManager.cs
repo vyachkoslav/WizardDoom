@@ -6,6 +6,11 @@ public class DataManager : MonoBehaviour
     private static DataManager _instance;
     public static DataManager Instance { get { return _instance; } }
 
+    private static Vector3 checkPoint;
+    //  = new Vector3(-2, 1, 3);
+    // Player checkpoint
+    public Vector3 CheckPoint { get { return checkPoint; } set { checkPoint = value; } }
+
     // Used when determining if LifeSteal effect should be applied
     private static bool isLifeStealActive = false;
     public bool IsLifeStealActive

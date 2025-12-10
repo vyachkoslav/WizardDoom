@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a26719f25a1334dbeafe947446440c48, type: 3}
   m_Name: TimefreezeSpell
   m_EditorClassIdentifier: Assembly-CSharp::Player.Spells.TimefreezeSpell
-  _cost: 10
-  _damage: 0
-  _moveSpeed: 200
+  _cost: 50
+  _damage: 1
+  _moveSpeed: 250
   _color: {r: 0.88235295, g: 0, b: 1, a: 0.8}
   spellObject: {fileID: 6680064958511329048, guid: b00962b25228743908879fa0b331eca2, type: 3}
   _explosionRadius: 0.5

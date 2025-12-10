@@ -8,27 +8,41 @@ public class RoomManager : MonoBehaviour
     [SerializeField] private Collider _collider;
 
     [Header("Door")]
-    // [SerializeField] private List<Door> _doorList = new List<Door>();
-    [SerializeField] private Door _door;
+    [SerializeField] private List<Door> _doorList = new List<Door>();
     
     [Header("Gauntlet")]
+    [SerializeField] private bool _isGauntletRoom = true;
     [SerializeField] private List<GameObject> _enemyList = new List<GameObject>();
 
     private bool _isPlayerInRoom = false;
     public bool IsPlayerInRoom { get { return _isPlayerInRoom; } }
 
+    private bool _isRoomCleared = false;
+    public bool IsRoomCleared { get { return _isRoomCleared; } }
+
     public UnityEvent OnPlayerEnteredRoom = new();
     public UnityEvent OnPlayerLeftRoom = new();
+
+    private void Start()
+    {
+        if (!_isGauntletRoom) { _isRoomCleared = true; }
+    }
 
     // Check if player really has entered the room and fighting should start
     // Should prevent gauntlet softlocking caused by entering room slightly but backing out and closing door
     private void Update()
     {
-        if (_isPlayerInRoom)
+        if (_isGauntletRoom && _isPlayerInRoom)
         {
-            if (_door.IsDoorClosed && _enemyList.Count != 0)
+            if (_enemyList.Count != 0 && PlayerEntity.Instance.Health > 0)
             {
-                DataManager.Instance.IsFighting = true;
+                foreach (Door door in _doorList)
+                {
+                    if (door.IsDoorClosed)
+                    {
+                        DataManager.Instance.IsFighting = true;
+                    }
+                }
             }
             else { DataManager.Instance.IsFighting = false; }
         }
@@ -45,6 +59,7 @@ public class RoomManager : MonoBehaviour
         if (_enemyList.Count == 0)
         {
             DataManager.Instance.IsFighting = false;
+            _isRoomCleared = true;
         }
     }
 
@@ -56,7 +71,6 @@ public class RoomManager : MonoBehaviour
         {
             _isPlayerInRoom = true;
             OnPlayerEnteredRoom.Invoke();
-            Debug.Log(_isPlayerInRoom);
         }
     }
 
@@ -68,7 +82,6 @@ public class RoomManager : MonoBehaviour
         {
             _isPlayerInRoom = false;
             OnPlayerLeftRoom.Invoke();
-            Debug.Log(_isPlayerInRoom);
         }
     }
 }

@@ -1,3 +1,4 @@
+using Player;
 using UnityEngine;
 
 public class TimefreezeProjectile : Projectile
@@ -32,23 +33,18 @@ public class TimefreezeProjectile : Projectile
     }
 
     // Creates explosion when target is hit
-    private void OnTriggerEnter(Collider _)
+    private void OnCollisionEnter(Collision _)
     {
-        GameObject target = _.gameObject;
+        var target = _.gameObject;
 
-        if (target.layer == 7) //TODO fix magic number later
+        // Ignore player and other projectiles
+        if (target != PlayerEntity.Instance.gameObject && !target.CompareTag("Projectile")) 
         {
-            // Ignore targets that are not enemy, such as projectiles
-            if (!target.GetComponent<BaseEnemyAI>())
-            {
-                return;
-            }
-
             _moveSpeed = 0;
             
             GameObject timefreezeExplosion = Instantiate(_explosionObject, transform.position, transform.rotation);
             timefreezeExplosion.GetComponent<TimefreezeExplosion>().Spawn(_freezeDuration, _explosionRadius);
+            Destroy(this.gameObject);
         }
-        Destroy(this.gameObject);
     }
 }

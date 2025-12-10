@@ -1,3 +1,4 @@
+using Player;
 using UnityEngine;
 
 public class FireballExplosion : Explosion
@@ -21,18 +22,12 @@ public class FireballExplosion : Explosion
     // Apply damage to entities inside explosion radius
     protected override void OnTriggerEnter(Collider _)
     {
-        GameObject target = _.gameObject;
+        var target = _.gameObject;
         
-        if (target.layer == 7) //TODO fix magic number later
+        // Ignore player and other projectiles
+        if (target != PlayerEntity.Instance.gameObject && !target.CompareTag("Projectile")) 
         {
-            // Ignore targets that are not enemy, such as projectiles
-            if (!target.GetComponent<BaseEnemyAI>())
-            {
-                return;
-            }
-
-            Entity entity = target.transform.GetComponent<Entity>();
-            entity?.ApplyDamage(_damage);
+            target.GetComponent<Entity>()?.ApplyDamage(_damage);
         }
     }
 }
