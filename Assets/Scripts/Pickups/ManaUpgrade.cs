@@ -21,4 +21,9 @@ public class ManaUpgrade : Pickup
         _manaBar.UpdateMaxMana();
         // SoundManager.Instance.PlaySound3D("PickupGet", transform.position);
     }
+
+    public override string ToString()
+    {
+        return "+" + _maxManaToAdd + " max mana";
+    }
 }

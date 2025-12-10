@@ -1,3 +1,4 @@
+using System.Collections;
 using Player.UI;
 using UnityEngine;
 
@@ -16,8 +17,8 @@ public class Key : Pickup
         if (!DataManager.Instance.CheckKeyInList(this)) 
         {
             DataManager.Instance.AddKeyToList(this);
+            _itemsDisplay.UpdateItemDisplay(this);
         }
-        _itemsDisplay.UpdateItemDisplay(this);
     }
 
     public override string ToString()

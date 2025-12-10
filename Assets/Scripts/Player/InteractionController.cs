@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,6 +12,8 @@ namespace Player
 
         [Header("UI")]
         [SerializeField] private TMP_Text _interactionText;
+        [SerializeField] private TMP_Text _pickupText;
+        [SerializeField] protected float _infoTextTimeInSeconds = 3f;
 
         public static int InteractionObjectLayer = 10; // InteractableObject layermask
 
@@ -20,6 +23,7 @@ namespace Player
         private void Start()
         {
             _interactionText.enabled = false;
+            _pickupText.enabled = false;
         }
 
         private void OnEnable()
@@ -72,6 +76,19 @@ namespace Player
                 _interactionText.enabled = false;
             }
             else { _canInteract = false; }
+        }
+
+        public void DisplayPickupText(string pickupText)
+        {
+            StartCoroutine(Display(pickupText));
+        }
+
+        private IEnumerator Display(string pickupText)
+        {
+        _pickupText.text = pickupText;
+        _pickupText.enabled = true;
+        yield return new WaitForSeconds(_infoTextTimeInSeconds);
+        _pickupText.enabled = false;
         }
     }
 }

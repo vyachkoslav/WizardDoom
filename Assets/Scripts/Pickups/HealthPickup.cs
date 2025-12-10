@@ -11,4 +11,9 @@ public class HealthPickup : Pickup
         PlayerEntity.Instance.ApplyHealing(_healthToAdd);
         // SoundManager.Instance.PlaySound3D("PickupGet", transform.position);
     }
+
+    public override string ToString()
+    {
+        return "+" + _healthToAdd + " health";
+    }
 }

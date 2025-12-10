@@ -1,5 +1,6 @@
 using System.Collections;
 using Player;
+using TMPro;
 using UnityEngine;
 
 // Abstract class for pickups like hp, ammo
@@ -30,6 +31,7 @@ public abstract class Pickup : MonoBehaviour
             _model.SetActive(false);
             _collider.enabled = false;
             if (_respawnTimeInSeconds > 0) { StartCoroutine(Respawn()); }
+            PlayerEntity.Instance.gameObject.GetComponent<InteractionController>().DisplayPickupText(this.ToString());
         }
     }
 

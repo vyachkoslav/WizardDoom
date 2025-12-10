@@ -27,4 +27,9 @@ public class SpellPickup : Pickup
         // Destroys spell pickup object
         Destroy(gameObject);
     }
+
+    public override string ToString()
+    {
+        return "Acquired " + _spell;
+    }
 }

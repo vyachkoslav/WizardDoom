@@ -24,6 +24,11 @@ public class AmmoPickup : Pickup
         {
             weapon.AddAmmo(_ammoToAdd);
         }
-        // SoundManager.Instance.PlaySound3D("PickupGet", transform.position);
+        SoundManager.Instance.PlaySound3D("WeaponReload", transform.position);
+    }
+
+    public override string ToString()
+    {
+        return "+" + _ammoToAdd + " ammo";
     }
 }

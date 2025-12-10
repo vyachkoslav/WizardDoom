@@ -18,4 +18,9 @@ public class ManaRegenUpgrade : Pickup
         _player.GetComponent<SpellController>().RegenSpeedInSeconds = _newRegenSpeedInSeconds;
         // SoundManager.Instance.PlaySound3D("PickupGet", transform.position);
     }
+
+    public override string ToString()
+    {
+        return "Faster mana regeneration";
+    }
 }

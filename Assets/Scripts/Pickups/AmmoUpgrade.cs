@@ -23,7 +23,12 @@ public class AmmoUpgrade : Pickup
         {
             weapon.CurrentAmmo += _maxAmmoToAdd;
             weapon.MaxCarriableAmmo += _maxAmmoToAdd;
-            // SoundManager.Instance.PlaySound3D("PickupGet", transform.position);
+            SoundManager.Instance.PlaySound3D("WeaponReload", transform.position);
         }
+    }
+
+    public override string ToString()
+    {
+        return "+" + _maxAmmoToAdd + " max ammo";
     }
 }
