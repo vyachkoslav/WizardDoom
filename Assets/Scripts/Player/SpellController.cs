@@ -23,6 +23,17 @@ namespace Player
         [SerializeField] private UnityEvent onManaChanged;
         [SerializeField] private UnityEvent onSpellChanged;
 
+
+        [Header("SpellSkulls")]
+        [SerializeField] private GameObject _necroSkull;
+        [SerializeField] private GameObject _pyroSkull;
+        [SerializeField] private GameObject _chronoSkull;
+
+        [Header("SpellSkullMaterial")]
+        [SerializeField] private Material _necroSkullMaterial;
+        [SerializeField] private Material _pyroSkullMaterial;
+        [SerializeField] private Material _chronoSkullMaterial;
+
         public event Action OnManaChanged;
         public event Action OnSpellChanged;
 
@@ -40,6 +51,7 @@ namespace Player
         public float CurrentMana { get { return _currentMana; } }
         public Spell CurrentSelectedSpell { get { return _currentSelectedSpell; }}
         public float RegenSpeedInSeconds { get { return _regenSpeedInSeconds; } set {_regenSpeedInSeconds = value; } }
+        
 
         // Set current spell to first in list
         private void Start()
@@ -48,6 +60,12 @@ namespace Player
             _currentMana = _maxMana;
             OnManaChanged += onManaChanged.Invoke;
             OnSpellChanged += onSpellChanged.Invoke;
+            SwitchSpell();
+
+            foreach (Spell spell in DataManager.Instance.SpellList)
+            {
+                SkullMaterialSet(spell);
+            }
         }
 
         private void OnEnable()
@@ -108,6 +126,7 @@ namespace Player
         public void AddSpellToList(Spell spell)
         {
             DataManager.Instance.AcquireSpell(spell);
+            SkullMaterialSet(spell);
             // if (_spellList.Count <= 0) { _currentSelectedSpell = _spellList[_currentSpellIndex]; }
             SwitchSpell();
         }
@@ -140,5 +159,24 @@ namespace Player
             yield return new WaitForSeconds(_regenSpeedInSeconds);
             _manaRegen = false;
         }
+
+
+
+        private void SkullMaterialSet(Spell spell)
+        {
+            if (spell.ID == "fireball")
+            {
+                _pyroSkull.GetComponent<MeshRenderer>().material = _pyroSkullMaterial;
+            }
+            if (spell.ID == "timefreeze")
+            {
+                _chronoSkull.GetComponent<MeshRenderer>().material = _chronoSkullMaterial;
+            }
+            if (spell.ID == "lifesteal")
+            {
+                _necroSkull.GetComponent<MeshRenderer>().material = _necroSkullMaterial;
+            }
+        }
     }
+
 }

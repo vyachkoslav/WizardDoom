@@ -11,8 +11,11 @@ namespace Player.Spells
         [SerializeField] protected float _damage;
         [SerializeField] protected float _moveSpeed;
         [SerializeField] protected Color _color;
+        [SerializeField] protected string _id;
 
         [SerializeField] protected GameObject spellObject;
+
+
 
         // Spell mana cost getter
         public int Cost { get { return _cost; } }
@@ -22,5 +25,8 @@ namespace Player.Spells
 
         // Main functionality, different for each spell
         public abstract void Cast();
+
+        // Spell ID
+        public string ID {get {return _id; } }
     }
 }
