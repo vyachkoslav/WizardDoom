@@ -190,6 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2289d280b4cae4d56a505011b0230ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyTimefreeze
+  temporalMaterial: {fileID: 2100000, guid: f06d6d4e6d2744599951e984313ac1e2, type: 2}
 --- !u!95 &2828692049360219473
 Animator:
   serializedVersion: 7
@@ -352,5 +353,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6d94b09c26be1c4b89586e60e7f89f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageFlash
-  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  flashMat: {fileID: 2100000, guid: f3dcd3c3eceffc74fb3478e3f2dbaabf, type: 2}
   flashDuration: 0.1

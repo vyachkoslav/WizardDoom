@@ -247,6 +247,7 @@ MonoBehaviour:
   attack: {fileID: 11400000, guid: 48b74cb9b5ff7ae4ab3c1b9f5e43ae55, type: 2}
   fleeTriggerRange: 0
   attackRange: 8
+  spellPickup: {fileID: 0}
 --- !u!114 &-261060131931837758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,6 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2289d280b4cae4d56a505011b0230ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyTimefreeze
+  temporalMaterial: {fileID: 2100000, guid: f06d6d4e6d2744599951e984313ac1e2, type: 2}
 --- !u!1001 &8292312277554051282
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -380,9 +382,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -3051815954447469673, guid: 85442b0a8905e6847bd1855c018ca0dd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8365998315996942858}
-    - targetCorrespondingSourceObject: {fileID: 6657560127643677590, guid: 85442b0a8905e6847bd1855c018ca0dd, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 447769894548237483}
     - targetCorrespondingSourceObject: {fileID: -6452266432751415832, guid: 85442b0a8905e6847bd1855c018ca0dd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8859226317884069363}
@@ -422,7 +421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6d94b09c26be1c4b89586e60e7f89f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageFlash
-  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  flashMat: {fileID: 2100000, guid: f3dcd3c3eceffc74fb3478e3f2dbaabf, type: 2}
   flashDuration: 0.1
 --- !u!1 &842007665855967148 stripped
 GameObject:
@@ -441,7 +440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6d94b09c26be1c4b89586e60e7f89f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageFlash
-  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  flashMat: {fileID: 2100000, guid: f3dcd3c3eceffc74fb3478e3f2dbaabf, type: 2}
   flashDuration: 0.1
 --- !u!1 &1112479982853541118 stripped
 GameObject:
@@ -460,7 +459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6d94b09c26be1c4b89586e60e7f89f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageFlash
-  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  flashMat: {fileID: 2100000, guid: f3dcd3c3eceffc74fb3478e3f2dbaabf, type: 2}
   flashDuration: 0.1
 --- !u!1 &2411320057237253809 stripped
 GameObject:
@@ -479,7 +478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6d94b09c26be1c4b89586e60e7f89f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageFlash
-  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  flashMat: {fileID: 2100000, guid: f3dcd3c3eceffc74fb3478e3f2dbaabf, type: 2}
   flashDuration: 0.1
 --- !u!1 &2788277495482403653 stripped
 GameObject:
@@ -498,26 +497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6d94b09c26be1c4b89586e60e7f89f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageFlash
-  flashColor: {r: 1, g: 0, b: 0, a: 1}
-  flashDuration: 0.1
---- !u!1 &3418321990861802308 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6657560127643677590, guid: 85442b0a8905e6847bd1855c018ca0dd, type: 3}
-  m_PrefabInstance: {fileID: 8292312277554051282}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &447769894548237483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3418321990861802308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6d94b09c26be1c4b89586e60e7f89f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DamageFlash
-  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  flashMat: {fileID: 2100000, guid: f3dcd3c3eceffc74fb3478e3f2dbaabf, type: 2}
   flashDuration: 0.1
 --- !u!1 &3595270572738026481 stripped
 GameObject:
@@ -536,7 +516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6d94b09c26be1c4b89586e60e7f89f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageFlash
-  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  flashMat: {fileID: 2100000, guid: f3dcd3c3eceffc74fb3478e3f2dbaabf, type: 2}
   flashDuration: 0.1
 --- !u!1 &4499087847070505975 stripped
 GameObject:
@@ -555,7 +535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6d94b09c26be1c4b89586e60e7f89f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageFlash
-  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  flashMat: {fileID: 2100000, guid: f3dcd3c3eceffc74fb3478e3f2dbaabf, type: 2}
   flashDuration: 0.1
 --- !u!1 &6152136759667127610 stripped
 GameObject:
@@ -574,7 +554,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6d94b09c26be1c4b89586e60e7f89f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageFlash
-  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  flashMat: {fileID: 2100000, guid: f3dcd3c3eceffc74fb3478e3f2dbaabf, type: 2}
   flashDuration: 0.1
 --- !u!1 &6858909334743557235 stripped
 GameObject:
@@ -593,7 +573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6d94b09c26be1c4b89586e60e7f89f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageFlash
-  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  flashMat: {fileID: 2100000, guid: f3dcd3c3eceffc74fb3478e3f2dbaabf, type: 2}
   flashDuration: 0.1
 --- !u!4 &8403311638144704313 stripped
 Transform:
