@@ -15,10 +15,6 @@ MonoBehaviour:
   delayBetweenAttacks: 10
   damage: 0
   enemyPrefab: {fileID: 3210546729803314872, guid: 149d0c3621f49534687da9861499814c, type: 3}
-  distanceBetweenSpawns: 1
   enemyAmount: 1
   spawnPoints:
-  - {x: -102, y: -12, z: -44.94758}
-  - {x: -96, y: -12, z: -44.94758}
-  spawnRotation: {x: 0, y: 0, z: 0}
-  yPositionForSpawn: 0
+  - {x: -99, y: -12, z: -47.75}

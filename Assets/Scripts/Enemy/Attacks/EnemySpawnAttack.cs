@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.Assertions;
 using Utils;
 
 namespace Enemy
@@ -10,10 +11,13 @@ namespace Enemy
     public class EnemySpawnAttack : Attack
     {
         [SerializeField] private GameObject enemyPrefab;
-        [SerializeField] private float distanceBetweenSpawns;
         [SerializeField] private int enemyAmount;
-        [SerializeField] private List<Vector3> spawnPoints;
-        [SerializeField] private float yPositionForSpawn;
+        [SerializeField] private List<Vector3> spawnPoints = new();
+
+        private void OnValidate()
+        {
+            Assert.AreEqual(enemyAmount, spawnPoints.Count, $"Spawn points are not equal to enemy amount ({name})");
+        }
 
         public override void AttackOnce(Func<AttackData> data, CancellationToken cancellationToken)
         {
