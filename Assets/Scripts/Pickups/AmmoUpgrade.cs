@@ -27,8 +27,7 @@ public class AmmoUpgrade : Pickup
             SoundManager.Instance.PlaySound3D("WeaponReload", transform.position);
         }
 
-        DataManager.Instance.UpgradeList.Add(this);
-        DataManager.Instance.MaxAmmoToAdd = _maxAmmoToAdd;
+        DataManager.Instance.UpgradeList.Add(this, _maxAmmoToAdd);
         this.gameObject.SetActive(false);
     }
 

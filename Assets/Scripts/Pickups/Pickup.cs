@@ -18,14 +18,14 @@ public abstract class Pickup : MonoBehaviour
     [SerializeField] protected string _id;
     public string ID { get { return _id; } }
 
-    private List<Pickup> _upgradeList;
+    private Dictionary<Pickup, float> _upgradeList;
 
     protected virtual void Start()
     {
         _upgradeList = DataManager.Instance.UpgradeList;
-        foreach (Pickup upgrade in _upgradeList)
+        foreach (KeyValuePair<Pickup, float> upgrade in _upgradeList)
         {
-            if (upgrade.ID == _id)
+            if (upgrade.Key.ID == _id)
             {
                 this.gameObject.SetActive(false); 
             }
