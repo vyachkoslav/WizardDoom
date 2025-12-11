@@ -67,20 +67,8 @@ public class DataManager : MonoBehaviour
     }
 
     // Player's upgrades, applied in Awake after death
-    private static float maxHealthToAdd = 0;
-    public float MaxHealthToAdd { set { maxHealthToAdd += value; } }
-
-    private static int maxAmmoToAdd = 0;
-    public int MaxAmmoToAdd { set { maxAmmoToAdd += value; } }
-
-    private static int maxManaToAdd = 0;
-    public int MaxManaToAdd { set { maxManaToAdd += value; } }
-    
-    private static float newManaRegenSpeed = 1f;
-    public float NewManaRegenSpeed { set { newManaRegenSpeed = value; } }
-
-    private static List<Pickup> upgradeList = new List<Pickup>();
-    public List<Pickup> UpgradeList { get { return upgradeList; } }
+    private static Dictionary<Pickup, float> upgradeList = new Dictionary<Pickup, float>();
+    public Dictionary<Pickup, float> UpgradeList { get { return upgradeList; } }
 
     private void Awake()
     {
@@ -94,28 +82,20 @@ public class DataManager : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
         }
 
-        foreach (Pickup upgrade in upgradeList)
+        foreach (KeyValuePair<Pickup, float> upgrade in upgradeList)
         {
-            switch (upgrade)
+            if (upgrade.Key is HealthUpgrade) { PlayerEntity.Instance.MaxHealth += upgrade.Value; }
+            if (upgrade.Key is AmmoUpgrade)
             {
-                case HealthUpgrade: 
-                    PlayerEntity.Instance.MaxHealth += maxHealthToAdd;
-                    break;
-                case AmmoUpgrade:
-                    List<Weapon> weaponList = PlayerEntity.Instance.GetComponent<WeaponController>().AvailableWeapons;
-                    foreach (Weapon weapon in weaponList) 
-                        { 
-                            weapon.CurrentAmmo += maxAmmoToAdd;
-                            weapon.MaxCarriableAmmo += maxAmmoToAdd; 
-                        }
-                    break;
-                case ManaUpgrade:
-                    PlayerEntity.Instance.GetComponent<SpellController>().AddMaxMana(maxManaToAdd);
-                    break;
-                case ManaRegenUpgrade:
-                    PlayerEntity.Instance.GetComponent<SpellController>().RegenSpeedInSeconds = newManaRegenSpeed;
-                    break;
+                List<Weapon> weaponList = PlayerEntity.Instance.GetComponent<WeaponController>().AvailableWeapons;
+                foreach (Weapon weapon in weaponList) 
+                    { 
+                        weapon.CurrentAmmo += (int)upgrade.Value;
+                        weapon.MaxCarriableAmmo += (int)upgrade.Value; 
+                    }
             }
+            if (upgrade.Key is ManaUpgrade) { PlayerEntity.Instance.GetComponent<SpellController>().AddMaxMana((int)upgrade.Value); }
+            if (upgrade.Key is ManaRegenUpgrade) { PlayerEntity.Instance.GetComponent<SpellController>().RegenSpeedInSeconds = upgrade.Value; }
         }
     }
 
@@ -132,13 +112,9 @@ public class DataManager : MonoBehaviour
         ResetGameStats();
 
         keyList.Clear();
-        checkPoint = Vector3.zero;
+        checkPoint = new Vector3(-2, 1, 3);
         spellList.Clear();
         upgradeList.Clear();
-        maxHealthToAdd = 0;
-        maxAmmoToAdd = 0;
-        maxManaToAdd = 0;
-        newManaRegenSpeed = 1f;
         isWin = false;
     }
 }

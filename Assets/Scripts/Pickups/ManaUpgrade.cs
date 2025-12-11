@@ -22,8 +22,7 @@ public class ManaUpgrade : Pickup
         _manaBar.UpdateMaxMana();
         SoundManager.Instance.PlaySound3D("Mana", transform.position);
 
-        DataManager.Instance.UpgradeList.Add(this);
-        DataManager.Instance.MaxManaToAdd = _maxManaToAdd;
+        DataManager.Instance.UpgradeList.Add(this, _maxManaToAdd);
         this.gameObject.SetActive(false);
     }
 

@@ -19,8 +19,7 @@ public class ManaRegenUpgrade : Pickup
         _player.GetComponent<SpellController>().RegenSpeedInSeconds = _newRegenSpeedInSeconds;
         SoundManager.Instance.PlaySound3D("Mana", transform.position);
 
-        DataManager.Instance.UpgradeList.Add(this);
-        DataManager.Instance.NewManaRegenSpeed = _newRegenSpeedInSeconds;
+        DataManager.Instance.UpgradeList.Add(this, _newRegenSpeedInSeconds);
         this.gameObject.SetActive(false);
     }
 

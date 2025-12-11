@@ -22,8 +22,7 @@ public class HealthUpgrade : Pickup
         _healthBar.UpdateMaxHealth();
         SoundManager.Instance.PlaySound3D("Health", transform.position);
 
-        DataManager.Instance.UpgradeList.Add(this);
-        DataManager.Instance.MaxHealthToAdd = _maxHealthToAdd;
+        DataManager.Instance.UpgradeList.Add(this, _maxHealthToAdd);
         
         this.gameObject.SetActive(false);
     }
