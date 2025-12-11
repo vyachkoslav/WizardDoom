@@ -1,9 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
-using UnityEngine.AI;
 using Utils;
-using Random = UnityEngine.Random;
 
 namespace Enemy
 {
@@ -13,6 +12,7 @@ namespace Enemy
         [SerializeField] private GameObject enemyPrefab;
         [SerializeField] private float distanceBetweenSpawns;
         [SerializeField] private int enemyAmount;
+        [SerializeField] private List<Vector3> spawnPoints;
         [SerializeField] private float yPositionForSpawn;
 
         public override void AttackOnce(Func<AttackData> data, CancellationToken cancellationToken)
@@ -63,14 +63,9 @@ namespace Enemy
 
         private void CreateEnemies(AttackData data)
         {
-            var width = (enemyAmount - 1) * distanceBetweenSpawns;
-            var targetDir = (data.TargetPosition - data.WeaponPosition).WithY(0);
-            var middlePoint = (targetDir / 2 + data.WeaponPosition).WithY(yPositionForSpawn);
-            var rightDir = Vector3.Cross(targetDir, Vector3.up).normalized;
-            var startPos = middlePoint + rightDir * (width / 2);
             for (int i = 0; i < enemyAmount; ++i)
             {
-                var pos = startPos + -rightDir * (i * distanceBetweenSpawns);
+                var pos = spawnPoints[i];
                 var rotation = Quaternion.LookRotation((data.TargetPosition - pos).WithY(0));
                 Instantiate(enemyPrefab, pos, rotation);
             }

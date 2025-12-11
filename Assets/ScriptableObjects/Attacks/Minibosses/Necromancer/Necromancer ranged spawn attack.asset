@@ -17,4 +17,8 @@ MonoBehaviour:
   enemyPrefab: {fileID: 5750608459987162048, guid: e3eb76f468a37ff418fdd50c8a54c9b8, type: 3}
   distanceBetweenSpawns: 2
   enemyAmount: 1
+  spawnPoints:
+  - {x: -96, y: -12, z: -47.75}
+  - {x: -99, y: -12, z: -47.75}
+  - {x: -102, y: -12, z: -47.75}
   yPositionForSpawn: 0.87
