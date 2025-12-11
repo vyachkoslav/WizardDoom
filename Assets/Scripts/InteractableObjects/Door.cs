@@ -1,6 +1,7 @@
 using System.Collections;
 using Player;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class Door : Interactable
@@ -9,7 +10,13 @@ public class Door : Interactable
     [SerializeField] protected HingeJoint _hingeJoint;
     [SerializeField] protected Rigidbody _rigidBody;
     [SerializeField] protected float _doorBufferInSeconds = 0.5f;
+    
+    [SerializeField] private Key _key;
+    private bool isLocked => _key != null;
 
+    [SerializeField] private UnityEvent OnOpened = new();
+    [SerializeField] private UnityEvent OnClosed = new();
+    
     protected JointLimits _limits;
     protected JointSpring _spring;
     protected float _limitMin;
@@ -35,7 +42,7 @@ public class Door : Interactable
 
     public override void Interact()
     {
-        if (!DataManager.Instance.IsFighting)
+        if (!DataManager.Instance.IsFighting && (!isLocked || DataManager.Instance.CheckKeyInList(_key)))
         {
             StartCoroutine(OpenDoor());
         }
@@ -44,6 +51,7 @@ public class Door : Interactable
     // For opening door
     protected virtual IEnumerator OpenDoor()
     {
+        OnOpened.Invoke();
         SetSpring(_limitMax);
         _doorModelCollider.enabled = false;
         _rigidBody.isKinematic = false;
@@ -82,6 +90,7 @@ public class Door : Interactable
         _canInteract = true;
         _isDoorClosed = true;
         _rigidBody.isKinematic = true;
+        OnClosed.Invoke();
     }
 
     // Reverse hinge joint movement direction
@@ -99,6 +108,10 @@ public class Door : Interactable
         if (DataManager.Instance.IsFighting)
         {
             return "Defeat all enemies!";
+        }
+        else if (isLocked && !DataManager.Instance.CheckKeyInList(_key))
+        {
+            return "Find '" + _key.ToString() + "' to unlock door.";
         }
         else
         {

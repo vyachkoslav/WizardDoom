@@ -157,6 +157,36 @@ MonoBehaviour:
   _hingeJoint: {fileID: 999655989906603026}
   _rigidBody: {fileID: 6964903134281052072}
   _doorBufferInSeconds: 0.5
+  OnOpened:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5774004762798772643}
+        m_TargetAssemblyTypeName: UnityEngine.OcclusionPortal, UnityEngine
+        m_MethodName: set_open
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  OnClosed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5774004762798772643}
+        m_TargetAssemblyTypeName: UnityEngine.OcclusionPortal, UnityEngine
+        m_MethodName: set_open
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &9011192681721154118
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,6 +199,7 @@ GameObject:
   - component: {fileID: 8365273526135507917}
   - component: {fileID: 2015574476966449186}
   - component: {fileID: 4267940146501520494}
+  - component: {fileID: 5774004762798772643}
   m_Layer: 9
   m_Name: DoorModel
   m_TagString: Untagged
@@ -268,3 +299,13 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.2436538, y: 1.5099374, z: 0.25}
   m_Center: {x: -0.0038269565, y: 0.8950314, z: 0}
+--- !u!41 &5774004762798772643
+OcclusionPortal:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9011192681721154118}
+  m_Open: 0
+  m_Center: {x: -0.008366734, y: 1.1274004, z: 0}
+  m_Size: {x: 1.5132387, y: 2.2832446, z: 1}
