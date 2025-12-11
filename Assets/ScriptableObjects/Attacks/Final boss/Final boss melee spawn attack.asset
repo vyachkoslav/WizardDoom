@@ -15,9 +15,7 @@ MonoBehaviour:
   delayBetweenAttacks: 3
   damage: 0
   enemyPrefab: {fileID: 3210546729803314872, guid: 149d0c3621f49534687da9861499814c, type: 3}
-  enemyAmount: 3
+  enemyAmount: 2
   spawnPoints:
   - {x: -112.685, y: 5.18, z: 6.481}
   - {x: -112.685, y: 5.18, z: 2.81}
-  - {x: -112.685, y: 5.18, z: -1.02}
-  yPositionForSpawn: 0

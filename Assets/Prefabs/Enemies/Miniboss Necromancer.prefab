@@ -142,8 +142,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b67ffa4a02761e41adc4a888027c2f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DetectPlayer
-  sightRange: 20
-  fieldOfViewAngle: 180
+  sightRange: 50
+  fieldOfViewAngle: 360
   proximityRange: 4
   playerLayerMask:
     serializedVersion: 2
@@ -166,7 +166,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NecromancerAI
   delayBeforeAttack: 1.25
   attackAnimationDuration: 1.5
-  stopDuration: 1
   myRoom: {fileID: 0}
   OnBeforeAttackDelay:
     m_PersistentCalls:
@@ -176,7 +175,7 @@ MonoBehaviour:
       m_Calls: []
   attack: {fileID: 11400000, guid: af9851ffe99104c4d93e466e4ee7851d, type: 2}
   fleeTriggerRange: 0
-  attackRange: 7
+  attackRange: 10
   spellPickup: {fileID: 7418996333315851882, guid: fd6cc78b499bd6a4b84f08170089be28, type: 3}
 --- !u!114 &-1425665803457058554
 MonoBehaviour:
