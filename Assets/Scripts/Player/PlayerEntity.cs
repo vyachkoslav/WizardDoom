@@ -3,7 +3,6 @@ namespace Player
     
     public class PlayerEntity : Entity
     {
-        public float MaxHealth { get { return maxHealth; } set { maxHealth = value; } }
         public static PlayerEntity Instance;
 
         protected override void Awake()
@@ -12,6 +11,10 @@ namespace Player
             base.Awake();
         }
 
+        public void SetMaxHealth(float health)
+        {
+            maxHealth = health;
+        }
         public override void ApplyDamage(float damage)
         {
             base.ApplyDamage(damage);

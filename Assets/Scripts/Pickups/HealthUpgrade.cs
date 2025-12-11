@@ -18,7 +18,7 @@ public class HealthUpgrade : Pickup
     // Add to player's max health
     protected override void PickupEffect()
     {
-        _player.MaxHealth += _maxHealthToAdd;
+        _player.SetMaxHealth(_player.MaxHealth + _maxHealthToAdd);
         _healthBar.UpdateMaxHealth();
         SoundManager.Instance.PlaySound3D("Health", transform.position);
 

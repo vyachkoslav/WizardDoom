@@ -84,15 +84,18 @@ public class DataManager : MonoBehaviour
 
         foreach (KeyValuePair<Pickup, float> upgrade in upgradeList)
         {
-            if (upgrade.Key is HealthUpgrade) { PlayerEntity.Instance.MaxHealth += upgrade.Value; }
+            if (upgrade.Key is HealthUpgrade)
+            {
+                PlayerEntity.Instance.SetMaxHealth(PlayerEntity.Instance.Health + upgrade.Value);
+            }
             if (upgrade.Key is AmmoUpgrade)
             {
                 List<Weapon> weaponList = PlayerEntity.Instance.GetComponent<WeaponController>().AvailableWeapons;
                 foreach (Weapon weapon in weaponList) 
-                    { 
-                        weapon.CurrentAmmo += (int)upgrade.Value;
-                        weapon.MaxCarriableAmmo += (int)upgrade.Value; 
-                    }
+                { 
+                    weapon.CurrentAmmo += (int)upgrade.Value;
+                    weapon.MaxCarriableAmmo += (int)upgrade.Value; 
+                }
             }
             if (upgrade.Key is ManaUpgrade) { PlayerEntity.Instance.GetComponent<SpellController>().AddMaxMana((int)upgrade.Value); }
             if (upgrade.Key is ManaRegenUpgrade) { PlayerEntity.Instance.GetComponent<SpellController>().RegenSpeedInSeconds = upgrade.Value; }
