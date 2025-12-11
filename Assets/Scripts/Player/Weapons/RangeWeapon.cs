@@ -173,7 +173,7 @@ namespace Player.Weapons
                 SoundManager.Instance.PlaySound2D("ShotgunFire");
             }
             else{SoundManager.Instance.PlaySound2D("MachinegunFire");}
-            var didHit = Physics.Raycast(ShootRay, out var hit, 1000);
+            var didHit = Physics.Raycast(ShootRay, out var hit, 1000, ~(1<<8), QueryTriggerInteraction.Ignore);
             if (!didHit || !hit.transform.TryGetComponent<IEntity>(out var entity)) return;
 
             entity.ApplyDamage(damage);
