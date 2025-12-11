@@ -26,8 +26,14 @@ public class VictoryMenu : MonoBehaviour
     {
         
     }
+    public void OnMainMenuButtonClicked()
+    {
 
+        //Load the menu music list here
+        //SceneManager.LoadScene("MainMenuScene");
 
+        DataManager.Instance.ResetAllStats();
+    }
 
     public void GameWon()
     {

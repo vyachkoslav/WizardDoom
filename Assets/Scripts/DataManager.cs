@@ -3,6 +3,7 @@ using Player;
 using Player.Spells;
 using Player.Weapons;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DataManager : MonoBehaviour
 {
@@ -112,6 +113,7 @@ public class DataManager : MonoBehaviour
     // Used when reseting everything
     public void ResetAllStats()
     {
+        Debug.Log("Main Menu Button Pressed");
         ResetGameStats();
 
         keyList.Clear();
@@ -119,5 +121,6 @@ public class DataManager : MonoBehaviour
         spellList.Clear();
         upgradeList.Clear();
         isWin = false;
+        SceneManager.LoadScene("MainMenuScene");
     }
 }

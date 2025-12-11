@@ -91,7 +91,9 @@ public class PauseMenu : MonoBehaviour
     {
 
         //Load the menu music list here
-        SceneManager.LoadScene("MainMenuScene");
+        //SceneManager.LoadScene("MainMenuScene");
+
+        DataManager.Instance.ResetAllStats();
     }
 }
 

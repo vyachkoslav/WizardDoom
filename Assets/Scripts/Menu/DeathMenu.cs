@@ -55,4 +55,14 @@ public class DeathMenu : MonoBehaviour
     {
         RestartLevel();
     }
+
+
+    public void OnMainMenuButtonClicked()
+    {
+
+        //Load the menu music list here
+        //SceneManager.LoadScene("MainMenuScene");
+
+        DataManager.Instance.ResetAllStats();
+    }
 }
