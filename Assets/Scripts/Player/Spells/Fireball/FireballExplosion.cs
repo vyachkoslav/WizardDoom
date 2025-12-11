@@ -29,7 +29,7 @@ public class FireballExplosion : Explosion
         {
             if (target.CompareTag("FinalBossCollider"))
             {
-                target.GetComponent<ChildEntity>()?.ApplyDamage(_damage);
+                target.GetComponent<ChildEntity>()?.ApplyDamage(_damage/2); // halved damage
             }
             else
             {

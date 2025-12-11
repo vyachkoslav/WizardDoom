@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44b1fac8df9954aabb6b0a0ee341905f, type: 3}
   m_Name: FireballSpell
   m_EditorClassIdentifier: Assembly-CSharp::Player.Spells.FireballSpell
-  _cost: 20
+  _cost: 40
   _damage: 10
   _moveSpeed: 500
   _color: {r: 1, g: 0.4117647, b: 0, a: 0.8509804}
