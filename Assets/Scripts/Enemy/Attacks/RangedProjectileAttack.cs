@@ -18,7 +18,7 @@ namespace Enemy
                 if (!other.isTrigger)
                 {
                     var entity = other.GetComponentInParent<Entity>();
-                    if (entity != getAttackData().SelfEntity)
+                    if (entity != (object)getAttackData().SelfEntity)
                         entity?.ApplyDamage(Damage);
                     else
                         return false;

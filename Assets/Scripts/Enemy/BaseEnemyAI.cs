@@ -10,7 +10,6 @@ public abstract class BaseEnemyAI : MonoBehaviour
 {
     private static readonly int Attacking = Animator.StringToHash("isAttacking");
     private DetectPlayer detectPlayer;
-    private Coroutine stopAttackCoroutine;
     
     protected NavMeshAgent agent { get; private set; }
     protected GameObject player { get; private set; }
@@ -30,7 +29,6 @@ public abstract class BaseEnemyAI : MonoBehaviour
 
     [SerializeField] protected float delayBeforeAttack;
     [SerializeField] float attackAnimationDuration;
-    [SerializeField] private float stopDuration = 1f;
     [SerializeField] protected RoomManager myRoom;
     
     public UnityEvent OnBeforeAttackDelay = new();
@@ -82,20 +80,6 @@ public abstract class BaseEnemyAI : MonoBehaviour
         {
             agent.isStopped = false;
         }
-        // stopAttackCoroutine ??= StartCoroutine(StopAttackingRoutine());
-    }
-
-    private IEnumerator StopAttackingRoutine()
-    {
-        var startTime = Time.time;
-        while (!IsAttacking && Time.time - startTime < stopDuration)
-        {
-            yield return null;
-        }
-        stopAttackCoroutine = null;
-
-        if (!IsAttacking)
-            agent.isStopped = false;
     }
 
     // Animation methods
