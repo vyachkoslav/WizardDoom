@@ -4,13 +4,13 @@ public class CheckPoint : MonoBehaviour
 {
     [SerializeField] private RoomManager _myRoom;
 
-    private void Start()
-    {
-        if (_myRoom == null)
-        {
-            DataManager.Instance.CheckPoint = transform.position;
-        }
-    }
+    // private void Start()
+    // {
+    //     if (_myRoom == null)
+    //     {
+    //         DataManager.Instance.CheckPoint = transform.position;
+    //     }
+    // }
 
     public void SetCheckpoint()
     {

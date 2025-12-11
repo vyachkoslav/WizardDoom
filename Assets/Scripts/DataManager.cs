@@ -10,7 +10,7 @@ public class DataManager : MonoBehaviour
     public static DataManager Instance { get { return _instance; } }
 
     // Player checkpoint
-    private static Vector3 checkPoint;
+    private static Vector3 checkPoint = new Vector3(-2, 1, 3);
     public Vector3 CheckPoint { get { return checkPoint; } set { checkPoint = value; } }
 
     // Used when determining if LifeSteal effect should be applied
