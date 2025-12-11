@@ -117,6 +117,7 @@ public class BossAI : BaseEnemyAI
                 agent.SetDestination(player.transform.position);
             }
         }
+        else { agent.SetDestination(startPosition);}
         
         if (IsAttacking && (!isInAttackRange || obstacleBlocksVision))
         {
