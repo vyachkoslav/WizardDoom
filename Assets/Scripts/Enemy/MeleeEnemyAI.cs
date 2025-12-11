@@ -71,6 +71,7 @@ public class MeleeEnemyAI : BaseEnemyAI
         }
         else
         {
+            agent.SetDestination(startPosition);
             LookAtPlayer();
         }
     }
