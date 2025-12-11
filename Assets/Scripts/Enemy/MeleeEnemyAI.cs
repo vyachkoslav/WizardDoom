@@ -10,6 +10,7 @@ using static Enemy.Attack;
 */
 public class MeleeEnemyAI : BaseEnemyAI
 {
+    private static readonly int IsWalking = Animator.StringToHash("isWalking");
     [SerializeField] private Attack attack;
 
     private CancelableAttack attacker;
@@ -62,7 +63,7 @@ public class MeleeEnemyAI : BaseEnemyAI
     private void Update()
     {
         bool isWalking = agent.velocity.sqrMagnitude > 0.1f;
-        animator.SetBool("isWalking", isWalking);
+        animator.SetBool(IsWalking, isWalking);
 
         if (playerIsDetected)
         {

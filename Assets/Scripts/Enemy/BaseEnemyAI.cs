@@ -8,6 +8,7 @@ using Utils;
 
 public abstract class BaseEnemyAI : MonoBehaviour
 {
+    private static readonly int Attacking = Animator.StringToHash("isAttacking");
     private DetectPlayer detectPlayer;
     private Coroutine stopAttackCoroutine;
     
@@ -105,8 +106,8 @@ public abstract class BaseEnemyAI : MonoBehaviour
 
     private IEnumerator HandleAttackAnimation()
     {
-        animator.SetBool("isAttacking", true);
+        animator.SetBool(Attacking, true);
         yield return new WaitForSeconds(attackAnimationDuration);
-        animator.SetBool("isAttacking", false);
+        animator.SetBool(Attacking, false);
     }
 }

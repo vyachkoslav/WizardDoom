@@ -9,6 +9,7 @@ using static Enemy.Attack;
 */
 public class RangedEnemyAI : BaseEnemyAI
 {
+    private static readonly int IsWalking = Animator.StringToHash("isWalking");
     [SerializeField] private Attack attack;
     [SerializeField] private float fleeTriggerRange = 3f;
     [SerializeField] private float attackRange = 5f;
@@ -75,7 +76,7 @@ public class RangedEnemyAI : BaseEnemyAI
     private void Update()
     {
         bool isWalking = agent.velocity.sqrMagnitude > 0.1f;
-        animator.SetBool("isWalking", isWalking);
+        animator.SetBool(IsWalking, isWalking);
 
         fleeDistance = attackRange - fleeTriggerRange;
 
