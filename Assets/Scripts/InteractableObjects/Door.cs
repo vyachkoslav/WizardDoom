@@ -5,9 +5,10 @@ using UnityEngine.InputSystem;
 
 public class Door : Interactable
 {
-    [SerializeField] protected Collider _doorCollider;
+    [SerializeField] protected Collider _doorModelCollider;
     [SerializeField] protected HingeJoint _hingeJoint;
-    [SerializeField] protected float _doorBufferInSeconds = 1f;
+    [SerializeField] protected Rigidbody _rigidBody;
+    [SerializeField] protected float _doorBufferInSeconds = 0.5f;
 
     protected JointLimits _limits;
     protected JointSpring _spring;
@@ -28,6 +29,8 @@ public class Door : Interactable
         _springTarget = _hingeJoint.spring.targetPosition;
         _springForce = _hingeJoint.spring.spring;
         _springDamper = _hingeJoint.spring.damper;
+
+        _rigidBody.isKinematic = true;
     }
 
     public override void Interact()
@@ -42,12 +45,13 @@ public class Door : Interactable
     protected virtual IEnumerator OpenDoor()
     {
         SetSpring(_limitMax);
-        _doorCollider.enabled = false;
+        _doorModelCollider.enabled = false;
+        _rigidBody.isKinematic = false;
         _hingeJoint.useSpring = true;
         SoundManager.Instance.PlaySound3D("Door", transform.position);
         yield return new WaitForSeconds(_doorBufferInSeconds);
         _hingeJoint.useSpring = false;
-        _doorCollider.enabled = true;
+        _doorModelCollider.enabled = true;
 
         _canInteract = false;
         _isDoorClosed = false;
@@ -68,15 +72,16 @@ public class Door : Interactable
     protected virtual IEnumerator CloseDoor()
     {
         SetSpring(_limitMin);
-        _doorCollider.enabled = false;
+        _doorModelCollider.enabled = false;
         _hingeJoint.useSpring = true;
         SoundManager.Instance.PlaySound3D("Door", transform.position);
         yield return new WaitForSeconds(_doorBufferInSeconds);
         _hingeJoint.useSpring = false;
-        _doorCollider.enabled = true;
+        _doorModelCollider.enabled = true;
         
         _canInteract = true;
         _isDoorClosed = true;
+        _rigidBody.isKinematic = true;
     }
 
     // Reverse hinge joint movement direction
