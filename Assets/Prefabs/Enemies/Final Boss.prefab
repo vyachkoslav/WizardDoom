@@ -212,8 +212,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b67ffa4a02761e41adc4a888027c2f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DetectPlayer
-  sightRange: 20
-  fieldOfViewAngle: 180
+  sightRange: 100
+  fieldOfViewAngle: 360
   proximityRange: 4
   playerLayerMask:
     serializedVersion: 2
@@ -236,7 +236,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FinalBossAI
   delayBeforeAttack: 1.4
   attackAnimationDuration: 1.5
-  stopDuration: 1
   myRoom: {fileID: 0}
   OnBeforeAttackDelay:
     m_PersistentCalls:
@@ -246,7 +245,7 @@ MonoBehaviour:
       m_Calls: []
   attack: {fileID: 11400000, guid: 48b74cb9b5ff7ae4ab3c1b9f5e43ae55, type: 2}
   fleeTriggerRange: 0
-  attackRange: 8
+  attackRange: 15
   spellPickup: {fileID: 0}
 --- !u!114 &-261060131931837758
 MonoBehaviour:
