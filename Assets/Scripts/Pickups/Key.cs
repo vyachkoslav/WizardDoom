@@ -15,6 +15,7 @@ public class Key : Pickup
         _itemsDisplay = FindAnyObjectByType<ItemsUI>();;
         if (DataManager.Instance.CheckKeyInList(this))
         {
+            _itemsDisplay.UpdateItemDisplay(this);
             this.gameObject.SetActive(false);
         }
     }
